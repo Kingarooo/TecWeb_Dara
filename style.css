@@ -8,7 +8,7 @@ body{
     align-items: center;
 }
 
-.barra {
+.h1 {
     list-style: none;
     display: inline-flex;
     justify-content: center;
@@ -17,17 +17,30 @@ body{
     margin: 0;
 }
 
-.barra li {
+.h1 li {
     list-style: none;
     display: inline-block;
     font-size: 25px;
     text-align: center;
     justify-content: center;
     align-items: center;
-    padding: 30px;
-    margin-right: 70px;
     border: 1px solid black;
     border-radius: 10px;
+    margin-right: 70px;
+    margin-left: 40px;
+}
+
+.barra{
+    width: 200px;
+    height: 80px;
+    background-color: rgba(200,130,30,255);
+    border-radius: 10px;
+}
+
+.barra:hover,
+.barra:focus{
+    background-color: rgba(240,130,30,255);
+    cursor: pointer;
 }
 #texto-settings {
     margin-top: 0;
@@ -96,6 +109,7 @@ ul.butoes {
 .players button:focus {
     background-color: rgba(164, 165, 112, 0.623);
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .start-button{
@@ -106,13 +120,15 @@ ul.butoes {
     margin-bottom: 0;
     border-radius: 5px;
 }
- #start img{
-    height: 70px;
+#start img{
     width: 70px;
+    height: 150px;
     background: none;
     padding: 0px;
     margin: 0px;
     position: relative;
+    rotate: 90deg;
+
  }
  #starttext{
     position: absolute;
