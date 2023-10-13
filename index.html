@@ -23,13 +23,13 @@
         <div id="logo">
             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos.textgiraffe.com%2Flogos%2Flogo-name%2FDara-designstyle-jungle-m.png&f=1&nofb=1&ipt=92efcd504efb39955fc97a9c158bbab588267ed5cc6e55522047d615609f3d6b&ipo=images"
                 alt="Logo" id="logo_dara">
-            <button class="MyProfileButton">
+            <button class="MyProfileButton" onclick="toggleDropdown()">
                 <elem style="font-size: 30px; text-align: center;">MyProfile</elem>
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F5%2FProfile.png&f=1&nofb=1&ipt=a5a86b6b9137e6f9b251c129adb8badf8cc6b51aaca62f2b0b02fa296378d51c&ipo=images"
                 alt="user" id="user">
             </button>
         </div>
-        <div id="profileOptions" onclick="toggleDropdown()">
+        <div class="hidden" id="profileOptions">
             <button class="barra">Login</button>
             <button class="barra">Switch User</button>
             <button class="barra">Create acount</button>
@@ -63,13 +63,13 @@
                         id="AI"></img>
                 </button>
                 <br>
-                <button class="start-button">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.downloadclipart.net%2Flarge%2F18993-blank-brown-button-design.png&f=1&nofb=1&ipt=978f9c9396d780ee401901e9102a8fedb4cbe24f004be73c3e00ee32dfa45334&ipo=images"
-                        id="start"></img>
-                    <p id="starttext">Start Game</p>
-                </button>
             </li>
         </ul>
+        <button class="start-button">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn4.vectorstock.com%2Fi%2F1000x1000%2F08%2F88%2Fcartoon-stone-texture-in-brown-colors-seamless-vector-11090888.jpg&f=1&nofb=1&ipt=1b2e0cb23e29a6edecb1c99568aa4372f83f749a7ecee575e4053ccd22affa4c&ipo=images"
+                id="start"></img>
+            <p id="starttext">Start Game</p>
+        </button>
     </div>
     <div class="overlay"onclick="togglePopup()">
         <div class="popup">

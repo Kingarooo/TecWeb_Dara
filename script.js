@@ -1,26 +1,15 @@
 // Add a click event listener to the MyProfile button
-const myProfileButton = document.querySelector('.MyProfileButton');
-const profileOptions = document.getElementById('profileOptions');
+const profileOptions = document.getElementById('#profileOptions');
 const existingButtons = document.querySelectorAll('.barra');
 
-let optionsVisible = false;
-
-myProfileButton.addEventListener('click', () => {
-    // Toggle the visibility of the profile options and hide existing buttons
-    optionsVisible = !optionsVisible;
-
-    if (optionsVisible) {
-        profileOptions.classList.remove('hidden');
-        existingButtons.forEach(button => {
-            button.style.display = 'none';
-        });
+function toggleDropdown() {
+    var profileOptions = document.getElementById("profileOptions");
+    if (profileOptions.classList.contains("hidden")) {
+        profileOptions.classList.remove("hidden");
     } else {
-        profileOptions.classList.add('hidden');
-        existingButtons.forEach(button => {
-            button.style.display = 'block';
-        });
+        profileOptions.classList.add("hidden");
     }
-});
+}
 
 function togglePopup() {
     var overlay = document.querySelector('.overlay');
@@ -34,3 +23,4 @@ function togglePopup() {
         popup.style.display = 'block';
     }
 }
+

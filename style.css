@@ -40,6 +40,7 @@ body {
     z-index: 1;
 }
 .popup h2{
+    margin-top: 30px;
     font-size: 40px;
     text-align: center;
 }
@@ -64,6 +65,7 @@ body {
     text-align: center;
     display: block;
     top: 400px;
+    margin-top: 70px;
     left: 250px;
     background-color: rgba(200, 130, 30, 255);
     border-radius: 10px;
@@ -74,6 +76,9 @@ body {
     position: fixed;
     width: 600px;
     height: 800px;
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkey.com%2Fpng%2Ffull%2F9-93927_parchment-png.png&f=1&nofb=1&ipt=bbc7715920613b4e4efc9180e851e9550309c76cb08148de7f77314c9bac1f74&ipo=images") ;
+    background-size: cover;
+    background-position: center center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -83,6 +88,7 @@ body {
     border-radius: 30px;
     z-index: 2;
 }
+
 #logo {
     text-align: center;
 
@@ -105,8 +111,10 @@ body {
 
 .MyProfileButton {
     font-size: 50px;
-    text-align: center;
-    display: inline;
+    text-align: middle;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     position: absolute;
     top: 130px;
     right: 30px;
@@ -121,14 +129,12 @@ body {
 }
 
 
-#profileOptions {
-
-    display: inline-flex;
-    flex-direction: column;
+#profileOptions {   
     border-radius: 10px;
     position: absolute;
     top: 220px;
     right: 55px;
+    background-color: solid black;
 }
 
 #profileOptions .barra {
@@ -141,7 +147,7 @@ body {
     position: relative;
 }
 
-.barra {
+.barra {    
     width: max-content;
     height: max-content;
     font-size: 20px;
@@ -232,32 +238,28 @@ ul.butoes {
 
 .start-button {
     display: inline-flex;
+    width: 500px;
+    height: 100px;
     align-items: center;
     text-align: center;
     justify-content: center;
-    margin-bottom: 0;
     border-radius: 5px;
 }
 
-#start img {
-    width: 100px;
-    height: 150px;
+#start {
+    width: 500px;
+    height: 100px;
     background: none;
-    padding: 0px;
-    margin: 0px;
     position: relative;
-    rotate: 90deg;
 
 }
 
 #starttext {
     position: absolute;
-    color: rgb(255, 155, 4);
+    color: rgb(32, 24, 12);
     /* Text color */
     border-radius: 5px;
 }
-
-
 
 .hidden {
     display: none;
