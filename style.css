@@ -1,0 +1,264 @@
+body {
+    background-color: rgba(232, 233, 180, 0.966);
+    display: block;
+    margin: 0;
+}
+
+
+.header {
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(126, 87, 42);
+    border: 3px solid rgb(82, 44, 2);
+    height: 200px;
+}
+
+#rules{
+    background: none;
+    position: relative;
+    left: 30px;
+    top: 30px;
+    width: 130px;
+    height: 130px;
+}
+#texto_rules{
+    font-size: 40px;
+    pointer-events: none; /* Ignore pointer events on the text */
+}
+.popup-button {
+    cursor: pointer;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+.popup h2{
+    font-size: 40px;
+    text-align: center;
+}
+.popup p{
+    font-size: 20px;
+    text-align: center;
+}
+.popup img{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    right:0;
+    border-radius: 90px;
+    border: 3px solid rgb(92, 58, 11);
+    cursor: pointer;
+}
+
+.popup button{
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+    display: block;
+    top: 400px;
+    left: 250px;
+    background-color: rgba(200, 130, 30, 255);
+    border-radius: 10px;
+    padding: 5px;
+}
+.popup {
+    display: none;
+    position: fixed;
+    width: 600px;
+    height: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(216, 177, 110);
+    padding: 20px;
+    border: 4px solid #333;
+    border-radius: 30px;
+    z-index: 2;
+}
+#logo {
+    text-align: center;
+
+}
+#logo_dara{
+    top: 0px;
+    align-items: center;
+    position: absolute;
+}
+#logo_dara:hover{
+    font-size:50px;
+}
+#texto_rules{
+    font-size: 40px;
+    top: 75px;
+    left: 40px;
+    position: absolute;
+
+}
+
+.MyProfileButton {
+    font-size: 50px;
+    text-align: center;
+    display: inline;
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    background-color: rgba(200, 130, 30, 255);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.MyProfileButton:hover {
+    background-color: rgba(220, 130, 30, 255);
+    cursor: pointer;
+}
+
+
+#profileOptions {
+
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: 10px;
+    position: absolute;
+    top: 220px;
+    right: 55px;
+}
+
+#profileOptions .barra {
+    width: 135px;
+    margin-bottom: 5px;
+    height: max-content;
+    align-items: end;
+    background-color: rgb(218, 150, 54);
+    border-radius: 10px;
+    position: relative;
+}
+
+.barra {
+    width: max-content;
+    height: max-content;
+    font-size: 20px;
+    background-color: rgba(206, 207, 135, 0.966);
+    border-radius: 10px;
+    position: relative;
+}
+
+.barra:hover,
+.barra:focus {
+    background-color: rgba(240, 130, 30, 255);
+    cursor: pointer;
+}
+
+#profileOptions .barra:hover,
+#profileOptions .barra:focus {
+    background-color: rgba(240, 130, 30, 255);
+    cursor: pointer;
+}
+
+#user {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+#texto-settings {
+    margin-top: 0;
+    text-align: center;
+    font-family: 'Stencil Std';
+    font-size: 45px;
+    font-weight: 600;
+    color: rgb(82, 44, 2);
+}
+
+.settings p:not(#texto-settings) {
+    font-size: 20px;
+}
+
+
+.settings {
+    width: 40%;
+    height: 70%;
+    background-color: rgba(206, 207, 135, 0.966);
+    top: 60%;
+    left: 50%;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    border: 3px solid rgb(124, 120, 56);
+}
+
+.board:hover {
+    background-color: rgb(126, 87, 42);
+}
+
+ul.butoes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.players {
+    text-align: center;
+    margin: 50px;
+}
+
+.players button {
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.players button img {
+    width: 100%;
+    height: 100%;
+}
+
+.players button:hover,
+.players button:focus {
+    background-color: rgba(164, 165, 112, 0.623);
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.start-button {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 0;
+    border-radius: 5px;
+}
+
+#start img {
+    width: 100px;
+    height: 150px;
+    background: none;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    rotate: 90deg;
+
+}
+
+#starttext {
+    position: absolute;
+    color: rgb(255, 155, 4);
+    /* Text color */
+    border-radius: 5px;
+}
+
+
+
+.hidden {
+    display: none;
+}
