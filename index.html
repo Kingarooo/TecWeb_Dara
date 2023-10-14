@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    
-    <head>
+
+<head>
     <meta charset="UTF-8"> <!--permite ^etc.-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- adapta a cada telemovel -->
     <title>Dara</title>
     <link rel="stylesheet" href="./style.css">
+
+    <!--isto são sons-->
+    <audio id="clickSound">
+        <source src="/home/kingaroo/Desktop/Web/TecWeb_Dara/PAPRHndl_Road map 10 (ID 2805)_BSB.mp3" type="audio/mpeg">
+    </audio>
+
 </head>
 
 <body>
     <div class="header">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F30%2F3f%2Fc9%2F303fc993935532b1061d3aad57a228e4.png&f=1&nofb=1&ipt=d0a8b768777911d1cc8f6e26157f3517f77c029c6fef265e17c77bd26b132986&ipo=images" alt="Popup Button" class="popup-button" id="rules" onclick="togglePopup()">
-        <elem id="texto_rules" >Rules</elem>
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F30%2F3f%2Fc9%2F303fc993935532b1061d3aad57a228e4.png&f=1&nofb=1&ipt=d0a8b768777911d1cc8f6e26157f3517f77c029c6fef265e17c77bd26b132986&ipo=images"
+            alt="Popup Button" class="popup-button" id="rules" onclick="togglePopup()">
+        <elem id="texto_rules">Rules</elem>
         <div class="popup">
             <button onclick="togglePopup()">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fx-mark-256.png&f=1&nofb=1&ipt=0e055833898a0a763280812be481f30b3f7d4156d5b347efc927f0959ddbeffd&ipo=images" alt="X" >
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fx-mark-256.png&f=1&nofb=1&ipt=0e055833898a0a763280812be481f30b3f7d4156d5b347efc927f0959ddbeffd&ipo=images"
+                    alt="X">
             </button>
             <h2>Instructions</h2>
             <p>This is the pop-up content. Add your text and instructions here.</p>
         </div>
-        <div id="logo">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos.textgiraffe.com%2Flogos%2Flogo-name%2FDara-designstyle-jungle-m.png&f=1&nofb=1&ipt=92efcd504efb39955fc97a9c158bbab588267ed5cc6e55522047d615609f3d6b&ipo=images"
-                alt="Logo" id="logo_dara">
-            <button class="MyProfileButton" onclick="toggleDropdown()">
-                <elem style="font-size: 30px; text-align: center;">MyProfile</elem>
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F5%2FProfile.png&f=1&nofb=1&ipt=a5a86b6b9137e6f9b251c129adb8badf8cc6b51aaca62f2b0b02fa296378d51c&ipo=images"
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos.textgiraffe.com%2Flogos%2Flogo-name%2FDara-designstyle-jungle-m.png&f=1&nofb=1&ipt=92efcd504efb39955fc97a9c158bbab588267ed5cc6e55522047d615609f3d6b&ipo=images"
+            alt="Logo" id="logo_dara">
+        <button class="MyProfileButton" onclick="toggleDropdown()">
+            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg4.wikia.nocookie.net%2F__cb20121230232813%2Fscribblenauts%2Fimages%2F9%2F9b%2FCaveman.png&f=1&nofb=1&ipt=f3e94deb2378948bec79db84a34645313531c9cbfa686c698337e85ad3937d90&ipo=images"
                 alt="user" id="user">
-            </button>
-        </div>
+        </button>
         <div class="hidden" id="profileOptions">
+            <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1999068/brown-triangle-clipart-md.png"
+                id="seta" alt="seta">
             <button class="barra">Login</button>
             <button class="barra">Switch User</button>
+            <button class="barra">Match History</button>
             <button class="barra">Create acount</button>
         </div>
     </div>
@@ -39,9 +47,8 @@
         <p id="texto-settings">Settings</p>
         <ul class="butoes">
             <p class="psettings">Board size:</p>
-            <li class="board" contenteditable="true" maxlength="2"></li>
-            <elem id="X"> X </elem>
-            <li class="board" contenteditable="true" maxlength="2"></li>
+            <li class="board"></li>
+            <li class="board"></li>
             <li class="players">
                 <p class="psettings">Choose your opponent:</p>
                 <button>
@@ -66,16 +73,22 @@
             </li>
         </ul>
         <button class="start-button">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn4.vectorstock.com%2Fi%2F1000x1000%2F08%2F88%2Fcartoon-stone-texture-in-brown-colors-seamless-vector-11090888.jpg&f=1&nofb=1&ipt=1b2e0cb23e29a6edecb1c99568aa4372f83f749a7ecee575e4053ccd22affa4c&ipo=images"
+            <img src=""
                 id="start"></img>
             <p id="starttext">Start Game</p>
         </button>
     </div>
-    <div class="overlay"onclick="togglePopup()">
+    <div class="overlay" onclick="togglePopup()">
         <div class="popup">
             <h2>Rules</h2>
             <p>This is the pop-up content. Add your text and instructions here.</p>
         </div>
+    </div>
+    <button id="settings_icon">
+        <img src="" alt="settings_icon">
+    </button>
+    <div class="gameplay hidden">
+
     </div>
     <script src="script.js"></script>
 </body>
