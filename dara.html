@@ -92,22 +92,24 @@
 
     // Handle a cell click
     function handleCellClick(row, col) {
-        if (boardState[row][col] === 0) {
-            if (currentPlayer === 1 && player1PiecesLeft > 0) {
-                boardState[row][col] = 1;
-                player1PiecesLeft--;
-                currentPlayer = 2;
-            } else if (currentPlayer === 2 && player2PiecesLeft > 0) {
-                boardState[row][col] = 2;
-                player2PiecesLeft--;
-                currentPlayer = 1;
-            } else {
-                // Move a piece
-                // Implement your logic here
-            }
-            updateBoard();
+    if (boardState[row][col] === 0) {
+        if (currentPlayer === 1 && player1PiecesLeft > 0) {
+            boardState[row][col] = 1;
+            player1PiecesLeft--;
+            currentPlayer = 2;
+        } else if (currentPlayer === 2 && player2PiecesLeft > 0) {
+            boardState[row][col] = 2;
+            player2PiecesLeft--;
+            currentPlayer = 1;
+        } else {
+            // Move a piece
+            // Implement your logic here
         }
+        updateBoard();
+        checkWin(currentPlayer);
     }
+}
+
 
     // Update the board visuals
     function updateBoard() {
@@ -124,6 +126,49 @@
         });
         message.textContent = `Player ${currentPlayer}'s turn`;
     }
+
+    // Check for a horizontal win
+function checkHorizontalWin(player) {
+    for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 3; col++) {
+            if (
+                boardState[row][col] === player &&
+                boardState[row][col + 1] === player &&
+                boardState[row][col + 2] === player &&
+                boardState[row][col + 3] === player
+            ) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// Check for a vertical win
+function checkVerticalWin(player) {
+    for (let col = 0; col < 6; col++) {
+        for (let row = 0; row < 2; row++) {
+            if (
+                boardState[row][col] === player &&
+                boardState[row + 1][col] === player &&
+                boardState[row + 2][col] === player &&
+                boardState[row + 3][col] === player
+            ) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// Function to check for a win after each move
+function checkWin(player) {
+    if (checkHorizontalWin(player) || checkVerticalWin(player)) {
+        message.textContent = `Player ${player} wins!`;
+        // You can also add code to disable further moves here.
+    }
+}
+
 
     // Reset the game
     resetButton.addEventListener('click', () => {
