@@ -4,7 +4,7 @@ body {
     margin: 0;
 }
 
-
+/* barra de cima*/
 .header {
     width: 100%;
     display: inline-block;
@@ -13,6 +13,27 @@ body {
     height: 200px;
 }
 
+/*logo, ainda no header*/
+#logo_dara {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+#logo_dara:hover {
+    font-size: 50px;
+}
+
+#texto_rules {
+    font-size: 40px;
+    top: 75px;
+    left: 40px;
+    position: absolute;
+
+}
+
+/*pergaminho com as regras, ainda no header*/
 #rules {
     background: none;
     position: relative;
@@ -23,13 +44,14 @@ body {
 }
 
 #rules:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
     cursor: pointer;
     transition: ease-in-out 0.25s;
 
 }
-#rules:hover ~ #texto_rules {
-    transform: scale(1.1); 
+
+#rules:hover~#texto_rules {
+    transform: scale(1.1);
     transition: ease-in-out 0.25s;
 
 }
@@ -37,9 +59,9 @@ body {
 #texto_rules {
     font-size: 40px;
     pointer-events: none;
-    /* Ignore pointer events on the text */
 }
 
+/*coisas depois de carregar nas regras*/
 .popup-button {
     cursor: pointer;
 }
@@ -108,29 +130,7 @@ body {
     z-index: 2;
 }
 
-#logo {
-    text-align: center;
-
-}
-
-#logo_dara {
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-}
-
-#logo_dara:hover {
-    font-size: 50px;
-}
-
-#texto_rules {
-    font-size: 40px;
-    top: 75px;
-    left: 40px;
-    position: absolute;
-
-}
+/*botão do perfil/homen das cavernas, ainda no header*/
 
 .MyProfileButton {
     font-size: 50px;
@@ -148,10 +148,10 @@ body {
 .MyProfileButton:hover {
     background-color: rgba(220, 130, 30, 255);
     cursor: pointer;
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
-
+/*opções depois de carregar no botão do perfil*/
 #profileOptions {
     display: none;
     border-radius: 10px;
@@ -213,9 +213,10 @@ body {
 
 #user:hover {
     cursor: pointer;
-    transform: scale(1.025); 
+    transform: scale(1.025);
 }
 
+/*parte de definir as settings do jogo*/
 #texto-settings {
     margin-top: 0;
     text-align: center;
@@ -242,16 +243,32 @@ body {
     border: 3px solid rgb(124, 120, 56);
 }
 
-.board:hover {
-    background-color: rgb(126, 87, 42);
+/*escolher quadro*/
+.board-size-label {
+
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(124, 120, 56);
+    border-radius: 5px;
 }
 
+.board-size-label:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: rgba(164, 165, 112, 0.623);
+}
+
+.board-size-label input[type="radio"] {
+    position: absolute;
+    left: -9999em;
+}
 ul.butoes {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+/*escolher adversário*/
 .players {
     text-align: center;
     margin: 50px;
@@ -271,13 +288,19 @@ ul.butoes {
     height: 100%;
 }
 
+#AI{
+    width: 40px;
+}
+
 .players button:hover,
 .players button:focus {
+    transform: scale(1.1);
+    border-radius: 10px;
     background-color: rgba(164, 165, 112, 0.623);
-    border: 1px solid black;
     cursor: pointer;
 }
 
+/*start the game/começar o jogo*/
 .start-button {
     display: inline-flex;
     width: 500px;
@@ -302,6 +325,13 @@ ul.butoes {
     border-radius: 5px;
 }
 
+#settings_icon img{
+     
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+/*da jeito para esconder umas merdas*/
 .hidden {
     display: none;
 }
