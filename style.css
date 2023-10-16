@@ -8,8 +8,8 @@ body {
 .header {
     width: 100%;
     display: inline-block;
-    background-color: rgb(	191, 104, 54);
-    border: 3px solid rgb(	115, 50, 26);
+    background-color: rgb(191, 104, 54);
+    border-bottom: 3px solid rgb(115, 50, 26);
     height: 200px;
 }
 
@@ -29,7 +29,7 @@ body {
     font: arial;
     font-size: 40px;
     top: 75px;
-    left: 50px;
+    left: 40px;
     position: absolute;
 
 }
@@ -181,7 +181,7 @@ body {
     margin-bottom: 5px;
     height: max-content;
     align-items: end;
-    background-color:  rgba(166, 136, 119, 0.966); 
+    background-color: rgba(166, 136, 119, 0.966);
     border-radius: 10px;
 }
 
@@ -201,7 +201,7 @@ body {
 
 #profileOptions .barra:hover,
 #profileOptions .barra:focus {
-    background-color: rgba(115, 50, 26.0,0.623);
+    background-color: rgba(115, 50, 26.0, 0.623);
     cursor: pointer;
 }
 
@@ -230,82 +230,92 @@ body {
     font-size: 20px;
 }
 
-
 .settings {
     width: 30%;
     height: 70%;
-    background-color: rgba(166, 136, 119, 0.966); 
+    background-color: rgba(166, 136, 119, 0.966);
     margin-top: 50px;
     position: relative;
     top: 60%;
     left: 10%;
-    padding: 20px;
+    padding: 50px;
     text-align: center;
     justify-content: center;
-    border: 3px solid rgb(	115, 50, 26);
+    border: 3px solid rgb(115, 50, 26);
 }
 
-/*escolher quadro*/
-.board-size-label {
+/*---------------------------ESCOLHER QUADRO-----------------------------------------------------------------------
+------------------------------ESCOLHER QUADRO----------------------------------------------------
+------------------------------ESCOLHER QUADRO---------------------------------------------------*/
+input[type="radio"] {
+    position: absolute;
+    z-index: -2;
+}
 
-    padding: 10px;
+.board-size-option {
+    padding: 20px;
     margin: 5px;
-    border: 2px solid rgba(115, 50, 26.0,0.623);
+    border: 2px solid rgba(115, 50, 26.0, 0.623);
     border-radius: 5px;
 }
 
-.board-size-label:hover {
+.board-size-option:hover {
     cursor: pointer;
-    transform: scale(1.1);
-    background-color:rgba(115, 50, 26.0,0.623);
+    background-color: rgba(115, 50, 26.0, 0.623);
     border: 1px solid black;
-
 }
 
-.board-size-label input[type="radio"] {
-    position: absolute;
-    left: -9999em;
-}
-ul.butoes {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+span {
+    font-size: 18px;
 }
 
-/*escolher adversário*/
-.players {
-    text-align: center;
-    margin: 50px;
+
+.board-size-label input[type="radio"]:checked~.board-size-option {
+    background-color: rgba(115, 50, 26.0, 0.623);
+    border: 1px solid black;
 }
 
-.players button {
+
+/*---------------------------ESCOLHER ADVERSÁRIO-----------------------------------------------------------------------
+------------------------------ESCOLHER ADVERSÁRIO----------------------------------------------------
+------------------------------ESCOLHER ADVERSÁRIO---------------------------------------------------*/
+
+
+.players-label {
     width: 80px;
     height: 80px;
     background-color: transparent;
-    border: none;
-    padding: 0;
-    margin: 10px;
+    padding: 20px;
 }
 
-.players button img {
-    width: 100%;
-    height: 100%;
+label img {
+    width: 80px;
+    height: 80px;
 }
 
-#AI{
-    width: 40px;
+.player-option,
+.whentoplay-option{
+    padding: 20px;
 }
 
-.players button:hover,
-.players button:focus {
-    transform: scale(1.1);
-    border-radius: 10px;
-    background-color:rgba(115, 50, 26.0,0.623);
+.player-option:hover,
+.whentoplay-option:hover{
+    background-color: rgba(115, 50, 26.0, 0.623);
     border: 1px solid black;
-    cursor: pointer;
+    border-radius: 10px;
+}
+.players-label input[type="radio"]:checked~.player-option,
+.whentoplay input[type="radio"]:checked~.whentoplay-option {
+    background-color: rgba(115, 50, 26.0, 0.623);
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
-/*start the game/começar o jogo*/
+
+/*---------------------------START/COMEÇAR O JOGO-----------------------------------------------------------------------
+------------------------------START/COMEÇAR O JOGO----------------------------------------------------
+------------------------------START/COMEÇAR O JOGO---------------------------------------------------*/
+
 .start-button {
     display: inline-flex;
     width: 500px;
@@ -313,7 +323,9 @@ ul.butoes {
     align-items: center;
     text-align: center;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 10px;
+    background-color: rgba(166, 136, 119, 0.966);
+    border: 1px solid rgba(115, 50, 26.0, 0.623);
 }
 
 #start {
@@ -330,13 +342,46 @@ ul.butoes {
     border-radius: 5px;
 }
 
-#settings_icon img{
-     
+#settings_icon img {
+
     width: 50px;
     height: 50px;
     position: absolute;
 }
+
 /*da jeito para esconder umas merdas*/
 .hidden {
     display: none;
+}
+
+/*----------------------AQUI COMEÇA O SCRIPT DO JOGO------------------------------
+----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+*/
+.board {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 6), 1fr);
+    grid-template-rows: repeat(var(--rows, 5), 1fr);
+    gap: 1px 1px;
+    /* Adjust the gap between rows and columns */
+    grid-row-gap: 5px;
+    /* Gap between rows */
+    grid-column-gap: 0px;
+    /* Gap between columns */
+    -ms-grid-row-align: center;
+    -ms-grid-column-align: center;
+    grid-template-areas: brown;
+
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgb(247, 201, 0);
+
 }
