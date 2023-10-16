@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8"> <!--permite ^etc.-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- adapta a cada telemovel -->
+    <title>Dara</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <!--isto são sons-->
+    <audio id="clickSound">
+        <source src="/home/kingaroo/Desktop/Web/TecWeb_Dara/PAPRHndl_Road map 10 (ID 2805)_BSB.mp3" type="audio/mpeg">
+    </audio>
+
+</head>
+
+<body>
+    <div class="header">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F30%2F3f%2Fc9%2F303fc993935532b1061d3aad57a228e4.png&f=1&nofb=1&ipt=d0a8b768777911d1cc8f6e26157f3517f77c029c6fef265e17c77bd26b132986&ipo=images"
+            alt="Popup Button" class="popup-button" id="rules" onclick="togglePopup()">
+        <elem id="texto_rules">Rules</elem>
+        <div class="popup">
+            <button onclick="togglePopup()">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fx-mark-256.png&f=1&nofb=1&ipt=0e055833898a0a763280812be481f30b3f7d4156d5b347efc927f0959ddbeffd&ipo=images"
+                    alt="X">
+            </button>
+            <h2>Instructions</h2>
+            <p>This is the pop-up content. Add your text and instructions here.</p>
+        </div>
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos.textgiraffe.com%2Flogos%2Flogo-name%2FDara-designstyle-jungle-m.png&f=1&nofb=1&ipt=92efcd504efb39955fc97a9c158bbab588267ed5cc6e55522047d615609f3d6b&ipo=images"
+            alt="Logo" id="logo_dara">
+        <button class="MyProfileButton" onclick="toggleDropdown()">
+            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg4.wikia.nocookie.net%2F__cb20121230232813%2Fscribblenauts%2Fimages%2F9%2F9b%2FCaveman.png&f=1&nofb=1&ipt=f3e94deb2378948bec79db84a34645313531c9cbfa686c698337e85ad3937d90&ipo=images"
+                alt="user" id="user">
+        </button>
+        <div class="hidden" id="profileOptions">
+            <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1999068/brown-triangle-clipart-md.png"
+                id="seta" alt="seta">
+            <button class="barra">Login</button>
+            <button class="barra">Switch User</button>
+            <button class="barra">Match History</button>
+            <button class="barra">Create acount</button>
+        </div>
+    </div>
+    <div class="settings">
+        <p id="texto-settings">Settings</p>
+        <ul class="butoes">
+            <p class="psettings">Board size (ROWSxCOLS):</p>
+            <div class="board">
+                <label class="board-size-label">
+                    <input type="radio" name="board-size" value="6x6" checked>
+                    <span class="board-size-option">6x6</span>
+                </label>
+                <label class="board-size-label">
+                    <input type="radio" name="board-size" value="6x5">
+                    <span class="board-size-option">6x5</span>
+                </label>
+                <label class="board-size-label">
+                    <input type="radio" name="board-size" value="5x6">
+                    <span class="board-size-option">5x6</span>
+                </label>
+            </div>
+                <li class="players">
+                <p class="psettings">Choose your opponent:</p>
+                <button>
+                    <img
+                        src="https://icon-library.com/images/human-icon/human-icon-11.jpg"></img>
+                </button>
+                <button>
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Frobot%2Frobot_PNG20.png&f=1&nofb=1&ipt=3d359ee4343f66a194a426e9d6c040b8e5942305c96207f23694146df50502f7&ipo=images"
+                        id="AI"></img>
+                </button>
+                <br>
+                <p class="psettings">Choose the first to play:</p>
+                <button>
+                    <img
+                        src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/dd2tbqp-6c067453-d57b-4bf4-83a9-316047066666.png/v1/fill/w_1280,h_1317,strp/smash_player_1_select_hand_by_toadking07_dd2tbqp-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGQydGJxcC02YzA2NzQ1My1kNTdiLTRiZjQtODNhOS0zMTYwNDcwNjY2NjYucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.E6p6wBcgbLzuRXvIi4hX_DnG-ahRf7lcAhfpsRBMxr8">
+                    </img>
+                </button>
+                <button>
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/de32xkq-64df4f8c-5cd2-401e-ba44-a4b768cbc6b8.png/v1/fill/w_881,h_907/smash_player_2_select_hand_by_toadking07_de32xkq-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGUzMnhrcS02NGRmNGY4Yy01Y2QyLTQwMWUtYmE0NC1hNGI3NjhjYmM2YjgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.2MhohfxifmAUhQKfpDVGh4Lt3cJAm42uLLrvbMYl89o">
+                </img>
+                </button>
+                <br>
+            </li>
+        </ul>
+        <button class="start-button">
+            <img src=""
+                id="start"></img>
+            <p id="starttext">Start Game</p>
+        </button>
+    </div>
+    <div class="overlay" onclick="togglePopup()">
+        
+        <div class="popup">
+            <h2>Rules</h2>
+            <p>This is the pop-up content. Add your text and instructions here.</p>
+        </div>
+        
+    </div>
+    <style>
+        .board {
+            display: grid;
+            grid-template-columns: repeat(var(--cols, 6), 1fr);
+            grid-template-rows: repeat(var(--rows, 5), 1fr);
+            gap: 1px 1px; /* Adjust the gap between rows and columns */
+            grid-row-gap: 5px; /* Gap between rows */
+            grid-column-gap: 1px; /* Gap between columns */
+            -ms-grid-row-align: center;
+            -ms-grid-column-align: center;
+            grid-template-areas: brown;
+
+        }
+        .cell {
+            width: 60px;
+            height: 60px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background-color: rgb(247, 201, 0);
+
+        }
+    </style>
+    <div>
+        <label for="rows">Rows:</label>
+        <input type="number" id="rows" value="5">
+        <label for "cols">Columns:</label>
+        <input type="number" id="cols" value="6">
+        <button id="start">Start Game</button>
+    </div>
+    <div class="board" id="board" style="--rows: 5; --cols: 6;"></div>
+    <p id="message" style="font-size:300%" ;>Player 1's turn</p>
+    <button id="reset">Reset</button>
+    <script>
+        const board = document.getElementById('board');
+        const cells = [];
+        const message = document.getElementById('message');
+        const resetButton = document.getElementById('reset');
+        let currentPlayer = 1;
+        const player1Pieces = 9;
+        const player2Pieces = 9;
+        let player1PiecesLeft = player1Pieces;
+        let player2PiecesLeft = player2Pieces;
+        let boardState = [
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+        ];
+
+        // Create the board and add event listeners to cells
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 6; j++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.dataset.row = i;
+                cell.dataset.col = j;
+                cells.push(cell);
+                cell.addEventListener('click', () => handleCellClick(i, j));
+                board.appendChild(cell);
+            }
+        }
+
+        // Handle a cell click
+        function handleCellClick(row, col) {
+        if (boardState[row][col] === 0) {
+            if (currentPlayer === 1 && player1PiecesLeft > 0) {
+                boardState[row][col] = 1;
+                player1PiecesLeft--;
+                currentPlayer = 2;
+            } else if (currentPlayer === 2 && player2PiecesLeft > 0) {
+                boardState[row][col] = 2;
+                player2PiecesLeft--;
+                currentPlayer = 1;
+            } else {
+                // Move a piece
+                // Implement your logic here
+            }
+            updateBoard();
+            checkWin(currentPlayer);
+        }
+    }
+
+
+        // Update the board visuals
+        function updateBoard() {
+            cells.forEach((cell, index) => {
+                const row = Math.floor(index / 6);
+                const col = index % 6;
+                if (boardState[row][col] === 0) {
+                    cell.textContent = '';
+                } else if (boardState[row][col] === 1) {
+                    cell.textContent = 'X';
+                } else {
+                    cell.textContent = 'O';
+                }
+            });
+            message.textContent = `Player ${currentPlayer}'s turn`;
+        }
+
+        // Check for a horizontal win
+    function checkHorizontalWin(player) {
+        for (let row = 0; row < 5; row++) {
+            for (let col = 0; col < 3; col++) {
+                if (
+                    boardState[row][col] === player &&
+                    boardState[row][col + 1] === player &&
+                    boardState[row][col + 2] === player &&
+                    boardState[row][col + 3] === player
+                ) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Check for a vertical win
+    function checkVerticalWin(player) {
+        for (let col = 0; col < 6; col++) {
+            for (let row = 0; row < 2; row++) {
+                if (
+                    boardState[row][col] === player &&
+                    boardState[row + 1][col] === player &&
+                    boardState[row + 2][col] === player &&
+                    boardState[row + 3][col] === player
+                ) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Function to check for a win after each move
+    function checkWin(player) {
+        if (checkHorizontalWin(player) || checkVerticalWin(player)) {
+            message.textContent = `Player ${player} wins!`;
+            // You can also add code to disable further moves here.
+        }
+    }
+
+
+        // Reset the game
+        resetButton.addEventListener('click', () => {
+            currentPlayer = 1;
+            player1PiecesLeft = player1Pieces;
+            player2PiecesLeft = player2Pieces;
+            boardState = [
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+            ];
+            updateBoard();
+        });
+
+    </script>
+    <button id="settings_icon">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fsettings-12-512.png&f=1&nofb=1&ipt=9694fe549ecc45caa044039f593482d86d9f3557193210dc37b460258b981885&ipo=images" alt="settings_icon"
+        id="">
+    </button>
+    <div class="gameplay hidden">
+    </div>
+    <script src="script.js"></script>
+</body>
