@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- adapta a cada telemovel -->
     <title>Dara</title>
     <link rel="stylesheet" href="./style.css">
-
+    ce
     <!--isto são sons-->
     <audio id="clickSound">
         <source src="rules.mp3" type="audio/mpeg">
@@ -30,7 +30,8 @@
             <p>Cada jogador tem 12 peças, pretas ou brancas</p>
             <p>O jogador pode escolher a cor das peças e quem joga primeiro</p>
             <p>O jog tem 2 fases:</p>
-            <p>- 1º fase: colocar peças nas casa livre. Não é possivel por mais de tres peças consegutivas juntas em linha ou coluna. </p>
+            <p>- 1º fase: colocar peças nas casa livre. Não é possivel por mais de tres peças consegutivas juntas em
+                linha ou coluna. </p>
             <p>- 2º fase: </p>
         </div>
         <img src="logo.png" alt="Logo" id="logo_dara">
@@ -109,6 +110,10 @@
         <br>
         <br>
         <br>
+        <button id="settings_icon">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fsettings-12-512.png&f=1&nofb=1&ipt=9694fe549ecc45caa044039f593482d86d9f3557193210dc37b460258b981885&ipo=images"
+                alt="setting_icon">
+        </button>
         <button class="start-button">
             <img src="" id="start"></img>
             <p id="starttext">Start Game</p>
@@ -116,15 +121,12 @@
     </div>
     <div class="overlay" onclick="togglePopup()">
     </div>
-    <div class="board" id="board" style="--rows: 5; --cols: 6;"></div>
-    <p id="message" style="font-size:300%" ;>Player 1's turn</p>
-    <button id="reset">Reset</button>
-    <button id="settings_icon">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fsettings-12-512.png&f=1&nofb=1&ipt=9694fe549ecc45caa044039f593482d86d9f3557193210dc37b460258b981885&ipo=images"
-            alt="settings_icon" id="">
-    </button>
     <div class="gameplay hidden">
+        <div class="board hidden" id="board"></div> 
+        <p id="message"> Someone's turn</p>
+        <button id="reset">Reset</button>
     </div>
     <script src="script.js"></script>
     <script src="game.js"></script>
+    <script src="creatingBoard.js"></script>
 </body>

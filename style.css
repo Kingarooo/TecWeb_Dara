@@ -358,30 +358,43 @@ label img {
 ----------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
 */
-.board {
+.gameplay{
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.board {   
+    margin: auto;
+    margin-top: 100px;
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2Fb9%2F4c%2Fc9%2Fb94cc9753e674518e4bb3ef1bc3fd9f3--grasses-cartoon.jpg&f=1&nofb=1&ipt=1a7969498059d7507f8bd18d828c79958794961659aad08aa28c82fe5200651f&ipo=images");
+    background-repeat: repeat;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0);
+    width: max-content;
+    height: fit-content ;
     display: grid;
     grid-template-columns: repeat(var(--cols, 6), 1fr);
     grid-template-rows: repeat(var(--rows, 5), 1fr);
-    gap: 1px 1px;
-    /* Adjust the gap between rows and columns */
-    grid-row-gap: 5px;
-    /* Gap between rows */
-    grid-column-gap: 0px;
-    /* Gap between columns */
-    -ms-grid-row-align: center;
-    -ms-grid-column-align: center;
+    gap: 4px 4px;
     grid-template-areas: brown;
-
 }
 
 .cell {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
-    background-color: rgb(247, 201, 0);
+    background-image: url("Cell.png");
+    background-size:25px; 
+    background-repeat: repeat;
+    border: 5px solid rgb(135, 83, 62);
+    
+}
 
+.overlay2 {
+    background-size: contain;
+    background-repeat: no-repeat; 
+    background-image: url("https://www.freepnglogos.com/uploads/rock-png/big-rock-cimarron-deviantart-21.png");
+    z-index: 4;     
 }

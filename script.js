@@ -38,7 +38,6 @@ startButton.addEventListener('click', () => {
   // Hide the settings div
   settingsDiv.classList.add('hidden');
   
-  // Show the gameplay div
   gameplayDiv.classList.remove('hidden');
 });
 

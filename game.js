@@ -18,29 +18,26 @@ let boardState = [
 let rows = 6;
 let cols = 6;
 const radioButtons = document.querySelectorAll('input[name="board-size"]');
-// Add an event listener to each radio button
-radioButtons.forEach((radioButton) => {
-    radioButton.addEventListener('change', () => {
-        if (radioButton.checked) {
-            const [selectedRows, selectedCols] = radioButton.value.split('x');
-            rows = parseInt(selectedRows, 10);
-            cols = parseInt(selectedCols, 10);
-            console.log(`Selected Rows: ${rows}`);
-            console.log(`Selected Columns: ${cols}`);
-        }
-    });
-});
+function createCellElement(row, col) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.row = row;
+    cell.dataset.col = col;
+    const overlay2 = document.createElement('div');
+    overlay2.className = 'overlay2';
+    cell.appendChild(overlay2);
+
+    cell.addEventListener('click', () => handleCellClick(row, col));
+    board.appendChild(cell);
+
+    return cell;
+}
 
 // Create the board and add event listeners to cells
 for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-        const cell = document.createElement('div');
-        cell.className = 'cell';
-        cell.dataset.row = i;
-        cell.dataset.col = j;
+        const cell = createCellElement(i, j);
         cells.push(cell);
-        cell.addEventListener('click', () => handleCellClick(i, j));
-        board.appendChild(cell);
     }
 }
 
@@ -65,17 +62,21 @@ function handleCellClick(row, col) {
 }
 
 
-// Update the board visuals
 function updateBoard() {
     cells.forEach((cell, index) => {
         const row = Math.floor(index / 6);
         const col = index % 6;
+        const overlay2 = cell.querySelector('.overlay2');
+
         if (boardState[row][col] === 0) {
-            cell.textContent = '';
+            cell.textContent = 'none';
+            //overlay.style.backgroundImage = 'none';
         } else if (boardState[row][col] === 1) {
-            cell.textContent = 'X';
-        } else {
             cell.textContent = 'O';
+            //overlay.style.backgroundImage = 'url("https://www.freepnglogos.com/uploads/rock-png/big-rock-cimarron-deviantart-21.png")';
+        } else {
+            cell.textContent = 'X';
+            //overlay.style.backgroundImage = 'url("https://www.freepnglogos.com/uploads/rock-png/big-rock-cimarron-deviantart-21.png")';
         }
     });
     message.textContent = `Player ${currentPlayer}'s turn`;
