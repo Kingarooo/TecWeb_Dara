@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(232, 233, 180, 0.966);
+    background-color: rgba(217, 199, 184);
     display: block;
     margin: 0;
 }
@@ -8,14 +8,14 @@ body {
 .header {
     width: 100%;
     display: inline-block;
-    background-color: rgb(126, 87, 42);
-    border: 3px solid rgb(82, 44, 2);
+    background-color: rgb(	191, 104, 54);
+    border: 3px solid rgb(	115, 50, 26);
     height: 200px;
 }
 
 /*logo, ainda no header*/
 #logo_dara {
-    top: 0px;
+    top: 0%;
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
@@ -26,9 +26,10 @@ body {
 }
 
 #texto_rules {
+    font: arial;
     font-size: 40px;
     top: 75px;
-    left: 40px;
+    left: 50px;
     position: absolute;
 
 }
@@ -140,13 +141,13 @@ body {
     position: absolute;
     top: 110px;
     right: 50px;
-    background-color: rgba(200, 130, 30, 255);
+    background-color: rgba(217, 150, 91);
     border-radius: 10px;
     padding: 5px;
 }
 
 .MyProfileButton:hover {
-    background-color: rgba(220, 130, 30, 255);
+    background-color: rgba(191, 104, 54);
     cursor: pointer;
     transform: scale(1.1);
 }
@@ -170,8 +171,8 @@ body {
 #seta {
     width: 35px;
     height: 35px;
-    border-bottom: 2px solid black;
-    border-left: 2px solid black;
+    border-bottom: 2px solid rgb(115, 50, 26);
+    border-left: 2px solid rgb(115, 50, 26);
     transform: rotate(135deg);
 }
 
@@ -180,7 +181,7 @@ body {
     margin-bottom: 5px;
     height: max-content;
     align-items: end;
-    background-color: rgb(218, 150, 54);
+    background-color:  rgba(166, 136, 119, 0.966); 
     border-radius: 10px;
 }
 
@@ -188,20 +189,19 @@ body {
     width: max-content;
     height: max-content;
     font-size: 20px;
-    background-color: rgba(206, 207, 135, 0.966);
     border-radius: 10px;
     position: relative;
 }
 
 .barra:hover,
 .barra:focus {
-    background-color: rgba(240, 130, 30, 255);
+    background-color: rgba(217, 150, 91);
     cursor: pointer;
 }
 
 #profileOptions .barra:hover,
 #profileOptions .barra:focus {
-    background-color: rgba(240, 130, 30, 255);
+    background-color: rgba(115, 50, 26.0,0.623);
     cursor: pointer;
 }
 
@@ -234,13 +234,15 @@ body {
 .settings {
     width: 30%;
     height: 70%;
-    background-color: rgba(206, 207, 135, 0.966);
+    background-color: rgba(166, 136, 119, 0.966); 
+    margin-top: 50px;
+    position: relative;
     top: 60%;
-    left: 50%;
+    left: 10%;
     padding: 20px;
     text-align: center;
     justify-content: center;
-    border: 3px solid rgb(124, 120, 56);
+    border: 3px solid rgb(	115, 50, 26);
 }
 
 /*escolher quadro*/
@@ -248,14 +250,16 @@ body {
 
     padding: 10px;
     margin: 5px;
-    border: 2px solid rgb(124, 120, 56);
+    border: 2px solid rgba(115, 50, 26.0,0.623);
     border-radius: 5px;
 }
 
 .board-size-label:hover {
     cursor: pointer;
     transform: scale(1.1);
-    background-color: rgba(164, 165, 112, 0.623);
+    background-color:rgba(115, 50, 26.0,0.623);
+    border: 1px solid black;
+
 }
 
 .board-size-label input[type="radio"] {
@@ -296,7 +300,8 @@ ul.butoes {
 .players button:focus {
     transform: scale(1.1);
     border-radius: 10px;
-    background-color: rgba(164, 165, 112, 0.623);
+    background-color:rgba(115, 50, 26.0,0.623);
+    border: 1px solid black;
     cursor: pointer;
 }
 
@@ -321,7 +326,7 @@ ul.butoes {
 
 #starttext {
     position: absolute;
-    color: rgb(32, 24, 12);
+    color: rgb(255, 155, 4);
     border-radius: 5px;
 }
 
