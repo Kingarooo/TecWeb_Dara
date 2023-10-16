@@ -10,7 +10,7 @@
 
     <!--isto são sons-->
     <audio id="clickSound">
-        <source src="PAPRHndl_Road map 10 (ID 2805)_BSB.mp3" type="audio/mpeg">
+        <source src="rules.mp3" type="audio/mpeg">
     </audio>
 
 </head>
@@ -26,9 +26,14 @@
                     alt="X">
             </button>
             <h2>Instructions</h2>
-            <p>This is the pop-up content. Add your text and instructions here.</p>
+            <p>O tabuleiro pode ter 3 dimensões diferentes (6x5 / 5x6 / 6x6) </p>
+            <p>Cada jogador tem 12 peças, pretas ou brancas</p>
+            <p>O jogador pode escolher a cor das peças e quem joga primeiro</p>
+            <p>O jog tem 2 fases:</p>
+            <p>- 1º fase: colocar peças nas casa livre. Não é possivel por mais de tres peças consegutivas juntas em linha ou coluna. </p>
+            <p>- 2º fase: </p>
         </div>
-        <img src="logo-2.png" alt="Logo" id="logo_dara">
+        <img src="logo.png" alt="Logo" id="logo_dara">
         <button class="MyProfileButton" onclick="toggleDropdown()">
             <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg4.wikia.nocookie.net%2F__cb20121230232813%2Fscribblenauts%2Fimages%2F9%2F9b%2FCaveman.png&f=1&nofb=1&ipt=f3e94deb2378948bec79db84a34645313531c9cbfa686c698337e85ad3937d90&ipo=images"
                 alt="user" id="user">
@@ -110,10 +115,6 @@
         </button>
     </div>
     <div class="overlay" onclick="togglePopup()">
-        <div class="popup">
-            <h2>Rules</h2>
-            <p>This is the pop-up content. Add your text and instructions here.</p>
-        </div>
     </div>
     <div class="board" id="board" style="--rows: 5; --cols: 6;"></div>
     <p id="message" style="font-size:300%" ;>Player 1's turn</p>
