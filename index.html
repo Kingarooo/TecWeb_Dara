@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- adapta a cada telemovel -->
     <title>Dara</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <!--isto são sons-->
     <audio id="clickSound">
         <source src="rules.mp3" type="audio/mpeg">
@@ -109,19 +109,19 @@
         <br>
         <br>
         <br>
-        <button id="settings_icon">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fsettings-12-512.png&f=1&nofb=1&ipt=9694fe549ecc45caa044039f593482d86d9f3557193210dc37b460258b981885&ipo=images"
-                alt="setting_icon">
-        </button>
         <button class="start-button">
             <img src="" id="start"></img>
             <p id="starttext">Start Game</p>
         </button>
     </div>
+    <button id="settings_icon">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fsettings-12-512.png&f=1&nofb=1&ipt=9694fe549ecc45caa044039f593482d86d9f3557193210dc37b460258b981885&ipo=images"
+            alt="setting_icon">
+    </button>
     <div class="overlay" onclick="togglePopup()">
     </div>
     <div class="gameplay hidden">
-        <div class="board hidden" id="board"></div> 
+        <div class="board hidden" id="board"></div>
         <p id="message"> Someone's turn</p>
         <button id="reset">Reset</button>
     </div>

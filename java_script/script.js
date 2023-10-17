@@ -5,7 +5,7 @@ const settingsDiv = document.querySelector('.settings');
 const gameplayDiv = document.querySelector('.gameplay');
 const overlay = document.querySelector('.overlay');
 const popup = document.querySelector('.popup');
-const settings_icon = document.querySelector('#settings-icon');
+const settings_icon = document.getElementById('#settings-icon');
 var clickSound = document.getElementById('clickSound'); 
 
 
@@ -43,6 +43,7 @@ startButton.addEventListener('click', () => {
 
 settings_icon.addEventListener('click', () => {
     settingsDiv.classList.remove('hidden');
+    gameplayDiv.classList.add('hidden');
 });
 
 
