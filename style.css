@@ -375,7 +375,7 @@ label img {
     height: fit-content ;
     display: grid;
     grid-template-columns: repeat(var(--cols, 6), 1fr);
-    grid-template-rows: repeat(var(--rows, 5), 1fr);
+    grid-template-rows: repeat(var(--rows, 6), 1fr);
     gap: 4px 4px;
     grid-template-areas: brown;
 }
