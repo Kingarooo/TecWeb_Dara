@@ -394,7 +394,7 @@ label img {
     height: 80px;
     border: 1px solid black;
     cursor: pointer;
-    background-image: url("Cell.png");
+    background-image: url("./images/Cell.png");
     background-size:25px; 
     background-repeat: repeat;
     border: 5px solid rgb(135, 83, 62);
