@@ -53,7 +53,7 @@
         <br>
         <form>
             <label class="board-size-label">
-                <input type="radio" name="board-size" value="6x6" checked>
+                <input type="radio" name="board-size" value="6x6">
                 <span class="board-size-option">6x6</span>
             </label>
             <label class="board-size-label">
@@ -76,7 +76,7 @@
                 </span>
             </label>
             <label class="players-label">
-                <input type="radio" name="player" value="ai" checked>
+                <input type="radio" name="player" value="ai" >
                 <span class="player-option">
                     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Frobot%2Fsmall%2Frobot_PNG82.png&f=1&nofb=1&ipt=16885a389ab680bbbe9e86d7717bbfd162ecbb509d1be56dcdacba70612668f2&ipo=images"
                         id="AI"></img>
@@ -89,7 +89,7 @@
             <br>
             <p class="psettings">Choose the first to play:</p>
             <label class="whentoplay">
-                <input type="radio" name="when" value="p1" checked>
+                <input type="radio" name="when" value="p1">
                 <span class="whentoplay-option">
                     <img
                         src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/dd2tbqp-6c067453-d57b-4bf4-83a9-316047066666.png/v1/fill/w_1280,h_1317,strp/smash_player_1_select_hand_by_toadking07_dd2tbqp-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGQydGJxcC02YzA2NzQ1My1kNTdiLTRiZjQtODNhOS0zMTYwNDcwNjY2NjYucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.E6p6wBcgbLzuRXvIi4hX_DnG-ahRf7lcAhfpsRBMxr8">
@@ -114,14 +114,14 @@
             <p id="starttext">Start Game</p>
         </button>
     </div>
-    <button id="settings_icon">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fsettings-12-512.png&f=1&nofb=1&ipt=9694fe549ecc45caa044039f593482d86d9f3557193210dc37b460258b981885&ipo=images"
-            alt="setting_icon">
-    </button>
     <div class="overlay" onclick="togglePopup()">
     </div>
-    <div class="gameplay hidden">
-        <div class="board hidden" id="board"></div>
+    <div class="gameplay hidden" id="boardContainer">
+        <button id="settings_icon">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fsettings-12-512.png&f=1&nofb=1&ipt=9694fe549ecc45caa044039f593482d86d9f3557193210dc37b460258b981885&ipo=images"
+                alt="setting_icon">
+        </button>
+        <div class="board" id="board"></div>
         <p id="message"> Someone's turn</p>
         <button id="reset">Reset</button>
     </div>

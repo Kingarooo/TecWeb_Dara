@@ -372,19 +372,16 @@ label img {
     text-align: center;
     justify-content: center;
 }
-
 .board {   
     margin: auto;
     margin-top: 100px;
     background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2Fb9%2F4c%2Fc9%2Fb94cc9753e674518e4bb3ef1bc3fd9f3--grasses-cartoon.jpg&f=1&nofb=1&ipt=1a7969498059d7507f8bd18d828c79958794961659aad08aa28c82fe5200651f&ipo=images");
-    background-repeat: repeat;
-    background-size: cover;
     background-color: rgba(255, 255, 255, 0);
     width: max-content;
     height: fit-content ;
     display: grid;
-    grid-template-columns: repeat(var(--cols, 6), 1fr);
-    grid-template-rows: repeat(var(--rows, 6), 1fr);
+    grid-template-columns: repeat(var(--col, 5), 1fr);
+    grid-template-rows: repeat(var(--row, 6), 1fr);
     gap: 4px 4px;
     grid-template-areas: brown;
 }
