@@ -15,8 +15,6 @@ function toggleDropdown() {
     profileOptions.classList.toggle('visible');
 }
 
-
-
 function togglePopup() {
 
     if (overlay.style.display === 'block') {
@@ -32,7 +30,6 @@ function togglePopup() {
       clickSound.pause();
     }, 1000);
 }
-
 
 startButton.addEventListener('click', () => {
   // Hide the settings div
