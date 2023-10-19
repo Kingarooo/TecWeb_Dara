@@ -26,12 +26,10 @@ body {
 }
 
 #texto_rules {
-    font: arial;
     font-size: 40px;
     top: 75px;
-    left: 40px;
+    left: 50px;
     position: absolute;
-
 }
 
 /*pergaminho com as regras, ainda no header*/
@@ -295,17 +293,18 @@ label img {
 }
 
 .player-option,
-.whentoplay-option{
+.whentoplay-option {
     padding: 20px;
 }
 
 .player-option:hover,
-.whentoplay-option:hover{
+.whentoplay-option:hover {
     background-color: rgba(115, 50, 26.0, 0.623);
     border: 1px solid black;
     border-radius: 10px;
     cursor: pointer;
 }
+
 .players-label input[type="radio"]:checked~.player-option,
 .whentoplay input[type="radio"]:checked~.whentoplay-option {
     background-color: rgba(115, 50, 26.0, 0.623);
@@ -330,7 +329,7 @@ label img {
     border: 1px solid rgba(115, 50, 26.0, 0.623);
 }
 
-.start-button:hover{
+.start-button:hover {
     background-color: rgba(115, 50, 26.0, 0.623);
     border: 1px solid black;
     cursor: pointer;
@@ -349,37 +348,40 @@ label img {
     color: rgb(255, 155, 4);
     border-radius: 5px;
 }
-#settings_icon:hover{
+
+/*----------------------AQUI COMEÇA O SCRIPT DO JOGO------------------------------
+----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+*/
+
+#settings_icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#settings_icon:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
+
 #settings_icon img {
     width: 50px;
     height: 50px;
     position: absolute;
 }
 
-/*da jeito para esconder umas merdas*/
 .hidden {
     display: none;
 }
 
-/*----------------------AQUI COMEÇA O SCRIPT DO JOGO------------------------------
-----------------------------------------------------------------------------------
------------------------------------------------------------------------------------
-*/
-.gameplay{
-    align-self: center;
-    text-align: center;
-    justify-content: center;
-}
-.board {   
+.board {
     margin: auto;
     margin-top: 100px;
     background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2Fb9%2F4c%2Fc9%2Fb94cc9753e674518e4bb3ef1bc3fd9f3--grasses-cartoon.jpg&f=1&nofb=1&ipt=1a7969498059d7507f8bd18d828c79958794961659aad08aa28c82fe5200651f&ipo=images");
     background-color: rgba(255, 255, 255, 0);
     width: max-content;
-    height: fit-content ;
+    height: fit-content;
     display: grid;
     grid-template-columns: repeat(var(--col, 5), 1fr);
     grid-template-rows: repeat(var(--row, 6), 1fr);
@@ -393,15 +395,62 @@ label img {
     border: 1px solid black;
     cursor: pointer;
     background-image: url("./images/Cell.png");
-    background-size:25px; 
+    background-size: 25px;
     background-repeat: repeat;
     border: 5px solid rgb(135, 83, 62);
-    
+
 }
 
 .overlay2 {
     background-size: contain;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-image: url("https://www.freepnglogos.com/uploads/rock-png/big-rock-cimarron-deviantart-21.png");
-    z-index: 4;     
+    z-index: 4;
+}
+
+.gameplay {
+    flex-direction: row;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.player-pieces {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-image: url('./images/rock.png');
+    background-repeat: no-repeat;
+    margin: 10px 0;
+    border-radius: 90px;
+}
+
+.game-coluna {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 5px;
+    text-align: center;
+}
+
+.pieces-left,
+.pieces-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    height: 800px;
+    border-top: 100px;
+    border: 3px solid black;
+    background-color: rgba(166, 136, 119, 0.7);
+    border-radius: 20px;
+}
+
+#message {
+    margin: 20px 0;
+}
+
+#reset {
+    margin-top: 20px;
 }

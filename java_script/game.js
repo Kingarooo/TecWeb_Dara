@@ -7,68 +7,24 @@ const player1Pieces = 12;
 const player2Pieces = 12;
 let player1PiecesLeft = player1Pieces;
 let player2PiecesLeft = player2Pieces;
-let boardState = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-];
+let totalMoves = 0;
 
-// Add an event listener to the radio buttons
-const boardSizeRadioButtons = document.querySelectorAll('.board-size-radio');
-boardSizeRadioButtons.forEach((radioButton) => {
-    radioButton.addEventListener('change', () => {
-        if (radioButton.checked) {
-            const [selectedRows, selectedCols] = radioButton.value.split('x');
-            rows = parseInt(selectedRows, 10);
-            cols = parseInt(selectedCols, 10);
-        }
+const radioButtons = document.querySelectorAll('input[name="board-size"]');
+
+radioButtons.forEach(button => {
+    button.addEventListener('change', () => {
+        const selectedValue = document.querySelector('input[name="board-size"]:checked').value;
+        const [rows, cols] = selectedValue.split('x').map(Number);
+        boardContainer.style.setProperty('--col', cols);
+        boardContainer.style.setProperty('--row', rows);
+        let boardState = criarMatriz(rows, cols);
+        createcell(rows, cols);
     });
 });
-// Function to create the board with the current size
-function createBoard() {
-    // Clear the existing grid
-    while (board.firstChild) {
-        board.removeChild(board.firstChild);
-    }
+message.textContent = `Player ${currentPlayer}'s turn`;
 
-    // Create the grid with the updated size
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            const cell = createCellElement(i, j);
-            cells.push(cell);
-        }
-    }
-
-    // Update the board
-    updateBoard();
-}
-
-
-
-function updateBoard() {
-    cells.forEach((cell, index) => {
-        const row = Math.floor(index / 6);
-        const col = index % 6;
-        const overlay2 = cell.querySelector('.overlay2');
-        
-        if (boardState[row][col] === 0) {
-            cell.textContent = 'none';
-            //overlay.style.backgroundImage = 'none';
-        } else if (boardState[row][col] === 1) {
-            cell.textContent = 'O';
-            //overlay.style.backgroundImage = 'url("https://www.freepnglogos.com/uploads/rock-png/big-rock-cimarron-deviantart-21.png")';
-        } else {
-            cell.textContent = 'X';
-            //overlay.style.backgroundImage = 'url("https://www.freepnglogos.com/uploads/rock-png/big-rock-cimarron-deviantart-21.png")';
-        }
-    });
-    message.textContent = `Player ${currentPlayer}'s turn`;
-}
-// Handle a cell click
-function handleCellClick(row, col,cols) {
-    if (boardState[row][col] === 0) {
+function handleCellClick(row, col, cols) {
+    if (boardState[row][col] === 0 && totalMoves < 24) {
         if (currentPlayer === 1 && player1PiecesLeft > 0) {
             boardState[row][col] = 1;
             player1PiecesLeft--;
@@ -80,19 +36,49 @@ function handleCellClick(row, col,cols) {
         } else {
             const p_row = Math.floor(index / cols);
             const p_col = index % cols;
-
-            // Move a piece
-            // Implement your logic here
         }
+        totalMoves++;
         updateBoard(cols);
-        //checkWin(currentPlayer);
+        removePlayerPiece(currentPlayer, currentPlayer === 1 ? player1PiecesLeft : player2PiecesLeft);
+    }
+}
+
+function removePlayerPiece(player, piecesLeft) {
+    if (piecesLeft > 0) {
+        const playerPieces = document.getElementById(`player${player}-pieces`);
+        const remainingPieces = playerPieces.querySelectorAll('.player-pieces');
+
+        if (remainingPieces.length > 0) {
+            playerPieces.removeChild(remainingPieces[0]);
+        }
     }
 }
 
 
-// Reset the game
-resetButton.addEventListener('click', () => {
-    currentPlayer = 1;
-    player1PiecesLeft = player1Pieces;
-    player2PiecesLeft = player2Pieces;
-});
+
+function updateBoard(cols) {
+    cells.forEach((cell, index) => {
+        const row = Math.floor(index / cols);
+        const col = index % cols;
+        const overlay2 = cell.querySelector('.overlay2');
+
+        if (boardState[row][col] === 0) {
+            cell.textContent = ''; // Clear the cell
+        } else if (boardState[row][col] === 1) {
+            cell.textContent = 'O'; // You can also set the player 1 piece image here
+            removePlayerPiece('player1-pieces'); // Remove a piece from Player 1
+        } else if (boardState[row][col] === 2) {
+            cell.textContent = 'X'; // You can also set the player 2 piece image here
+            removePlayerPiece('player2-pieces'); // Remove a piece from Player 2
+        } else {
+            cell.textContent = 'erro';
+        }
+    });
+    message.textContent = `Player ${currentPlayer}'s turn`;
+}
+
+// Function to update the player pieces display
+function updatePlayerPieces() {
+    player1PiecesDisplay.textContent = `Player 1 Pieces: ${player1PiecesCount}`;
+    player2PiecesDisplay.textContent = `Player 2 Pieces: ${player2PiecesCount}`;
+}

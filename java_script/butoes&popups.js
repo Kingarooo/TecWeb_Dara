@@ -6,9 +6,6 @@ const gameplayDiv = document.querySelector('.gameplay');
 const overlay = document.querySelector('.overlay');
 const popup = document.querySelector('.popup');
 const settings_icon = document.getElementById('#settings-icon');
-var clickSound = document.getElementById('clickSound'); 
-
-
 
 function toggleDropdown() {
     var profileOptions = document.getElementById("profileOptions");
@@ -24,18 +21,15 @@ function togglePopup() {
         overlay.style.display = 'block';
         popup.style.display = 'block';
     }
-    clickSound.play();
-    clickSound.currentTime = 0;
-    setTimeout(function() {
-      clickSound.pause();
-    }, 1000);
+    playClickSound();
 }
-
+    
 startButton.addEventListener('click', () => {
-  // Hide the settings div
-  settingsDiv.classList.add('hidden');
-  
-  gameplayDiv.classList.remove('hidden');
+    // Hide the settings div
+    settingsDiv.style.display = 'none';
+
+    // Show the gameplay div
+    gameplayDiv.style.display = 'flex';
 });
 
 settings_icon.addEventListener('click', () => {
@@ -43,7 +37,12 @@ settings_icon.addEventListener('click', () => {
     gameplayDiv.classList.add('hidden');
 });
 
-
+resetButton.addEventListener('click', () => {
+    currentPlayer = 1;
+    player1PiecesLeft = player1Pieces;
+    player2PiecesLeft = player2Pieces;
+    totalMoves = 0; // Reset total moves
+});
 
 
 
