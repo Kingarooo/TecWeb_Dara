@@ -24,25 +24,25 @@ radioButtons.forEach(button => {
 message.textContent = `Player ${currentPlayer}'s turn`;
 
 function handleCellClick(row, col, cols) {
-    if (boardState[row][col] === 0 && totalMoves < 24) {
+    if (boardState[row][col] === 0) {
         if (currentPlayer === 1 && player1PiecesLeft > 0) {
             boardState[row][col] = 1;
-            player1PiecesLeft--;
             currentPlayer = 2;
         } else if (currentPlayer === 2 && player2PiecesLeft > 0) {
             boardState[row][col] = 2;
-            player2PiecesLeft--;
             currentPlayer = 1;
         } else {
-            const p_row = Math.floor(index / cols);
-            const p_col = index % cols;
+            // Handle moving pieces (not implemented yet)
+            //
+            // This is where you will handle moving pieces
         }
-        totalMoves++;
-        updateBoard(cols);
+
         removePlayerPiece(currentPlayer, currentPlayer === 1 ? player1PiecesLeft : player2PiecesLeft);
+        updateBoard(cols);
     }
 }
 
+// Function to remove a piece from a player
 function removePlayerPiece(player, piecesLeft) {
     if (piecesLeft > 0) {
         const playerPieces = document.getElementById(`player${player}-pieces`);
@@ -55,7 +55,6 @@ function removePlayerPiece(player, piecesLeft) {
 }
 
 
-
 function updateBoard(cols) {
     cells.forEach((cell, index) => {
         const row = Math.floor(index / cols);
@@ -65,20 +64,18 @@ function updateBoard(cols) {
         if (boardState[row][col] === 0) {
             cell.textContent = ''; // Clear the cell
         } else if (boardState[row][col] === 1) {
-            cell.textContent = 'O'; // You can also set the player 1 piece image here
-            removePlayerPiece('player1-pieces'); // Remove a piece from Player 1
+            cell.className = 'cell player-1'; 
+            removePlayerPiece('player1-pieces'); 
         } else if (boardState[row][col] === 2) {
-            cell.textContent = 'X'; // You can also set the player 2 piece image here
-            removePlayerPiece('player2-pieces'); // Remove a piece from Player 2
+            cell.className = 'cell player-2'; 
+            removePlayerPiece('player2-pieces'); 
         } else {
             cell.textContent = 'erro';
         }
     });
     message.textContent = `Player ${currentPlayer}'s turn`;
 }
-
-// Function to update the player pieces display
 function updatePlayerPieces() {
-    player1PiecesDisplay.textContent = `Player 1 Pieces: ${player1PiecesCount}`;
-    player2PiecesDisplay.textContent = `Player 2 Pieces: ${player2PiecesCount}`;
+    player1PiecesDisplay.textContent = `Player 1 Pieces: ${player1PiecesLeft}`;
+    player2PiecesDisplay.textContent = `Player 2 Pieces: ${player2PiecesLeft}`;
 }

@@ -230,13 +230,13 @@ body {
 
 .settings {
     width: 20%;
-    height: 70%;
+    height: 60%;
     background-color: rgba(166, 136, 119, 0.966);
-    margin-top: 30px;
+    margin-top: 20px;
     position: relative;
-    top: 60%;
+    top: 550%;
     left: 5%;
-    padding: 50px;
+    padding: 0 100px 50px;
     text-align: center;
     justify-content: center;
     border: 3px solid rgb(115, 50, 26);
@@ -320,12 +320,12 @@ label img {
 .start-button {
     display: inline-flex;
     width: 300px;
-    height: 100px;
+    height: 80px;
     align-items: center;
     text-align: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: rgba(166, 136, 119, 0.966);
+    background-color: rgba(120, 83, 62, 0.966);
     border: 1px solid rgba(115, 50, 26.0, 0.623);
 }
 
@@ -335,13 +335,6 @@ label img {
     cursor: pointer;
 }
 
-#start {
-    width: 500px;
-    height: 100px;
-    background: none;
-    position: relative;
-
-}
 
 #starttext {
     position: absolute;
@@ -401,12 +394,7 @@ label img {
 
 }
 
-.overlay2 {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("https://www.freepnglogos.com/uploads/rock-png/big-rock-cimarron-deviantart-21.png");
-    z-index: 4;
-}
+
 
 .gameplay {
     flex-direction: row;
@@ -421,7 +409,7 @@ label img {
     background-size: cover;
     background-image: url('./images/rock.png');
     background-repeat: no-repeat;
-    margin: 10px 0;
+    margin: 5px 0;  
     border-radius: 90px;
 }
 
@@ -440,17 +428,42 @@ label img {
     align-items: center;
     text-align: center;
     width: auto;
-    height: 800px;
+    height: 850px;
     border-top: 100px;
     border: 3px solid black;
     background-color: rgba(166, 136, 119, 0.7);
     border-radius: 20px;
 }
+/*----------------------------------------------------------------------------
+------------------------PEÇAS DE CADA PLAYER-------------------------------
+-----------------------------------------------------------------------------------*/
+.cell.player-1 {
+    background-image: url("./images/player1.png"); /* Replace with the image URL for player 1 */
+    background-repeat:no-repeat;
+    background-size: cover;
+}
 
+.cell.player-2 {
+    background-image: url("image_for_player_2.jpg"); /* Replace with the image URL for player 2 */
+}
+
+.i{
+    font-size: 50px;
+    color: rgb(255, 155, 4);
+}
+
+
+/*---------------------------------------------------------------------
+--------------------------------BUTOES ACIMA DO BOARD---------------------------------------------------
+----------------------------------------------------------------------------*/
 #message {
     margin: 20px 0;
 }
 
 #reset {
     margin-top: 20px;
+}
+#reset:hover {
+    cursor: pointer;
+    background-color:rgba(115, 50, 26.0, 0.623);
 }
