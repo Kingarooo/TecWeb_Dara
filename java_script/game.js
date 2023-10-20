@@ -9,27 +9,17 @@ let player1PiecesLeft = player1Pieces;
 let player2PiecesLeft = player2Pieces;
 let totalMoves = 0;
 
-const radioButtons = document.querySelectorAll('input[name="board-size"]');
 
-radioButtons.forEach(button => {
-    button.addEventListener('change', () => {
-        const selectedValue = document.querySelector('input[name="board-size"]:checked').value;
-        const [rows, cols] = selectedValue.split('x').map(Number);
-        boardContainer.style.setProperty('--col', cols);
-        boardContainer.style.setProperty('--row', rows);
-        let boardState = criarMatriz(rows, cols);
-        createcell(rows, cols);
-    });
-});
-message.textContent = `Player ${currentPlayer}'s turn`;
 
 function handleCellClick(row, col, cols) {
     if (boardState[row][col] === 0) {
         if (currentPlayer === 1 && player1PiecesLeft > 0) {
             boardState[row][col] = 1;
+            player1PiecesLeft--;
             currentPlayer = 2;
         } else if (currentPlayer === 2 && player2PiecesLeft > 0) {
             boardState[row][col] = 2;
+            player2PiecesLeft--;
             currentPlayer = 1;
         } else {
             // Handle moving pieces (not implemented yet)

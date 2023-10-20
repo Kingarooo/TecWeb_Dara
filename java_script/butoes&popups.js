@@ -25,11 +25,17 @@ function togglePopup() {
 }
     
 startButton.addEventListener('click', () => {
-    // Hide the settings div
-    settingsDiv.style.display = 'none';
-
-    // Show the gameplay div
-    gameplayDiv.style.display = 'flex';
+    const selectsize = document.querySelector('input[name="board-size"]:checked');
+    const selectoppnent = document.querySelector('input[name="oppnent"]:checked');
+    const selectplay = document.querySelector('input[name="player"]:checked');
+    //const selectcolor =
+    if( selectplay && selectoppnent && selectsize){  
+        // Hide the settings div
+        settingsDiv.style.display = 'none';
+        // Show the gameplay div
+        gameplayDiv.style.display = 'flex';
+        start();
+    }
 });
 
 settings_icon.addEventListener('click', () => {

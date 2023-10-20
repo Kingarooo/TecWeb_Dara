@@ -1,25 +1,19 @@
 const player1PiecesElement = document.getElementById('player1-pieces');
 const player2PiecesElement = document.getElementById('player2-pieces');
 
-radioButtons.forEach(button => {
-    button.addEventListener('change', () => {
-        const selectedValue = document.querySelector('input[name="board-size"]:checked').value;
-        const [rows, cols] = selectedValue.split('x').map(Number);
-        boardContainer.style.setProperty('--col', cols);
-        boardContainer.style.setProperty('--row', rows);
-        let boardState = criarMatriz(rows, cols);
-        createcell(rows, cols);
-    });
-});
-message.textContent = `Player ${currentPlayer}'s turn`;
-function criarMatriz(rows, cols) {
-    boardState = Array.from({ length: rows }, () => Array.from({ length: cols }, () => 0));
+function start(){
+    const selectedRadioButton = document.querySelector('input[name="board-size"]:checked');
+    const selectedValue = selectedRadioButton.value;
+    let [rows, cols] = selectedValue.split('x').map(Number);
+    boardContainer.style.setProperty('--col', cols);
+    boardContainer.style.setProperty('--row', rows);
+    let boardState = criarMatriz(rows,cols);
+    createcell(rows,cols);
 }
 
-function criarMatriz(rows, cols) {
+function criarMatriz(rows,cols) {
     boardState = Array.from({ length: rows }, () => Array.from({ length: cols }, () => 0));
 }
-
 
 function createCellElement(row, col, rows, cols) {
     const cell = document.createElement('div');
@@ -42,28 +36,28 @@ function createcell(rows, cols, boardState) {
         for (let j = 0; j < cols; j++) {
             const cell = createCellElement(i, j, rows, cols);
             cells.push(cell);
-            }
-        }
-
-    }
-
-    function displayPlayerPieces() {
-        for (let i = 1; i <= 12; i++) {
-            const piece = document.createElement('div');
-            piece.className = 'player-pieces';
-            piece.textContent = i; 
-            piece.style.fontSize = '40px';            
-            player1PiecesElement.appendChild(piece);
-        }
-
-        for (let i = 1; i <= 12; i++) {
-            const piece = document.createElement('div');
-            piece.className = 'player-pieces';
-            piece.textContent = i; // Set the text content to the current number (i)
-            piece.style.fontSize = '40px';
-            player2PiecesElement.appendChild(piece);
-
         }
     }
+    updateBoard(cols)
+}
+
+function displayPlayerPieces() {
+    for (let i = 1; i <= 12; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'player-pieces';
+        piece.textContent = i; 
+        piece.style.fontSize = '40px';            
+        player1PiecesElement.appendChild(piece);
+    }
+
+    for (let i = 1; i <= 12; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'player-pieces';
+        piece.textContent = i; // Set the text content to the current number (i)
+        piece.style.fontSize = '40px';
+        player2PiecesElement.appendChild(piece);
+
+    }
+}
 
 displayPlayerPieces();
