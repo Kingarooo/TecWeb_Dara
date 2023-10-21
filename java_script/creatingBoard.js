@@ -56,7 +56,6 @@ function displayPlayerPieces() {
         piece.textContent = i; // Set the text content to the current number (i)
         piece.style.fontSize = '40px';
         player2PiecesElement.appendChild(piece);
-
     }
 }
 

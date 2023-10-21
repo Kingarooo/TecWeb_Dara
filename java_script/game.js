@@ -15,20 +15,27 @@ function handleCellClick(row, col, cols) {
     if (boardState[row][col] === 0) {
         if (currentPlayer === 1 && player1PiecesLeft > 0) {
             boardState[row][col] = 1;
-            player1PiecesLeft--;
-            currentPlayer = 2;
         } else if (currentPlayer === 2 && player2PiecesLeft > 0) {
-            boardState[row][col] = 2;
-            player2PiecesLeft--;
-            currentPlayer = 1;
+            boardState[row][col] = 2;        
         } else {
             // Handle moving pieces (not implemented yet)
             //
             // This is where you will handle moving pieces
         }
-
-        removePlayerPiece(currentPlayer, currentPlayer === 1 ? player1PiecesLeft : player2PiecesLeft);
         updateBoard(cols);
+        removePlayerPiece(currentPlayer, currentPlayer === 1 ? player1PiecesLeft : player2PiecesLeft);
+        currentPlayer = move_currentPlayer(currentPlayer);
+    }
+}
+
+function move_currentPlayer(player){
+    if (player === 1){
+        player1PiecesLeft --;
+        return 2;
+    }
+    else{
+        player2PiecesLeft --;
+        return 1;
     }
 }
 
@@ -55,10 +62,8 @@ function updateBoard(cols) {
             cell.textContent = ''; // Clear the cell
         } else if (boardState[row][col] === 1) {
             cell.className = 'cell player-1'; 
-            removePlayerPiece('player1-pieces'); 
         } else if (boardState[row][col] === 2) {
             cell.className = 'cell player-2'; 
-            removePlayerPiece('player2-pieces'); 
         } else {
             cell.textContent = 'erro';
         }
