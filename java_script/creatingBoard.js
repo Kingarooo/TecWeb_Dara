@@ -41,21 +41,22 @@ function createcell(rows, cols, boardState) {
     updateBoard(cols)
 }
 
-function displayPlayerPieces() {
-    for (let i = 1; i <= 12; i++) {
-        const piece = document.createElement('div');
-        piece.className = 'player-pieces';
-        piece.textContent = i; 
-        piece.style.fontSize = '40px';            
-        player1PiecesElement.appendChild(piece);
-    }
+    function displayPlayerPieces() {
+        for (let i = 1; i <= 12 ; i++) {
+            const piece = document.createElement('div');
+            piece.className = 'player-pieces';
+            piece.textContent = i; 
+            piece.style.fontSize = '40px';            
+            player1PiecesElement.appendChild(piece);
+        }
 
-    for (let i = 1; i <= 12; i++) {
-        const piece = document.createElement('div');
-        piece.className = 'player-pieces';
-        piece.textContent = i; // Set the text content to the current number (i)
-        piece.style.fontSize = '40px';
-        player2PiecesElement.appendChild(piece);
+        for (let i = 1; i <= 12; i++) {
+            const piece = document.createElement('div');
+            piece.className = 'player-pieces';
+            piece.textContent = i; 
+            piece.style.fontSize = '40px';
+            player2PiecesElement.appendChild(piece);
+
     }
 }
 

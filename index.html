@@ -38,13 +38,27 @@
             <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg4.wikia.nocookie.net%2F__cb20121230232813%2Fscribblenauts%2Fimages%2F9%2F9b%2FCaveman.png&f=1&nofb=1&ipt=f3e94deb2378948bec79db84a34645313531c9cbfa686c698337e85ad3937d90&ipo=images"
                 alt="user" id="user">
         </button>
+        <div class="username-display">
+            <p id="loggedInUsername"></p>
+        </div>
         <div class="hidden" id="profileOptions">
             <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1999068/brown-triangle-clipart-md.png"
                 id="seta" alt="seta">
-            <button class="barra">Login</button>
-            <button class="barra">Switch User</button>
+            <button class="barra" id="loginButton">Login</button>
             <button class="barra">Match History</button>
-            <button class="barra">Create acount</button>
+            <button class="barra" id="createAccountButton">Create acount</button>
+            <div class="create-account-form" id="createAccountForm">
+                <input type="text" id="newUsernameInput" placeholder="New Username">
+                <input type="password" id="newPasswordInput" placeholder="New Password">
+                <input type="password" id="confirmPasswordInput" placeholder="Confirm Password">
+                <button id="createAccountSubmit">Create Account</button>
+            </div>
+            <button class="barra" id="logOutButton">Log out</button>
+            <div class="login-form hidden" id="loginForm hidden">
+                <input type="text" id="usernameInput" placeholder="Username">
+                <input type="password" id="passwordInput" placeholder="Password">
+                <button id="loginSubmit">Login</button>
+            </div>
         </div>
     </div>
     <div class="settings">
@@ -141,4 +155,6 @@
     <script src="./java_script/soudEffects.js"></script>
     <script src="./java_script/game.js"></script>
     <script src="./java_script/creatingBoard.js"></script>
+    <script src="./java_script/login.js"></script>
+    <script src="./java_script/createAccount.js"></script>
 </body>
