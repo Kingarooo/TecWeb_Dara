@@ -6,6 +6,7 @@ const gameplayDiv = document.querySelector('.gameplay');
 const overlay = document.querySelector('.overlay');
 const popup = document.querySelector('.popup');
 const settings_icon = document.getElementById('#settings-icon');
+const reset = document.getElementById('#reset');
 
 function toggleDropdown() {
     var profileOptions = document.getElementById("profileOptions");
@@ -43,12 +44,22 @@ settings_icon.addEventListener('click', () => {
     gameplayDiv.classList.add('hidden');
 });
 
-resetButton.addEventListener('click', () => {
+reset.addEventListener('click', () => {
     currentPlayer = 1;
     player1PiecesLeft = player1Pieces;
     player2PiecesLeft = player2Pieces;
-    totalMoves = 0; // Reset total moves
+    totalMoves = 0;
+
+    // Clear the board
+    cells.forEach((cell) => {
+        cell.classList.remove('player-1', 'player-2');
+        cell.style.backgroundImage = 'url("./images/backgroundRelva.jpeg")'; // Reset background image
+    });
+    displayPlayerPieces();
+    start();
 });
+
+
 
 
 

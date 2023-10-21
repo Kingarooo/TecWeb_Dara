@@ -217,6 +217,7 @@ body {
     cursor: pointer;
     transform: scale(1.025);
 }
+
 /*-------------------------------------------------------------------------
 ------------------CRIAR CONTA/CREATE ACCOUNT-----------------------------
 --------------------------------------------------------------------- */
@@ -224,69 +225,71 @@ body {
 ------------------LOGIN - USERNAME E PASSWORD-----------------------------
 --------------------------------------------------------------------- */
 .login-form,
-.create-account-form{
+.create-account-form {
     display: none;
     flex-direction: column;
     gap: 10px;
     align-items: center;
     position: absolute;
     top: 150px;
-  }
+}
 
-  #usernameInput, 
-  #passwordInput,
-  #newUsernameInput,
-  #newPasswordInput,
-  #confirmPasswordInput {
+#usernameInput,
+#passwordInput,
+#newUsernameInput,
+#newPasswordInput,
+#confirmPasswordInput {
     border: 2px solid rgba(166, 136, 119, 0.4);
     background-color: rgba(166, 136, 119, 0.2);
     border-radius: 5px;
     width: 170px;
     height: 20px;
     gap: 10px;
-  }
-  
-  #loginButton {
-    cursor: pointer;
-  }
+}
 
-  #logOutButton,
-  #username-display,
-  .login-form {
+#loginButton {
+    cursor: pointer;
+}
+
+#logOutButton,
+#username-display,
+.login-form {
     display: none;
-  }
-  
-  #loggedInUsername {
+}
+
+#loggedInUsername {
     position: absolute;
     text-align: end;
     font-size: 30px;
     font-weight: bold;
     top: 105px;
-    right:155px;
-  }
-  #loggedInUsername:hover{
-    cursor:pointer;
-  }
+    right: 155px;
+}
 
-  #loginSubmit,
-  #createAccountSubmit{
+#loggedInUsername:hover {
+    cursor: pointer;
+}
+
+#loginSubmit,
+#createAccountSubmit {
     width: 90px;
     font-size: 20px;
     background-color: rgb(166, 136, 119, 0.966);
-  }
+}
 
-  #loginSubmit:hover,
-  #createAccountSubmit:hover{
+#loginSubmit:hover,
+#createAccountSubmit:hover {
     cursor: pointer;
     background-color: rgba(115, 50, 26.0, 0.623);
     border-radius: 5px;
-  }
+}
 
-  /*-------------------------------------------------------------------------
+/*-------------------------------------------------------------------------
 ------------------DEFINIR SETTINGS DO JOGO-----------------------------
 --------------------------------------------------------------------- */
 #texto-settings {
-    margin-top: 0;
+    margin-top: 20px;
+    margin-bottom: 0;
     text-align: center;
     font-family: 'Stencil Std';
     font-size: 45px;
@@ -299,15 +302,19 @@ body {
 }
 
 .settings {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
     width: 20%;
-    height: 60%;
     background-color: rgba(166, 136, 119, 0.966);
-    margin-top: 20px;
+    margin-top: 15  px;
     position: relative;
     top: 550%;
-    left: 5%;
+    left: 1%;
+    margin-top: 5px;
     padding: 0 100px 50px;
     text-align: center;
+    align-items: center;
     justify-content: center;
     border: 3px solid rgb(115, 50, 26);
     border-radius: 20px;
@@ -335,7 +342,8 @@ input[type="radio"] {
 }
 
 span {
-    font-size: 18px;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 
@@ -388,15 +396,15 @@ label img {
 ------------------------------START/COMEÇAR O JOGO---------------------------------------------------*/
 
 .start-button {
-    display: inline-flex;
     width: 300px;
-    height: 80px;
+    height: 90px;
     align-items: center;
     text-align: center;
     justify-content: center;
+    margin-top: 25px;
     border-radius: 10px;
     background-color: rgba(120, 83, 62, 0.966);
-    border: 1px solid rgba(115, 50, 26.0, 0.623);
+    border: 2px solid rgb(115, 50, 26);
 }
 
 .start-button:hover {
@@ -407,7 +415,6 @@ label img {
 
 
 #starttext {
-    position: absolute;
     color: rgb(255, 155, 4);
     border-radius: 5px;
 }
@@ -434,16 +441,14 @@ label img {
     position: absolute;
 }
 
-.hidden {
-    display: none;
-}
 
 .board {
     margin: auto;
     margin-top: 100px;
-    background-image: url("./images/Cell.png");
+    background-image: url("./images/background.jpeg");
     background-repeat: repeat;
-    background-size: cover; ;
+    background-size: cover;
+    ;
     width: max-content;
     height: fit-content;
     display: grid;
@@ -458,10 +463,9 @@ label img {
     height: 80px;
     border: 1px solid black;
     cursor: pointer;
-    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2Fb9%2F4c%2Fc9%2Fb94cc9753e674518e4bb3ef1bc3fd9f3--grasses-cartoon.jpg&f=1&nofb=1&ipt=1a7969498059d7507f8bd18d828c79958794961659aad08aa28c82fe5200651f&ipo=images");
+    background-image: url("./images/backgroundRelva.jpeg");
     background-repeat: no-repeat;
-    border: 5px solid rgb(135, 83, 62);
-
+    border: 3px solid rgb(135, 83, 62);
 }
 
 
@@ -479,7 +483,7 @@ label img {
     background-size: cover;
     background-image: url('./images/rock.png');
     background-repeat: no-repeat;
-    margin: 5px 0;  
+    margin: 5px 0;
     border-radius: 90px;
 }
 
@@ -504,20 +508,24 @@ label img {
     background-color: rgba(166, 136, 119, 0.7);
     border-radius: 20px;
 }
+
 /*----------------------------------------------------------------------------
 ------------------------PEÇAS DE CADA PLAYER-------------------------------
 -----------------------------------------------------------------------------------*/
 .cell.player-1 {
-    background-image: url("./images/player1.png"); /* Replace with the image URL for player 1 */
-    background-repeat:no-repeat;
+    background-image: url("./images/player1.png");
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
 .cell.player-2 {
-    background-image: url("image_for_player_2.jpg"); /* Replace with the image URL for player 2 */
+    background-image: url("./images/player2.png");
+    background-repeat: no-repeat;
+    background-size: 80px;
+    align-items: center;
 }
 
-.i{
+.i {
     font-size: 50px;
     color: rgb(255, 155, 4);
 }
@@ -533,7 +541,13 @@ label img {
 #reset {
     margin-top: 20px;
 }
+
 #reset:hover {
     cursor: pointer;
-    background-color:rgba(115, 50, 26.0, 0.623);
+    background-color: rgba(115, 50, 26.0, 0.623);
+}
+
+
+.hidden {
+    display: none;
 }

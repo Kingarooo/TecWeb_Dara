@@ -1,7 +1,7 @@
-const board = document.getElementById('board');
+const board = document.getElementById('#board');
 const cells = [];
-const message = document.getElementById('message');
-const resetButton = document.getElementById('reset');
+const message = document.getElementById('#message');
+const resetButton = document.getElementById('#reset');
 let currentPlayer = 1;
 const player1Pieces = 12;
 const player2Pieces = 12;
@@ -15,31 +15,37 @@ function handleCellClick(row, col, cols) {
     if (boardState[row][col] === 0) {
         if (currentPlayer === 1 && player1PiecesLeft > 0) {
             boardState[row][col] = 1;
+            player1PiecesLeft--;
+            currentPlayer = 2;
         } else if (currentPlayer === 2 && player2PiecesLeft > 0) {
-            boardState[row][col] = 2;        
+            boardState[row][col] = 2;
+            player2PiecesLeft--;
+            currentPlayer = 1;
         } else {
             // Handle moving pieces (not implemented yet)
             //
             // This is where you will handle moving pieces
         }
-        updateBoard(cols);
+        totalMoves++;
         removePlayerPiece(currentPlayer, currentPlayer === 1 ? player1PiecesLeft : player2PiecesLeft);
-        currentPlayer = move_currentPlayer(currentPlayer);
+        updateBoard(cols);
+        checkAllMoves();
+        playPieceSound();
     }
 }
 
-function move_currentPlayer(player){
-    if (player === 1){
-        player1PiecesLeft --;
-        return 2;
-    }
-    else{
-        player2PiecesLeft --;
-        return 1;
+function checkAllMoves() {
+    if (totalMoves >= 24) {
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach((cell) => {
+            if (!cell.classList.contains('player-1') && !cell.classList.contains('player-2')) {
+                cell.style.backgroundImage = 'none'; 
+            }
+        });
     }
 }
 
-// Function to remove a piece from a player
+
 function removePlayerPiece(player, piecesLeft) {
     if (piecesLeft > 0) {
         const playerPieces = document.getElementById(`player${player}-pieces`);
@@ -59,11 +65,11 @@ function updateBoard(cols) {
         const overlay2 = cell.querySelector('.overlay2');
 
         if (boardState[row][col] === 0) {
-            cell.textContent = ''; // Clear the cell
+            cell.textContent = '';
         } else if (boardState[row][col] === 1) {
-            cell.className = 'cell player-1'; 
+            cell.className = 'cell player-1';
         } else if (boardState[row][col] === 2) {
-            cell.className = 'cell player-2'; 
+            cell.className = 'cell player-2';
         } else {
             cell.textContent = 'erro';
         }

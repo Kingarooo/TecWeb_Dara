@@ -1,9 +1,18 @@
-var clickSound = document.getElementById('clickSound');
+var rulesSound = document.getElementById('#rulesSound');
+var pieceSound = document.getElementById('#pieceSound');
 
-function playClickSound() {
-    clickSound.play();
-    clickSound.currentTime = 0;
+function playRulesSound() {
+    rulesSound.play();
+    rulesSound.currentTime = 0;
     setTimeout(function () {
-        clickSound.pause();
+        rulesSound.pause();
+    }, 1000);
+}
+
+function playPieceSound() {
+    pieceSound.play();
+    pieceSound.currentTime = 0;
+    setTimeout(function () {
+        pieceSound.pause();
     }, 1000);
 }

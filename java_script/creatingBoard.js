@@ -1,5 +1,5 @@
-const player1PiecesElement = document.getElementById('player1-pieces');
-const player2PiecesElement = document.getElementById('player2-pieces');
+const player1PiecesElement = document.getElementById('#player1-pieces');
+const player2PiecesElement = document.getElementById('#player2-pieces');
 
 function start(){
     const selectedRadioButton = document.querySelector('input[name="board-size"]:checked');
@@ -30,7 +30,6 @@ function createCellElement(row, col, rows, cols) {
     return cell;
 }
 
-// Create the board and add event listeners to cells
 function createcell(rows, cols, boardState) {
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
