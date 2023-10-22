@@ -1,7 +1,6 @@
-const board = document.getElementById('#board');
 const cells = [];
-const message = document.getElementById('#message');
-const resetButton = document.getElementById('#reset');
+const message = document.getElementById('message');
+const resetButton = document.getElementById('reset');
 let currentPlayer = 1;
 const player1Pieces = 12;
 const player2Pieces = 12;
@@ -16,21 +15,30 @@ function handleCellClick(row, col, cols) {
         if (currentPlayer === 1 && player1PiecesLeft > 0) {
             boardState[row][col] = 1;
             player1PiecesLeft--;
-            currentPlayer = 2;
         } else if (currentPlayer === 2 && player2PiecesLeft > 0) {
             boardState[row][col] = 2;
             player2PiecesLeft--;
-            currentPlayer = 1;
         } else {
             // Handle moving pieces (not implemented yet)
             //
             // This is where you will handle moving pieces
         }
         totalMoves++;
-        removePlayerPiece(currentPlayer, currentPlayer === 1 ? player1PiecesLeft : player2PiecesLeft);
         updateBoard(cols);
+        removePlayerPiece(currentPlayer, currentPlayer === 1 ? player1PiecesLeft : player2PiecesLeft);
+        currentPlayer = move_currentPlayer(currentPlayer);
+        
         checkAllMoves();
         playPieceSound();
+    }
+}
+
+function move_currentPlayer(player){
+    if (player === 1){
+        return 2;
+    }
+    else{
+        return 1;
     }
 }
 
@@ -76,6 +84,7 @@ function updateBoard(cols) {
     });
     message.textContent = `Player ${currentPlayer}'s turn`;
 }
+
 function updatePlayerPieces() {
     player1PiecesDisplay.textContent = `Player 1 Pieces: ${player1PiecesLeft}`;
     player2PiecesDisplay.textContent = `Player 2 Pieces: ${player2PiecesLeft}`;

@@ -1,5 +1,5 @@
-var rulesSound = document.getElementById('#rulesSound');
-var pieceSound = document.getElementById('#pieceSound');
+var rulesSound = document.getElementById('rulesSound');
+var pieceSound = document.getElementById('pieceSound');
 
 function playRulesSound() {
     rulesSound.play();
