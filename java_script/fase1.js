@@ -1,3 +1,4 @@
+const board = document.getElementById('board');
 const cells = [];
 const message = document.getElementById('message');
 const resetButton = document.getElementById('reset');
