@@ -1,7 +1,6 @@
-var rulesSound = document.getElementById('rulesSound');
-var pieceSound = document.getElementById('pieceSound');
 
 function playRulesSound() {
+    const rulesSound = document.getElementById('rulesSound');
     rulesSound.play();
     rulesSound.currentTime = 0;
     setTimeout(function () {
@@ -10,6 +9,7 @@ function playRulesSound() {
 }
 
 function playPieceSound() {
+    const pieceSound = document.getElementById('pieceSound');
     pieceSound.play();
     pieceSound.currentTime = 0;
     setTimeout(function () {

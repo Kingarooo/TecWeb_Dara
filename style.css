@@ -1,5 +1,6 @@
 body {
     background-color: rgba(217, 199, 184);
+    /* background-color: rgba(123, 68, 123, 0.5); */
     display: block;
     margin: 0;
 }
@@ -8,7 +9,9 @@ body {
 .header {
     width: 100%;
     display: inline-block;
-    background-color: rgb(191, 104, 54);
+    /*background-color: rgb(191, 104, 54);*/
+    background-color: rgb(122, 58, 12);
+
     border-bottom: 3px solid rgb(115, 50, 26);
     height: 200px;
 }
@@ -117,7 +120,7 @@ body {
     position: fixed;
     width: 900px;
     height: 900px;
-    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkey.com%2Fpng%2Ffull%2F9-93927_parchment-png.png&f=1&nofb=1&ipt=bbc7715920613b4e4efc9180e851e9550309c76cb08148de7f77314c9bac1f74&ipo=images");
+    background-image: url("./images_files/pergaminho.png");
     background-position: center center;
     background-repeat: no-repeat;
     top: 50%;
@@ -287,7 +290,8 @@ body {
 /*-------------------------------------------------------------------------
 ------------------DEFINIR SETTINGS DO JOGO-----------------------------
 --------------------------------------------------------------------- */
-#texto-settings {
+#texto-settings,
+#texto-rankings {
     margin-top: 20px;
     margin-bottom: 0;
     text-align: center;
@@ -304,10 +308,10 @@ body {
 .settings {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
     width: 20%;
     background-color: rgba(166, 136, 119, 0.966);
-    margin-top: 15  px;
+    margin-top: 15 px;
     position: relative;
     top: 550%;
     left: 1%;
@@ -480,7 +484,7 @@ label img {
     width: 60px;
     height: 60px;
     background-size: cover;
-    background-image: url('./images_files/rock.png');
+    background-image: url('./images_files/player1.png');
     background-repeat: no-repeat;
     margin: 5px 0;
     border-radius: 90px;
@@ -549,4 +553,66 @@ label img {
 
 .hidden {
     display: none;
+}
+
+.rankings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 20%;
+    background-color: rgba(166, 136, 119, 0.966);
+    margin-top: 15 px;
+    top: 550%;
+    right: 1%;
+    margin-top: 5px;
+    padding: 0 100px 50px;
+    text-align: center;
+    align-items: center;
+    border: 3px solid rgb(115, 50, 26);
+    border-radius: 20px;
+}
+
+#user-rankings {
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
+        font-size: 25px;
+    font-weight: 600;
+}
+
+.user-rankings-item {
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+    background-color: rgba(3, 124, 174,0.6);
+    border-radius: 10px;
+    
+}
+
+#texto-ranking{
+    color: rgb(96, 2, 109);
+}
+li:nth-child(1) {
+    background-color: rgba(184, 5, 207, 1);
+}
+
+li:nth-child(2) {
+    background-color: rgba(227, 91, 245, 0.7);
+}
+
+li:nth-child(3) {
+    background-color: rgba(133, 101, 168, 1);
+}
+
+li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 60px;
+    border: 3px solid rgb(92, 58, 11);
+}
+.offheader {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    gap: 100px;
 }
