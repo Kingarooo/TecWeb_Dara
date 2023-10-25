@@ -50,19 +50,21 @@ function createcell(rows, cols) {
 }
 
 function displayPlayerPieces() {
-    for (let i = 1; i <= 12 ; i++) {
+    for (let i = 12; i >= 1 ; i--) {
         const piece = document.createElement('div');
         piece.className = 'player-pieces';
-        piece.textContent = i; 
-        piece.style.fontSize = '40px';            
+        const number = document.createElement('span');
+        number.textContent = i;
+        piece.appendChild(number);
         player1PiecesElement.appendChild(piece);
     }
 
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 12; i >= 1; i--) {
         const piece = document.createElement('div');
         piece.className = 'player-pieces';
-        piece.textContent = i; 
-        piece.style.fontSize = '40px';
+        const number = document.createElement('span');
+        number.textContent = i;
+        piece.appendChild(number);
         player2PiecesElement.appendChild(piece);
 
     }

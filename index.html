@@ -33,7 +33,7 @@
             <p>- 2º fase: </p>
         </div>
         <img src="./images_files/logo.png" alt="Logo" id="logo_dara">
-        <button class="MyProfileButton" onclick="toggleDropdown()">
+        <button class="MyProfileButton" >
             <img src="./images_files/Caveman.png"
                 alt="user" id="user">
         </button>
@@ -93,7 +93,7 @@
                     <input type="radio" name="oppnent" value="ai">
                     <span class="player-option">
                         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Frobot%2Fsmall%2Frobot_PNG82.png&f=1&nofb=1&ipt=16885a389ab680bbbe9e86d7717bbfd162ecbb509d1be56dcdacba70612668f2&ipo=images"
-                            id="AI"></img>
+                        id="AI"></img>
                     </span>
                 </label>
                 <br>
@@ -106,7 +106,7 @@
                     <input type="radio" name="player" value="p1">
                     <span class="whentoplay-option">
                         <img
-                            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/dd2tbqp-6c067453-d57b-4bf4-83a9-316047066666.png/v1/fill/w_1280,h_1317,strp/smash_player_1_select_hand_by_toadking07_dd2tbqp-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGQydGJxcC02YzA2NzQ1My1kNTdiLTRiZjQtODNhOS0zMTYwNDcwNjY2NjYucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.E6p6wBcgbLzuRXvIi4hX_DnG-ahRf7lcAhfpsRBMxr8">
+                        src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/dd2tbqp-6c067453-d57b-4bf4-83a9-316047066666.png/v1/fill/w_1280,h_1317,strp/smash_player_1_select_hand_by_toadking07_dd2tbqp-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGQydGJxcC02YzA2NzQ1My1kNTdiLTRiZjQtODNhOS0zMTYwNDcwNjY2NjYucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.E6p6wBcgbLzuRXvIi4hX_DnG-ahRf7lcAhfpsRBMxr8">
                         </img>
                     </span>
                 </label>
@@ -114,24 +114,20 @@
                     <input type="radio" name="player" value="p2">
                     <span class="whentoplay-option">
                         <img
-                            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/de32xkq-64df4f8c-5cd2-401e-ba44-a4b768cbc6b8.png/v1/fill/w_881,h_907/smash_player_2_select_hand_by_toadking07_de32xkq-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGUzMnhrcS02NGRmNGY4Yy01Y2QyLTQwMWUtYmE0NC1hNGI3NjhjYmM2YjgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.2MhohfxifmAUhQKfpDVGh4Lt3cJAm42uLLrvbMYl89o">
-                        </img>
-                    </span>
-                </label>
-                <br>
-            </form>
+                        src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/de32xkq-64df4f8c-5cd2-401e-ba44-a4b768cbc6b8.png/v1/fill/w_881,h_907/smash_player_2_select_hand_by_toadking07_de32xkq-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGUzMnhrcS02NGRmNGY4Yy01Y2QyLTQwMWUtYmE0NC1hNGI3NjhjYmM2YjgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.2MhohfxifmAUhQKfpDVGh4Lt3cJAm42uLLrvbMYl89o">
+                    </img>
+                </span>
+            </label>
             <br>
-            <br>
-            <br>
-            <button class="start-button">
-                <p id="starttext">Start Game</p>
-            </button>
-        </div>
-        <div class="rankings">
-            <p id="texto-rankings">Rankings</p>
-            <ol id="user-rankings"></ol>
-        </div>
-        <div class="overlay" onclick="togglePopup()">
+        </form>
+        <br>
+        <br>
+        <button class="start-button">
+            <p id="starttext">Start Game</p>
+        </button>
+    </div>
+    <br>
+    <div class="overlay" onclick="togglePopup()">
         </div>
         <div class="gameplay hidden" id="boardContainer">
             <div class="pieces-left">
@@ -142,7 +138,7 @@
             <div class="game-coluna ">
                 <button id="settings_icon">
                     <img src="./images_files/settings.png"
-                        alt="setting_icon">
+                    alt="setting_icon">
                 </button>
                 <p id="message"> Someone's turn</p>
                 <button id="reset">Play again</button>
@@ -153,6 +149,10 @@
                 <div class="player-pieces" id="player2-pieces">
                 </div>
             </div>
+        </div>
+        <div class="rankings">
+            <p id="texto-rankings">Rankings</p>
+            <ol id="user-rankings"></ol>
         </div>
     </div>
     <script src="./java_script/createAccount.js"></script>

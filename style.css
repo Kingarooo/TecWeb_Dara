@@ -1,6 +1,17 @@
+:root{
+--background: rgba(166, 136, 119, 0.8);
+--background-caixas: rgba(217, 199, 184);
+--amarelo-bordas: rgb(255, 212, 129);
+--castanho: rgba(122, 58, 12, 0.9   );
+--laranja: rgba(217, 150, 91);
+--laranja-escuro: rgba(191, 104, 54, 0.9);
+--castanho-escuro: rgb(61, 24, 10);
+--castanho-texto: rgb(100, 48, 11);
+}
 body {
-    background-color: rgba(217, 199, 184);
-    /* background-color: rgba(123, 68, 123, 0.5); */
+    /* background-color: rgba(217, 199, 184); ---BEIJE*/ 
+    background-color: var(--background);
+    /* background-color: rgba(123, 68, 123, 0.5); ----ROXO*/
     display: block;
     margin: 0;
 }
@@ -10,9 +21,8 @@ body {
     width: 100%;
     display: inline-block;
     /*background-color: rgb(191, 104, 54);*/
-    background-color: rgb(122, 58, 12);
-
-    border-bottom: 3px solid rgb(115, 50, 26);
+    background-color: var(--castanho);
+    border-bottom: 4px solid var(--castanho-escuro);
     height: 200px;
 }
 
@@ -29,10 +39,13 @@ body {
 }
 
 #texto_rules {
-    font-size: 40px;
+    font-size: 15px;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-weight: 550;
     top: 75px;
-    left: 50px;
+    left: 33px;
     position: absolute;
+    color:var(--castanho-escuro);
 }
 
 /*pergaminho com as regras, ainda no header*/
@@ -142,15 +155,16 @@ body {
     text-align: center;
     flex-direction: column;
     position: absolute;
-    top: 110px;
+    top: 105px;
     right: 70px;
-    background-color: rgba(217, 150, 91);
+    background-color: var(--laranja);
     border-radius: 10px;
     padding: 5px;
+    border: 3px solid var(--amarelo-bordas);
 }
 
 .MyProfileButton:hover {
-    background-color: rgba(191, 104, 54);
+    background-color: var(--laranja-escuro);
     cursor: pointer;
     transform: scale(1.1);
 }
@@ -176,17 +190,18 @@ body {
 #seta {
     width: 35px;
     height: 35px;
-    border-bottom: 2px solid rgb(115, 50, 26);
-    border-left: 2px solid rgb(115, 50, 26);
+    border-bottom: 2px solid var(--amarelo-bordas);
+    border-left: 2px solid var(--amarelo-bordas);
     transform: rotate(135deg);
 }
 
 #profileOptions .barra {
     width: 150px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     height: max-content;
     align-items: end;
-    background-color: rgba(166, 136, 119, 0.966);
+    background-color: var(--laranja);
+    border: 2px solid var(--amarelo-bordas);
     border-radius: 10px;
 }
 
@@ -194,19 +209,20 @@ body {
     width: max-content;
     height: max-content;
     font-size: 20px;
+    font-weight: 600;
     border-radius: 10px;
     position: relative;
 }
 
 .barra:hover,
 .barra:focus {
-    background-color: rgba(217, 150, 91);
+    background-color: var(--laranja);
     cursor: pointer;
 }
 
 #profileOptions .barra:hover,
 #profileOptions .barra:focus {
-    background-color: rgba(115, 50, 26.0, 0.623);
+    background-color: var(--laranja-escuro);
     cursor: pointer;
 }
 
@@ -292,35 +308,68 @@ body {
 --------------------------------------------------------------------- */
 #texto-settings,
 #texto-rankings {
-    margin-top: 20px;
-    margin-bottom: 0;
-    text-align: center;
+    margin-top: 10px;
+    justify-content: start;
     font-family: 'Stencil Std';
-    font-size: 45px;
+    font-size: 40px;
+    font-weight: 1000;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-stretch: ultra-expanded;
+    color: var(--castanho-texto)
+}
+ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: my-counter;
+    position: relative;
+}
+ol li{
+    display: flex;
+    font-size: 20px;
     font-weight: 600;
-    color: rgb(82, 44, 2);
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    align-items: center;
+    color: var(--castanho-escuro);
+}
+
+ol li::before {
+    content: counter(my-counter) "";
+    counter-increment: my-counter;
+    font-weight: bold;  
+    color: black;
+    border: 4px solid var(--laranja-escuro);
+    padding: 2px;
+    border-radius: 10px;
+    position: absolute;
+    margin-right: 5px;
+    text-align: end;
+    left: -35px;
 }
 
 .settings p:not(#texto-settings) {
     font-size: 20px;
+    margin-bottom: 10px;
 }
-
+.psettings{
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: var(--castanho-escuro)
+}
 .settings {
+    background-color:var(--background-caixas); 
+
+    /* background-color: rgba(166, 136, 119, 0.966); */
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 20%;
-    background-color: rgba(166, 136, 119, 0.966);
-    margin-top: 15 px;
-    position: relative;
-    top: 550%;
-    left: 1%;
-    margin-top: 5px;
-    padding: 0 100px 50px;
+    gap: 20px;
+    width: 17%;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 0 100px 0 100px;
     text-align: center;
     align-items: center;
-    justify-content: center;
-    border: 3px solid rgb(115, 50, 26);
+    /*border: 3px solid rgb(115, 50, 26);*/
+    border: 3px solid var(--amarelo-bordas);
     border-radius: 20px;
 }
 
@@ -335,14 +384,15 @@ input[type="radio"] {
 .board-size-option {
     padding: 20px;
     margin: 5px;
-    border: 2px solid rgba(115, 50, 26.0, 0.623);
+    background-color: var(--laranja);
+    border: 3px solid var(--laranja);
     border-radius: 5px;
 }
 
 .board-size-option:hover {
     cursor: pointer;
-    background-color: rgba(115, 50, 26.0, 0.623);
-    border: 1px solid black;
+    background-color: var(--laranja-escuro);
+    border: 3px solid var(--amarelo-bordas);
 }
 
 span {
@@ -352,8 +402,8 @@ span {
 
 
 .board-size-label input[type="radio"]:checked~.board-size-option {
-    background-color: rgba(115, 50, 26.0, 0.623);
-    border: 1px solid black;
+    background-color: var(--laranja-escuro);
+    border: 3px solid var(--amarelo-bordas);
 }
 
 
@@ -366,7 +416,6 @@ span {
     width: 80px;
     height: 80px;
     background-color: transparent;
-    padding: 20px;
 }
 
 label img {
@@ -376,21 +425,24 @@ label img {
 
 .player-option,
 .whentoplay-option {
-    padding: 20px;
+    margin: 10px;
+    padding: 15px;
+    padding-bottom: 0;
+    padding-top: 60px;
 }
 
 .player-option:hover,
 .whentoplay-option:hover {
-    background-color: rgba(115, 50, 26.0, 0.623);
-    border: 1px solid black;
+    background-color: var(--laranja-escuro);
+    border: 3px solid var(--amarelo-bordas);
     border-radius: 10px;
     cursor: pointer;
 }
 
 .players-label input[type="radio"]:checked~.player-option,
 .whentoplay input[type="radio"]:checked~.whentoplay-option {
-    background-color: rgba(115, 50, 26.0, 0.623);
-    border: 1px solid black;
+    background-color: var(--laranja-escuro);
+    border: 3px solid var(--amarelo-bordas);
     border-radius: 10px;
 }
 
@@ -406,21 +458,25 @@ label img {
     text-align: center;
     justify-content: center;
     margin-top: 25px;
+    margin-bottom: auto;
     border-radius: 10px;
-    background-color: rgba(120, 83, 62, 0.966);
-    border: 2px solid rgb(115, 50, 26);
+    background-color: var(--laranja);
+    border: 3px solid var(--amarelo-bordas);
 }
 
 .start-button:hover {
-    background-color: rgba(115, 50, 26.0, 0.623);
-    border: 1px solid black;
+    background-color: var(--laranja-escuro);
+    border: 3px solid var(--amarelo-bordas);
     cursor: pointer;
+    transform: scale(1.1);
 }
 
-
 #starttext {
-    color: rgb(255, 155, 4);
+    color: var(--castanho-texto);
     border-radius: 5px;
+    font-size: 40px;
+    font-weight: 600;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
 }
 
 /*----------------------AQUI COMEÇA O SCRIPT DO JOGO------------------------------
@@ -428,22 +484,6 @@ label img {
 -----------------------------------------------------------------------------------
 */
 
-#settings_icon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-#settings_icon:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-#settings_icon img {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-}
 
 
 .board {
@@ -493,9 +533,8 @@ label img {
 .game-coluna {
     display: flex;
     flex-direction: column;
-    position: relative;
-    padding: 5px;
     text-align: center;
+    align-items: center;
 }
 
 .pieces-left,
@@ -507,8 +546,8 @@ label img {
     width: auto;
     height: 850px;
     border-top: 100px;
-    border: 3px solid black;
-    background-color: rgba(166, 136, 119, 0.7);
+    border: 3px solid var(--amarelo-bordas);
+    background-color: var(--background-caixas);
     border-radius: 20px;
 }
 
@@ -528,9 +567,9 @@ label img {
     align-items: center;
 }
 
-.i {
-    font-size: 50px;
-    color: rgb(255, 155, 4);
+.player-pieces span {
+    font-size: 30px;
+    color: var(--amarelo-bordas); 
 }
 
 
@@ -539,6 +578,7 @@ label img {
 ----------------------------------------------------------------------------*/
 #message {
     margin: 20px 0;
+    text-align: center;
 }
 
 #reset {
@@ -558,17 +598,15 @@ label img {
 .rankings {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 20%;
-    background-color: rgba(166, 136, 119, 0.966);
-    margin-top: 15 px;
-    top: 550%;
-    right: 1%;
-    margin-top: 5px;
+    width: 17%;
+    background-color: var(--background-caixas); 
+    /* background-color: rgba(166, 136, 119, 0.966); */
+    margin: 5px 20px auto auto; /* top right bottom left */   
     padding: 0 100px 50px;
     text-align: center;
     align-items: center;
-    border: 3px solid rgb(115, 50, 26);
+    /* border: 3px solid rgb(115, 50, 26); */
+    border: 3px solid var(--amarelo-bordas);
     border-radius: 20px;
 }
 
@@ -576,7 +614,7 @@ label img {
     margin-top: 20px;
     margin-bottom: 0;
     text-align: center;
-        font-size: 25px;
+    font-size: 25px;
     font-weight: 600;
 }
 
@@ -613,6 +651,6 @@ li img {
 .offheader {
     display: flex;
     flex-direction: row;
-    width: auto;
+    width: 100%;
     gap: 100px;
 }
