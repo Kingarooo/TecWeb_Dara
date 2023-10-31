@@ -40,7 +40,7 @@ submitButton.addEventListener('click', () => {
         usernameInput.value = '';
         passwordInput.value = '';
         loginForm.style.display = 'none';
-        loggedInUsername.textContent = `PINTOOO`; //DEPOIS POR ISTO ${enteredUsername}
+        loggedInUsername.textContent = `Guest`; //DEPOIS POR ISTO ${enteredUsername}
         loginButton.style.display = 'none';
         logOutButton.style.display = 'block';
     } else {

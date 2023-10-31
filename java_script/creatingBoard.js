@@ -24,7 +24,7 @@ function criarMatriz(rows, cols) {
     return boardState;
 }
 
-function createCellElement(row, col, cols) {
+function createCellElement(row, col, cols,rows) {
     const cell = document.createElement('div');
     cell.className = 'cell';
     cell.dataset.row = row;
@@ -32,7 +32,7 @@ function createCellElement(row, col, cols) {
     const overlay2 = document.createElement('div');
     overlay2.className = 'overlay2';
     cell.appendChild(overlay2);
-    cell.addEventListener('click', () => handleCellClick(row, col, cols));
+    cell.addEventListener('click', () => handleCellClick(row, col, cols,rows));
     board.appendChild(cell);
 
     return cell;
@@ -42,7 +42,7 @@ function createcell(rows, cols) {
     
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
-            const cell = createCellElement(i, j, cols);
+            const cell = createCellElement(i, j, cols,rows);
             cells.push(cell);
         }
     }

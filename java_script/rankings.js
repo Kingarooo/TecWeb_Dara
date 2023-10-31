@@ -23,7 +23,7 @@ const users = [
         profilePic.src = user.profilePicURL || './images_files/Caveman.png';
         profilePic.alt = `${user.name} Profile Pic`; // Set the alt text
         listItem.className = 'user-rankings-item';
-        listItem.textContent = `${user.name} (Points: ${user.points})`;
+        listItem.textContent = `${user.name} (${user.points})`;
         listItem.insertBefore(profilePic, listItem.firstChild); // Add profile pic before text
         userList.appendChild(listItem);
     });
