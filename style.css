@@ -511,6 +511,15 @@ label img {
     border: 3px solid rgb(135, 83, 62);
 }
 
+.empty {
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    border: 3px solid rgb(135, 83, 62);
+}
+
 
 
 .gameplay {
@@ -520,11 +529,20 @@ label img {
     justify-content: center;
 }
 
-.player-pieces {
+.player-pieces-1 {
     width: 60px;
     height: 60px;
     background-size: cover;
     background-image: url('./images_files/player1.png');
+    background-repeat: no-repeat;
+    margin: 5px 0;
+    border-radius: 90px;
+}
+.player-pieces-2 {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-image: url('./images_files/player2.png');
     background-repeat: no-repeat;
     margin: 5px 0;
     border-radius: 90px;
@@ -537,7 +555,19 @@ label img {
     align-items: center;
 }
 
-.pieces-left,
+.pieces-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    height: 850px;
+    border-top: 100px;
+    border: 3px solid var(--border,rgb(255, 212, 129));
+    background-color: var(--back,rgba(217, 199, 184));
+    border-radius: 20px;
+}
+
 .pieces-right {
     display: flex;
     flex-direction: column;
@@ -546,8 +576,8 @@ label img {
     width: auto;
     height: 850px;
     border-top: 100px;
-    border: 3px solid var(--amarelo-bordas);
-    background-color: var(--background-caixas);
+    border: 3px solid var(--border,rgb(255, 212, 129));
+    background-color: var(--back,rgba(217, 199, 184));
     border-radius: 20px;
 }
 
@@ -567,11 +597,22 @@ label img {
     align-items: center;
 }
 
-.player-pieces span {
+.cell.valid{
+    background-image: url("./images_files/quadroverde.png");
+    background-repeat: no-repeat;
+    background-size: 80px;
+    align-items: center;
+}
+/*
+.player-pieces-1 span {
     font-size: 30px;
     color: var(--amarelo-bordas); 
 }
-
+.player-pieces-2 span {
+    font-size: 30px;
+    color: black;
+}
+*/
 
 /*---------------------------------------------------------------------
 --------------------------------BUTOES ACIMA DO BOARD---------------------------------------------------

@@ -10,7 +10,7 @@ const users = [
     { name: 'User9', points: 90 },
     { name: 'User10', points: 0 },
 ];
- function createUserRankingsList() {
+function createUserRankingsList() {
     const userList = document.getElementById('user-rankings');
 
 //ORDENAR POR PONTOS
