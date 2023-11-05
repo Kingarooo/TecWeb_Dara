@@ -1,91 +1,99 @@
+let num_piece = 12
 const cells = [];
 const message = document.getElementById('message');
-const player1Pieces = 12;
-const player2Pieces = 12;
-let player1PiecesLeft = player1Pieces;
-let player2PiecesLeft = player2Pieces;
+const player1Pieces = num_piece;
+const player2Pieces = num_piece;
+let player1PiecesLeft = num_piece;
+let player2PiecesLeft = num_piece;
 let totalMoves = 0;
 let consecutivas = 0;
 let row_antiga = 0
 let col_antiga = 0
 let notremove = true;
-let lastboard = []
-    
+let nextmove = true
+let fase = 1
+let adversario = 0;
+
 function handleCellClick(row, col, antrow, antcol) {
-    lastboard = criarMatriz();
-    if(notremove){
-        let nextmove = true;
-        if (totalMoves < 24){
+    if (notremove && totalMoves < 24){
+        fase = 1;
+    }
+    else if (notremove && totalMoves >= 24){
+        fase = 2
+    }
+    else if (player1PiecesLeft === 2 || player2PiecesLeft === 2){
+        fase = 4
+    }
+    else{
+        fase = 3
+    }
+
+    switch(fase){
+        case 1:
             if (boardState[row][col] === 0) {
-                if ((currentPlayer === 1 && player1PiecesLeft > 0) || (currentPlayer === 2 && player2PiecesLeft > 0) ) {
+                if ((currentPlayer === 1 && player1Pieces > 0) || (currentPlayer === 2 && player2Pieces > 0) ) {
                     boardState[row][col] = currentPlayer;
-                    if (valid_move_col(row, col, currentPlayer, cols) || valid_move_row(row, col, currentPlayer, rows)){
+                    if (valid_move_col(row, col) || valid_move_row(row, col)){
                         boardState[row][col] = 0
                         nextmove = false;
                     } 
                     else{
-                        `player${currentPlayer}PiecesLeft--;`
+                        `player${currentPlayer}Pieces--;`
+                        nextmove = true;
                     }
                 }
                 if (nextmove){
                     totalMoves++;
                     updateBoard(cols);
-                    removePlayerPiece(currentPlayer === 1 ? player1PiecesLeft : player2PiecesLeft);
-                    currentPlayer = move_currentPlayer(currentPlayer);
+                    removePlayerPiece(currentPlayer === 1 ? player1Pieces : player2Pieces);
+                    currentPlayer = move_currentPlayer();
                     //checkAllMoves();
                     playPieceSound();
                     nextmove = true;
                 }
             }
-        }
-        else{
+            break;
+    
+        case 2:
             if((currentPlayer ===1 && boardState[row][col] === 1) ||(currentPlayer === 2 && boardState[row][col] === 2)){
                 row_antiga = row
                 col_antiga = col
-                boardState = eliminar(rows,cols,boardState)
+                eliminar()
                 possivel_moves(row,col,antcol, antrow)
-                updateBoard(cols);
+                updateBoard();
             }
             else if (boardState[row][col] === 3){
-                boardState = eliminar(rows,cols,boardState)
+                eliminar()
                 boardState[row_antiga][col_antiga] = 0
                 boardState[row][col] = currentPlayer;
                 updatelastmove(col_antiga,row_antiga,row,col);
-                updateBoard(cols);
-                if(move_col(row, col, currentPlayer) || move_row(row, col, currentPlayer)){
+                updateBoard();
+                if(move_col(row, col) || move_row(row, col)){
                     notremove = false
                 }
                 else{
-                    currentPlayer = move_currentPlayer(currentPlayer);
+                    currentPlayer = move_currentPlayer();
                 }
-            } 
-        } 
-    }
-    else{
-        switch(currentPlayer){
-            case 1:
-                if(boardState[row][col] === 2){
-                    boardState[row][col] = 0
-                    currentPlayer = move_currentPlayer(currentPlayer);
-                    updateBoard(cols)
-                    notremove = true
-                }
-                break;
-            case 2:
-                if(boardState[row][col] === 1){
-                    boardState[row][col] = 0
-                    currentPlayer = move_currentPlayer(currentPlayer);
-                    updateBoard(cols)
-                    notremove = true
-                }
-                break;
-        }
-    }
+            }
+            break;
     
+        case 3:
+            adversario = currentPlayer === 1 ? 2 : 1
+            if(boardState[row][col] === adversario){
+                boardState[row][col] = 0
+                currentPlayer = move_currentPlayer();
+                `player${adversario}PiecesLeft--;`
+                updateBoard()
+                notremove = true
+            }
+            break;
+        case 4:
+
+    }
 }
 
 
-function eliminar(rows,cols,boardState){
+function eliminar(){
     for(let i = 0; i < rows ; i++){
         for( let j = 0; j < cols; j++){
             if(boardState[i][j] === 3){
@@ -93,11 +101,9 @@ function eliminar(rows,cols,boardState){
             }
         }
     }
-    updateBoard(cols)
-    return boardState
 }
 
-function valid_move_col(row, col, piece, cols){
+function valid_move_col(row, col){
     consecutivas = 0;
     let r = 3
     let meio_c = Math.floor(cols/2);
@@ -107,7 +113,7 @@ function valid_move_col(row, col, piece, cols){
         }
         for (let i = col - r; i < meio_c; i++){
             for(let j = 0; j < 4; j++){
-                if (boardState[row][i + j] === piece){ 
+                if (boardState[row][i + j] === currentPlayer){ 
                     consecutivas += 1;
                     if (consecutivas > 3){
                         return true;
@@ -123,7 +129,7 @@ function valid_move_col(row, col, piece, cols){
     else{
         for (let i = 0; i <= col; i++){
             for(let j = 0; j < 4; j++){
-                if (boardState[row][i + j] === piece){ 
+                if (boardState[row][i + j] === currentPlayer){ 
                     consecutivas+= 1;
                     if (consecutivas > 3){
                         return true;
@@ -139,7 +145,7 @@ function valid_move_col(row, col, piece, cols){
     return false;
 }
 
-function valid_move_row(row, col, piece, rows){
+function valid_move_row(row, col){
     consecutivas = 0;
     let r = 3;
     let meio_r = Math.floor(rows/2);
@@ -149,7 +155,7 @@ function valid_move_row(row, col, piece, rows){
         }
         for (let i = row - r; i < meio_r; i++){
             for(let j = 0; j < 4; j++){
-                if (boardState[i+j][col] === piece){ 
+                if (boardState[i+j][col] === currentPlayer){ 
                     consecutivas += 1;
                     if (consecutivas > 3){
                         return true;
@@ -165,7 +171,7 @@ function valid_move_row(row, col, piece, rows){
     else{
         for (let i = 0; i <= row; i++){
             for(let j = 0; j < 4; j++){
-                if (boardState[i+j][col] === piece){ 
+                if (boardState[i+j][col] === currentPlayer){ 
                     consecutivas += 1;
                     if (consecutivas > 3){
                         return true;
@@ -181,8 +187,8 @@ function valid_move_row(row, col, piece, rows){
     return false;
 }
 
-function move_currentPlayer(player){
-    if (player === 1){
+function move_currentPlayer(){
+    if (currentPlayer === 1){
         colorrigth.style.setProperty('--back','rgb(50,205,50)');
         colorrigth.style.setProperty('--border','rgb(50,205,50)');
         colorleft.style.setProperty('--back','');
@@ -222,12 +228,11 @@ function removePlayerPiece(piecesLeft) {
 }
 
 
-function updateBoard(cols) {
+function updateBoard() {
     cells.forEach((cell, index) => {
         const row = Math.floor(index / cols);
         const col = index % cols;
         const overlay2 = cell.querySelector('.overlay2');
-
         if (boardState[row][col] === 0) {
             cell.textContent = '';
             if(totalMoves == 24){
@@ -252,7 +257,7 @@ function updatePlayerPieces() {
     player2PiecesDisplay.textContent = `Player 2 Pieces: ${player2PiecesLeft}`;
 }*/
 
-function move_col(row, col, piece){
+function move_col(row, col){
     consecutivas = 0;
     let r = 3
     let meio_c = Math.floor(cols/2);
@@ -262,7 +267,7 @@ function move_col(row, col, piece){
         }
         for (let i = col - r; i < meio_c; i++){
             for(let j = 0; j < 4; j++){
-                if (boardState[row][i + j] === piece){ 
+                if (boardState[row][i + j] === currentPlayer){ 
                     consecutivas += 1;
                     if (consecutivas === 3){
                         return true;
@@ -278,7 +283,7 @@ function move_col(row, col, piece){
     else{
         for (let i = 0; i <= col; i++){
             for(let j = 0; j < 4; j++){
-                if (boardState[row][i + j] === piece){ 
+                if (boardState[row][i + j] === currentPlayer){ 
                     consecutivas+= 1;
                     if (consecutivas === 3){
                         return true;
@@ -294,7 +299,7 @@ function move_col(row, col, piece){
     return false;
 }
 
-function move_row(row, col, piece){
+function move_row(row, col){
     consecutivas = 0;
     let r = 3;
     let meio_r = Math.floor(rows/2);
@@ -304,7 +309,7 @@ function move_row(row, col, piece){
         }
         for (let i = row - r; i < meio_r; i++){
             for(let j = 0; j < 4; j++){
-                if (boardState[i+j][col] === piece){ 
+                if (boardState[i+j][col] === currentPlayer){ 
                     consecutivas += 1;
                     if (consecutivas === 3){
                         return true;
@@ -320,7 +325,7 @@ function move_row(row, col, piece){
     else{
         for (let i = 0; i <= row; i++){
             for(let j = 0; j < 4; j++){
-                if (boardState[i+j][col] === piece){ 
+                if (boardState[i+j][col] === currentPlayer){ 
                     consecutivas += 1;
                     if (consecutivas === 3){
                         return true;
