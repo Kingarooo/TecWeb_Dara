@@ -5,8 +5,8 @@ const newUsernameInput = document.getElementById('newUsernameInput');
 const newPasswordInput = document.getElementById('newPasswordInput');
 const confirmPasswordInput = document.getElementById('confirmPasswordInput');
 
-/*-----------------------------------------------------------------------------------
-------------CRIAR CONTA -------------------------------------------------*/
+/* CRIAR CONTA */
+
 createAccountButton.addEventListener('click', () => {
     if (createAccountForm.style.display === 'flex') {
         createAccountForm.style.display = 'none';
@@ -17,8 +17,7 @@ createAccountButton.addEventListener('click', () => {
     }
 });
 
-/*-----------------------------------------------------------------------------------
-------------SUBMIT BUTAO -------------------------------------------------*/
+/* SUBMIT BUTAO */
 
 createAccountSubmit.addEventListener('click', () => {
     const username = newUsernameInput.value;
@@ -34,9 +33,7 @@ createAccountSubmit.addEventListener('click', () => {
         alert('Account created successfully.');
     }
 });
-/*-----------------------------------------------------------------------------------
-----------------------------AUTOMATIZAR CENAS----------------------------------------
--------------------------------- -------------------------------------------------*/
+/* AUTOMATIZAR CENAS */
 
 newUsernameInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {

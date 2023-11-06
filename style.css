@@ -23,12 +23,12 @@ body {
     /*background-color: rgb(191, 104, 54);*/
     background-color: var(--castanho);
     border-bottom: 4px solid var(--castanho-escuro);
-    height: 200px;
+    height: 150px;
 }
 
 /*logo, ainda no header*/
 #logo_dara {
-    top: 0%;
+    top: -3%;
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
@@ -42,8 +42,8 @@ body {
     font-size: 15px;
     font-family: Impact, 'Arial Narrow Bold', sans-serif;
     font-weight: 550;
-    top: 75px;
-    left: 33px;
+    top: 53px;
+    left: 45px;
     position: absolute;
     color:var(--castanho-escuro);
 }
@@ -53,7 +53,7 @@ body {
     background: none;
     position: relative;
     left: 30px;
-    top: 30px;
+    top: 10px;
     width: 130px;
     height: 130px;
 }
@@ -155,7 +155,7 @@ body {
     text-align: center;
     flex-direction: column;
     position: absolute;
-    top: 105px;
+    top: 30px;
     right: 70px;
     background-color: var(--laranja);
     border-radius: 10px;
@@ -177,7 +177,7 @@ body {
     border-radius: 10px;
     align-items: center;
     flex-direction: column;
-    top: 220px;
+    top: 128px;
     right: 35px;
     position: absolute;
 }
@@ -250,7 +250,7 @@ body {
     gap: 10px;
     align-items: center;
     position: absolute;
-    top: 150px;
+    top: 140px;
 }
 
 #usernameInput,
@@ -303,9 +303,8 @@ body {
     border-radius: 5px;
 }
 
-/*-------------------------------------------------------------------------
-------------------DEFINIR SETTINGS DO JOGO-----------------------------
---------------------------------------------------------------------- */
+/*DEFINIR SETTINGS DO JOGO*/
+
 #texto-settings,
 #texto-rankings {
     margin-top: 10px;
@@ -357,7 +356,6 @@ ol li::before {
 }
 .settings {
     background-color:var(--background-caixas); 
-
     /* background-color: rgba(166, 136, 119, 0.966); */
     display: flex;
     flex-direction: column;
@@ -484,8 +482,6 @@ label img {
 -----------------------------------------------------------------------------------
 */
 
-
-
 .board {
     margin: auto;
     margin-top: 100px;
@@ -555,7 +551,7 @@ label img {
     align-items: center;
 }
 
-.pieces-left {
+.pieces-left, .pieces-right {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -568,18 +564,6 @@ label img {
     border-radius: 20px;
 }
 
-.pieces-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: auto;
-    height: 850px;
-    border-top: 100px;
-    border: 3px solid var(--border,rgb(255, 212, 129));
-    background-color: var(--back,rgba(217, 199, 184));
-    border-radius: 20px;
-}
 
 /*----------------------------------------------------------------------------
 ------------------------PEÇAS DE CADA PLAYER-------------------------------

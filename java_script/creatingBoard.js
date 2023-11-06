@@ -1,44 +1,29 @@
 const board = document.getElementById('board');
 const player1PiecesElement = document.getElementById('player1-pieces');
 const player2PiecesElement = document.getElementById('player2-pieces');
-let rows = 0
-let cols = 0
+let max_depth = 1
 
 function start(){
-    const selectedRadioButton = document.querySelector('input[name="board-size"]:checked');
-    const selectedValue = selectedRadioButton.value;
-    switch(selectedValue){
-        case "5x6":
-            rows = 5;
-            cols = 6;
-            break;
-        case "6x5":
-            rows = 6;
-            cols = 5;
-            break;
-        default:
-            rows = 6;
-            cols = 6;
-    }
     boardContainer.style.setProperty('--col', cols);
     boardContainer.style.setProperty('--row', rows);
-    boardState = criarMatriz();
-    createcell(rows,cols);
+    boardState = create_board();
+    create_cell();
+    displayPlayerPieces();
 }
 
-function criarMatriz() {
+function create_board() {
     let boardState = [];
     for (let i = 0; i < rows; i++) {
         let row = [];
         for (let j = 0; j < cols; j++) {
-            row.push(0); // Inicializa cada elemento com o valor 0
+            row.push(0);
         }
         boardState.push(row);
     }
     return boardState;
 }
 
-function createCellElement(row, col) {
+function create_html(row, col) {
     const cell = document.createElement('div');
     cell.className = 'cell';
     cell.dataset.row = row;
@@ -48,47 +33,60 @@ function createCellElement(row, col) {
     const overlay2 = document.createElement('div');
     overlay2.className = 'overlay2';
     cell.appendChild(overlay2);
-    cell.addEventListener('click', () => handleCellClick(row, col, cell.dataset.antrow, cell.dataset.antcol));
+    type(cell);
     board.appendChild(cell);
-
     return cell;
 }
 
-function createcell() {
+function type(cell,row, col,antrow,antcol){
+    if(currentPlayer === AIPlayer && typeoppnent === 1){
+        if(totalMoves <= 2){
+            const best_row = Math.floor(Math.random() * rows ) -1;
+            const best_col = Math.floor(Math.random() * cols ) -1;
+            boardState[best_row][best_col] = AIPlayer
+            totalMoves++;
+            updateBoard(cols);
+            removePlayerPiece(currentPlayer === 1 ? player1Pieces : player2Pieces);
+            currentPlayer = move_currentPlayer();
+            playPieceSound();
+        }
+        else{
+            const [_, move] = minimax_fase1(boardState,currentPlayer,max_depth,true);
+            const best_move = Math.floor(Math.random() * move.length);
+            const [row_1,col_1] = move[best_move];
+            boardState[row_1][col_1] = AIPlayer;
+            totalMoves++;
+            updateBoard(cols);
+            removePlayerPiece(currentPlayer === 1 ? player1Pieces : player2Pieces);
+            currentPlayer = move_currentPlayer();
+            playPieceSound();
+        }
+        type(cell,cell.dataset.row, cell.dataset.col,cell.dataset.antrow,cell.dataset.antcol)
+    }
+    else{
+        cell.addEventListener('click', () => handleCellClick(cell,row,col,antrow,antcol));
+    }
+}
+
+function create_cell() {
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
-            const cell = createCellElement(i, j);
+            const cell = create_html(i, j);
             cells.push(cell);
         }
     }
-    updateBoard(cols)
+    updateBoard()
 }
 
 function displayPlayerPieces() {
     for (let i = 12; i >= 1 ; i--) {
         const piece1 = document.createElement('div');
         piece1.className = 'player-pieces-1';
-        //const number = document.createElement('span');
-        //number.textContent = i;
-        //piece.appendChild(number);
         player1PiecesElement.appendChild(piece1);
         const piece2 = document.createElement('div');
         piece2.className = 'player-pieces-2';
-        //const number = document.createElement('span');
-        //number.textContent = i;
-        //piece.appendChild(number);
         player2PiecesElement.appendChild(piece2);
     }
-
-    /*for (let i = 12; i >= 1; i--) {
-        const piece = document.createElement('div');
-        piece.className = 'player-pieces-2';
-        //const number = document.createElement('span');
-        //number.textContent = i;
-        //piece.appendChild(number);
-        player2PiecesElement.appendChild(piece);
-
-    }*/
 }
-displayPlayerPieces();
+
 

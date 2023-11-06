@@ -14,14 +14,15 @@ let nextmove = true
 let fase = 1
 let adversario = 0;
 
-function handleCellClick(row, col, antrow, antcol) {
+function handleCellClick(cell,row, col, antrow, antcol) {
+    console.log(boardState)
     if (notremove && totalMoves < 24){
         fase = 1;
     }
     else if (notremove && totalMoves >= 24){
         fase = 2
     }
-    else if (player1PiecesLeft === 2 || player2PiecesLeft === 2){
+    else if (isGameOver(boardState,currentPlayer)){
         fase = 4
     }
     else{
@@ -44,10 +45,9 @@ function handleCellClick(row, col, antrow, antcol) {
                 }
                 if (nextmove){
                     totalMoves++;
-                    updateBoard(cols);
+                    updateBoard();
                     removePlayerPiece(currentPlayer === 1 ? player1Pieces : player2Pieces);
                     currentPlayer = move_currentPlayer();
-                    //checkAllMoves();
                     playPieceSound();
                     nextmove = true;
                 }
@@ -76,7 +76,6 @@ function handleCellClick(row, col, antrow, antcol) {
                 }
             }
             break;
-    
         case 3:
             adversario = currentPlayer === 1 ? 2 : 1
             if(boardState[row][col] === adversario){
@@ -88,9 +87,11 @@ function handleCellClick(row, col, antrow, antcol) {
             }
             break;
         case 4:
-
+            console.log("acabou o jogo")
     }
+    type(cell,cell.dataset.row, cell.dataset.col,cell.dataset.antrow,cell.dataset.antcol)
 }
+
 
 
 function eliminar(){
@@ -204,18 +205,6 @@ function move_currentPlayer(){
     }
 }
 
-/*function checkAllMoves() {
-    if (totalMoves == 24) {
-        const cells = document.querySelectorAll('.cell');
-        cells.forEach((cell) => {
-            if (!cell.classList.contains('player-1') && !cell.classList.contains('player-2')) {
-                cell.className = 'empty';
-            }
-        });
-    }
-}
-*/
-
 function removePlayerPiece(piecesLeft) {
     if (piecesLeft >= 0) {
         const playerPieces = document.getElementById(`player${currentPlayer}-pieces`);
@@ -226,7 +215,6 @@ function removePlayerPiece(piecesLeft) {
         }
     }
 }
-
 
 function updateBoard() {
     cells.forEach((cell, index) => {
@@ -250,12 +238,6 @@ function updateBoard() {
     });
     //message.textContent = `Player ${currentPlayer}'s turn`;
 }
-
-/*
-function updatePlayerPieces() {
-    player1PiecesDisplay.textContent = `Player 1 Pieces: ${player1PiecesLeft}`;
-    player2PiecesDisplay.textContent = `Player 2 Pieces: ${player2PiecesLeft}`;
-}*/
 
 function move_col(row, col){
     consecutivas = 0;
