@@ -14,8 +14,7 @@ let nextmove = true
 let fase = 1
 let adversario = 0;
 
-function handleCellClick(cell,row, col, antrow, antcol) {
-    console.log(boardState)
+function handleCellClick(row, col, antrow, antcol) {
     if (notremove && totalMoves < 24){
         fase = 1;
     }
@@ -89,7 +88,6 @@ function handleCellClick(cell,row, col, antrow, antcol) {
         case 4:
             console.log("acabou o jogo")
     }
-    type(cell,cell.dataset.row, cell.dataset.col,cell.dataset.antrow,cell.dataset.antcol)
 }
 
 

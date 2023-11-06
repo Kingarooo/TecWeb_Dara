@@ -33,7 +33,7 @@ function create_html(row, col) {
     const overlay2 = document.createElement('div');
     overlay2.className = 'overlay2';
     cell.appendChild(overlay2);
-    type(cell);
+    cell.addEventListener('click', () => handleCellClick(row,col,cell.dataset.antrow,cell.dataset.antcol));
     board.appendChild(cell);
     return cell;
 }
