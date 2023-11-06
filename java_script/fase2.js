@@ -114,7 +114,7 @@ function updatelastmove(antcol, antrow , row, col){
 }
 
 function count_piece_left(board,piece){
-    const count = 0;
+    let count = 0;
     for(let i = 0; i < rows; i++){
         for(let j = 0; j < cols; j++){
             if(board[i][j] === piece){

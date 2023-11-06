@@ -27,7 +27,7 @@ function handleCellClick(row, col, antrow, antcol) {
     else{
         fase = 3
     }
-
+    
     switch(fase){
         case 1:
             if (boardState[row][col] === 0) {
@@ -52,9 +52,9 @@ function handleCellClick(row, col, antrow, antcol) {
                 }
             }
             break;
-    
-        case 2:
-            if((currentPlayer ===1 && boardState[row][col] === 1) ||(currentPlayer === 2 && boardState[row][col] === 2)){
+            
+            case 2:
+                if((currentPlayer ===1 && boardState[row][col] === 1) ||(currentPlayer === 2 && boardState[row][col] === 2)){
                 row_antiga = row
                 col_antiga = col
                 eliminar()
@@ -75,7 +75,7 @@ function handleCellClick(row, col, antrow, antcol) {
                 }
             }
             break;
-        case 3:
+            case 3:
             adversario = currentPlayer === 1 ? 2 : 1
             if(boardState[row][col] === adversario){
                 boardState[row][col] = 0
@@ -85,8 +85,10 @@ function handleCellClick(row, col, antrow, antcol) {
                 notremove = true
             }
             break;
-        case 4:
-            console.log("acabou o jogo")
+            case 4:
+                console.log("acabou o jogo")
+                alert("acabou o jogo");
+                break;
     }
 }
 

@@ -1,13 +1,13 @@
-function minimax_fase2(board, piece,depth, isMaximizingPlayer) {
+function minimax(board, piece,depth, isMaximizingPlayer) {
     if (depth === 0 || isGameOver(board,piece)) {
-      return [evaluate(board,piece), 0];
+      return evaluate(board,piece),_;
     }
   
     if (isMaximizingPlayer) {
-      let best_cost = -Infinity;
-      let best_move = []
-      for([newRow,newCol,newboard] of successors(board, AIPlayer)){
-        let [value, _]= minimax(newboard,piece,depth - 1, false);
+      const best_cost = -Infinity;
+      const best_move = []
+      for((newRow,newCol,newboard) in successors(board, piece)){
+        valeu, _= minimax(newboard,piece,depth - 1, false);
         if (depth === max_depth){
             if (best_cost === value){
                 best_move.push((newRow,newCol))
@@ -22,13 +22,13 @@ function minimax_fase2(board, piece,depth, isMaximizingPlayer) {
             best_cost = Math.max(best_cost, value)
         }
       }
-      return [best_cost,best_move]
+      return best_cost,best_move
 
     } else {
-        let best_cost = +Infinity;
-        let best_move = []
-        for([newRow,newCol,newboard] in successors(board, HUMPlayer)){
-          let [valeu, _]= minimax(newboard,piece,depth - 1, true);
+        const best_cost = +Infinity;
+        const best_move = []
+        for((newRow,newCol,newboard) in successors(board, piece)){
+          valeu, _= minimax(newboard,piece,depth - 1, true);
           if (depth === max_depth){
               if (best_cost === value){
                   best_move.push((newRow,newCol))
@@ -43,57 +43,7 @@ function minimax_fase2(board, piece,depth, isMaximizingPlayer) {
               best_cost = Math.min(best_cost, value)
           }
         }
-        return [best_cost,best_move]
-    }
-} 
-
-
-function minimax_fase1(board, piece,depth, isMaximizingPlayer) {
-    if (depth === 0 ) {
-      return [evaluate_fase1(board,piece), 0];
-    }
-  
-    if (isMaximizingPlayer) {
-      let best_cost = -Infinity;
-      let best_move = []
-      for([newRow,newCol,newboard] of successors_fase1(board, piece)){
-        let [value, _]= minimax_fase1(newboard,piece,depth - 1, false);
-        if (depth === max_depth){
-            if (best_cost === value){
-                best_move.push((newRow,newCol))
-            }
-            if (value > best_cost){
-                best_cost = value
-                best_move = []
-                best_move.push((newRow,newCol))
-            }
-        }   
-        else{
-            best_cost = Math.max(best_cost, value)
-        }
-      }
-      return [best_cost,best_move]
-
-    } else {
-        let best_cost = +Infinity;
-        let best_move = []
-        for([newRow,newCol,newboard] in successors_fase1(board, piece)){
-          let [valeu, _]= minimax_fase1(newboard,piece,depth - 1, true);
-          if (depth === max_depth){
-              if (best_cost === value){
-                  best_move.push((newRow,newCol))
-              }
-              if (best_cost > valeu){
-                  best_cost = value
-                  best_move = []
-                  best_move.push((newRow,newCol))
-              }
-          }   
-          else{
-              best_cost = Math.min(best_cost, value)
-          }
-        }
-        return [best_cost,best_move]
+        return best_cost,best_move
     }
 } 
 
@@ -189,8 +139,8 @@ function evaluate(board, piece) {
     }
 
     // Avalie a mobilidade do jogador atual
-    const playerMobility = successors_fase1(piece).length;
-    const opponentMobility = successors_fase1(opponent).length;
+    const playerMobility = successors(piece).length;
+    const opponentMobility = successors(opponent).length;
 
     // Avalie a captura de peças do oponente
     const playerCaptures = countPossibleCaptures(boardState, piece);
@@ -206,50 +156,3 @@ function evaluate(board, piece) {
     return playerScore;
 }
 
-
-function evaluate_fase1(board, piece) {
-    let playerScore = 0;
-    const opponent = currentPlayer === 1 ? 2 : 1
-    // Define as direções possíveis para formar sequências de 3 peças
-    const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
-
-    for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-            if (board[row][col] === piece) {
-                for (const [dr, dc] of directions) {
-                    let sequence = 0;
-                    let newRow = row;
-                    let newCol = col;
-
-                    // Verifica quantas sequências de 3 o jogador atual possui
-                    while (sequence < 2 && newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && board[newRow][newCol] === piece) {
-                        sequence++;
-                        newRow += dr;
-                        newCol += dc;
-                    }
-
-                    if (sequence === 2) {
-                        playerScore += 1;  // Sequência de 3 peças do jogador atual
-                    }
-                }
-            }
-        }
-    }
-
-    // Avalie a mobilidade do jogador atual
-    const playerMobility = successors_fase1(piece).length;
-    const opponentMobility = successors_fase1(opponent).length;
-
-    // Avalie a captura de peças do oponente
-    const playerCaptures = countPossibleCaptures(boardState, piece);
-    const opponentCaptures = countPossibleCaptures(boardState, opponent);
-
-    // Pondere os fatores
-    const mobilityWeight = 0.1;
-    const capturesWeight = 0.5;
-
-    playerScore += mobilityWeight * (playerMobility - opponentMobility);
-    playerScore += capturesWeight * (playerCaptures - opponentCaptures);
-
-    return playerScore;
-}

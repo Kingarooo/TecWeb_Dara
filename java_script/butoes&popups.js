@@ -13,7 +13,9 @@ let cols = 0
 let AIPlayer = 0
 let HUMPlayer = 0
 let currentPlayer = 1
-let typeoppnent = 0
+let typeopponent = 0
+const settings2 = document.querySelector('.settings2');
+
 
 function toggleDropdown() {
     var profileOptions = document.getElementById("profileOptions");
@@ -47,11 +49,13 @@ function togglePopup() {
     
 startButton.addEventListener('click', () => {
     const selectsize = document.querySelector('input[name="board-size"]:checked');
-    const selectoppnent = document.querySelector('input[name="oppnent"]:checked');
+    const selectopponent = document.querySelector('input[name="opponent"]:checked');
     const selectplay = document.querySelector('input[name="player"]:checked');
-    if(selectplay && selectoppnent && selectsize){  
+    if(selectplay && selectopponent && selectsize){  
         settingsDiv.style.display = 'none';
+        settings2.style.display = 'none';
         gameplayDiv.style.display = 'flex';
+
         const selectedValue = selectsize.value;
         switch(selectedValue){
             case "5x6":
@@ -82,13 +86,13 @@ startButton.addEventListener('click', () => {
                 AIPlayer = 2;
                 HUMPlayer = 1;
         }
-        const oppnent = selectoppnent.value;
-        switch(oppnent){
+        const opponent = selectopponent.value;
+        switch(opponent){
             case "ai":
-                typeoppnent = 1;
+                typeopponent = 1;
                 break;
             default:
-                typeoppnent = 0;
+                typeopponent = 0;
         }
         start();
     }
@@ -99,20 +103,26 @@ settings_icon.addEventListener('click', () => {
     gameplayDiv.classList.add('hidden');
 });
 
-reset.addEventListener('click', () => {
-    currentPlayer = 1;
-    player1PiecesLeft = player1Pieces;
-    player2PiecesLeft = player2Pieces;
-    totalMoves = 0;
+// reset.addEventListener('click', () => {
+//     currentPlayer = 1;
+//     player1PiecesLeft = player1Pieces;
+//     player2PiecesLeft = player2Pieces;
+//     totalMoves = 0;
 
-    cells.forEach((cell) => {
-        cell.classList.remove('player-1', 'player-2');
-        cell.style.backgroundImage = 'url("./images_files/backgroundRelva.jpeg")'; // Reset background image
-    });
-    displayPlayerPieces();
-    start();
+//     cells.forEach((cell) => {
+//         cell.classList.remove('player-1', 'player-2');
+//         cell.style.backgroundImage = 'url("./images_files/backgroundRelva.jpeg")'; // Reset background image
+//     });
+//     displayPlayerPieces();
+//     start();
+// });
+
+const aiRadio = document.getElementById("AII");  
+const aiOptionsDiv = document.querySelector(".AI-settings");
+
+aiRadio.addEventListener("change", function () {
+    aiOptionsDiv.style.display = aiRadio.checked ? "flex" : "none";
 });
-
 
 
 
