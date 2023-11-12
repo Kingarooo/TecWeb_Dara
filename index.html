@@ -12,8 +12,6 @@
 </head>
 
 <body>
-    <audio id="rulesSound" src="./sound_files/rules.mp3" type="audio/mpeg"></audio>
-    <audio id="pieceSound" src="./sound_files/mexerPeça.mp3" type="audio/mpeg"></audio>
     <div class="header">
         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F30%2F3f%2Fc9%2F303fc993935532b1061d3aad57a228e4.png&f=1&nofb=1&ipt=d0a8b768777911d1cc8f6e26157f3517f77c029c6fef265e17c77bd26b132986&ipo=images"
             alt="Popup Button" class="popup-button" id="rules" onclick="togglePopup()">
@@ -128,17 +126,16 @@
                 <label class="players-label">
                     <input type="radio" name="opponent" value="human">
                     <span class="player-option">
-                        <img src="https://icon-library.com/images/human-icon/human-icon-11.jpg"></img>
+                        <img src="https://icon-library.com/images/human-icon/human-icon-11.jpg" alt="human">
                     </span>
                 </label>
                 <label class="players-label">
                     <input type="radio" name="opponent" value="ai" id="AII">
                     <span class="player-option">
                         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Frobot%2Fsmall%2Frobot_PNG82.png&f=1&nofb=1&ipt=16885a389ab680bbbe9e86d7717bbfd162ecbb509d1be56dcdacba70612668f2&ipo=images"
-                            id="AI"></img>
+                            alt="AI" id="AI">
                     </span>
                 </label>
-
                 <br>
             </form>
             <form>
@@ -148,17 +145,15 @@
                 <label class="whentoplay">
                     <input type="radio" name="player" value="p1">
                     <span class="whentoplay-option">
-                        <img
+                        <img alt="player1"
                             src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/dd2tbqp-6c067453-d57b-4bf4-83a9-316047066666.png/v1/fill/w_1280,h_1317,strp/smash_player_1_select_hand_by_toadking07_dd2tbqp-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGQydGJxcC02YzA2NzQ1My1kNTdiLTRiZjQtODNhOS0zMTYwNDcwNjY2NjYucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.E6p6wBcgbLzuRXvIi4hX_DnG-ahRf7lcAhfpsRBMxr8">
-                        </img>
                     </span>
                 </label>
                 <label class="whentoplay">
                     <input type="radio" name="player" value="p2">
                     <span class="whentoplay-option">
-                        <img
+                        <img alt="player2"
                             src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dae57ed-71db-4036-af85-0bd5276f1cd4/de32xkq-64df4f8c-5cd2-401e-ba44-a4b768cbc6b8.png/v1/fill/w_881,h_907/smash_player_2_select_hand_by_toadking07_de32xkq-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMxNyIsInBhdGgiOiJcL2ZcLzlkYWU1N2VkLTcxZGItNDAzNi1hZjg1LTBiZDUyNzZmMWNkNFwvZGUzMnhrcS02NGRmNGY4Yy01Y2QyLTQwMWUtYmE0NC1hNGI3NjhjYmM2YjgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.2MhohfxifmAUhQKfpDVGh4Lt3cJAm42uLLrvbMYl89o">
-                        </img>
                     </span>
                 </label>
                 <br>
@@ -166,7 +161,7 @@
             <br>
             <br>
             <button class="start-button">
-                <p id="starttext">Start Game</p>
+                <text id="starttext">Start Game</text>
             </button>
         </div>
         <div class="overlay" onclick="togglePopup()">
@@ -188,61 +183,69 @@
                 </div>
             </div>
         </div>
-            <form class="settings2">
-                <div class="choosePiecesDiv">
-                    <p class="otherSettingsText">Choose the piece you want to play with:</p>
-                    <div class="optionPiecesDiv">
-                        <label for="chooseWhite" class="radio-label">
-                            <input type="radio" name="color" value="black" id="chooseWhite">
-                            <img src="images_files/player1.png" alt="Black">
-                        </label>
-                        <label for="chooseBlack" class="radio-label">
-                            <input type="radio" name="color" value="white" id="chooseBlack">
-                            <img src="images_files/player2.png" alt="White">
-                        </label>
+        <form class="settings2">
+            <div class="choosePiecesDiv">
+                <p class="otherSettingsText">Choose the piece you want to play with:</p>
+                <div class="optionPiecesDiv">
+                    <label for="chooseWhite" class="radio-label">
+                        <input type="radio" name="color" value="black" id="chooseWhite">
+                        <img src="images_files/player1.png" alt="Black">
+                    </label>
+                    <label for="chooseBlack" class="radio-label">
+                        <input type="radio" name="color" value="white" id="chooseBlack">
+                        <img src="images_files/player2.png" alt="White">
+                    </label>
+                </div>
+            </div>
+            <div class="AI-settings">
+                <p class="otherSettingsText">Choose the AI difficulty:</p>
+                <div class="AI-options">
+                    <label for="begginer" class="radio-label">
+                        <input type="radio" name="difficulty" value="1" id="begginer">
+                        <img src="images_files/begginer.png" alt="Beginner">
+                    </label>
+                    <label for="decent" class="radio-label">
+                        <input type="radio" name="difficulty" value="2" id="decent">
+                        <img src="images_files/decente.png" alt="Decent">
+                    </label>
+                    <label for="pro" class="radio-label">
+                        <input type="radio" name="difficulty" value="3" id="pro">
+                        <img src="images_files/pro.png" alt="Pro">
+                    </label>
+                </div>
+            </div>
+            <p class="psettings" style="font-size: 30px;"> OR </p>
+            <div class="play-friends">
+                <div class="left-side">
+                    <div class="smile">
+                        <div class="eyes"></div>
+                        <div class="mouth"></div>
+                    </div>
+                    <div class="talk">
+                        <div class="triangle"></div>
+                        <svg class="star" xmlns="http://www.w3.org/2000/svg" height="512" viewBox="0 -10 511.991 511"
+                            width="512">
+                            <path
+                                d="M510.652 185.883a27.177 27.177 0 00-23.402-18.688l-147.797-13.418-58.41-136.75C276.73 6.98 266.918.497 255.996.497s-20.738 6.483-25.023 16.53l-58.41 136.75-147.82 13.418c-10.837 1-20.013 8.34-23.403 18.688a27.25 27.25 0 007.937 28.926L121 312.773 88.059 457.86c-2.41 10.668 1.73 21.7 10.582 28.098a27.087 27.087 0 0015.957 5.184 27.14 27.14 0 0013.953-3.86l127.445-76.203 127.422 76.203a27.197 27.197 0 0029.934-1.324c8.851-6.398 12.992-17.43 10.582-28.098l-32.942-145.086 111.723-97.964a27.246 27.246 0 007.937-28.926zM258.45 409.605"
+                                data-original="#000000" class="active-path" data-old_color="#000000" fill="#D74E68" />
+                        </svg>
+                    </div>
+                    <div class="friend">
+                        <div class="shock"></div>
                     </div>
                 </div>
-                <div class="AI-settings">
-                    <p class="otherSettingsText">Choose the AI difficulty:</p>
-                    <div class="AI-options">
-                        <label for="begginer" class="radio-label">
-                            <input type="radio" name="difficulty" value="1" id="begginer">
-                            <img src="images_files/begginer.png" alt="Beginner">
-                        </label>
-                        <label for="decent" class="radio-label">
-                            <input type="radio" name="difficulty" value="2" id="decent">
-                            <img src="images_files/decente.png" alt="Decent">
-                        </label>
-                        <label for="pro" class="radio-label">
-                            <input type="radio" name="difficulty" value="3" id="pro">
-                            <img src="images_files/pro.png" alt="Pro">
-                        </label>
-                    </div>
-                </div>
-                <p class="psettings" style="font-size: 30px;"> OR </p>
-                <div class="play-friends">
-                    <div class="left-side">
-                     <div class="smile">
-                      <div class="eyes"></div>
-                      <div class="mouth"></div>
-                     </div>
-                     <div class="talk">
-                      <div class="triangle"></div>
-                      <svg class="star" xmlns="http://www.w3.org/2000/svg" height="512" viewBox="0 -10 511.991 511" width="512">
-                       <path d="M510.652 185.883a27.177 27.177 0 00-23.402-18.688l-147.797-13.418-58.41-136.75C276.73 6.98 266.918.497 255.996.497s-20.738 6.483-25.023 16.53l-58.41 136.75-147.82 13.418c-10.837 1-20.013 8.34-23.403 18.688a27.25 27.25 0 007.937 28.926L121 312.773 88.059 457.86c-2.41 10.668 1.73 21.7 10.582 28.098a27.087 27.087 0 0015.957 5.184 27.14 27.14 0 0013.953-3.86l127.445-76.203 127.422 76.203a27.197 27.197 0 0029.934-1.324c8.851-6.398 12.992-17.43 10.582-28.098l-32.942-145.086 111.723-97.964a27.246 27.246 0 007.937-28.926zM258.45 409.605" data-original="#000000" class="active-path" data-old_color="#000000" fill="#D74E68" /></svg>
-                     </div>
-                     <div class="friend">
-                      <div class="shock"></div>
-                     </div>
-                    </div>
-                    <div class="right-side">
-                     <div class="psettings" style="font-size: 23px; margin-left: 20px; margin-top: 10px;" >
+                <div class="right-side">
+                    <div class="psettings" style="font-size: 25px; margin-left: 10px; margin-top: 10px;">
                         Play with friends!</div>
-                     <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 451.846 451.847">
-                      <path d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#cfcfcf" /></svg>
-                    </div>
-                   </div>
-            </form>
+                    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="512" height="512"
+                        viewBox="0 0 451.846 451.847">
+                        <path
+                            d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z"
+                            data-original="#000000" class="active-path" data-old_color="#000000" fill="#cfcfcf" />
+                    </svg>
+                </div>
+            </div>
+        </form>
 
         <div class="rankings">
             <p id="texto-rankings">Rankings</p>
@@ -252,6 +255,8 @@
             </div>
         </div>
     </div>
+    <audio id="rulesSound" src="./sound_files/rules.mp3" type="audio/mpeg"></audio>
+    <audio id="pieceSound" src="./sound_files/mexerPeça.mp3" type="audio/mpeg"></audio>
     <script src="./java_script/createAccount.js"></script>
     <script src="./java_script/login.js"></script>
     <script src="./java_script/butoes&popups.js"></script>

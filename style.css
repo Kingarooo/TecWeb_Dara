@@ -801,9 +801,9 @@ html {
 }
 
 #starttext {
-    color: var(--castanho-texto);
+    color: var(--castanho-escuro);
     border-radius: 5px;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 600;
     font-family: Impact, 'Arial Narrow Bold', sans-serif;
 }
