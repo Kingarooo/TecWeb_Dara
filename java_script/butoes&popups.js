@@ -5,16 +5,16 @@ const gameplayDiv = document.querySelector('.gameplay');
 const overlay = document.querySelector('.overlay');
 const popup = document.querySelector('.popup');
 const settings_icon = document.getElementById('settings-icon');
-const reset = document.getElementById('reset');
+const reset = document.querySelector('.reset');
 const MyProfileButton = document.querySelector('.MyProfileButton');
 const barra = document.querySelector('.barra');
+const settings2 = document.querySelector('.settings2');
 let rows = 0
 let cols = 0
 let AIPlayer = 0
 let HUMPlayer = 0
 let currentPlayer = 1
 let typeopponent = 0
-const settings2 = document.querySelector('.settings2');
 
 
 function toggleDropdown() {
@@ -28,9 +28,9 @@ document.addEventListener('click', (event) => {
     if (!MyProfileButton.contains(event.target) && !profileOptions.contains(event.target) && profileOptions.classList.contains('visible')) {
         toggleDropdown();
     }
-    
-    });
-MyProfileButton.addEventListener('mouseover', (event) =>{
+
+});
+MyProfileButton.addEventListener('mouseover', (event) => {
     if (!profileOptions.classList.contains('visible')) {
         toggleDropdown();
     }
@@ -46,83 +46,91 @@ function togglePopup() {
     }
     playRulesSound();
 }
-    
-startButton.addEventListener('click', () => {
+
+
+startButton.addEventListener('click', StartButton);
+
+    function StartButton(){
+    const missingOptions = [];
     const selectsize = document.querySelector('input[name="board-size"]:checked');
     const selectopponent = document.querySelector('input[name="opponent"]:checked');
     const selectplay = document.querySelector('input[name="player"]:checked');
-    if(selectplay && selectopponent && selectsize){  
+    const color = document.querySelector('input[name="color"]:checked');
+    const difficulty = document.querySelector('input[name="difficulty"]:checked');
+    //cenas para aparecer no alerta//////////////
+    if (!selectsize) { missingOptions.push('Board Size');}
+    if (!selectopponent) { missingOptions.push('Opponent');}
+    if (!selectplay) { missingOptions.push('Player');} 
+    if (!color) { missingOptions.push('Color');}
+    if (!difficulty) { missingOptions.push('Difficulty');}
+    ////////////////////////////////////////
+    if (missingOptions.length === 0) {      
         settingsDiv.style.display = 'none';
         settings2.style.display = 'none';
         gameplayDiv.style.display = 'flex';
-
+        //-----DEFENIR TAMANHO DO TABULEIRO
         const selectedValue = selectsize.value;
-        switch(selectedValue){
-            case "5x6":
-                rows = 5;
-                cols = 6;
-                break;
-            case "6x5":
-                rows = 6;
-                cols = 5;
-                break;
-            default:
-                rows = 6;
-                cols = 6;
-        }
-        const player = selectplay.value; 
-        switch(player){
+        const [rowValue, colValue] = selectedValue.split("x");
+        rows = parseInt(rowValue, 10);
+        cols = parseInt(colValue, 10);
+        //-----DEFENIR JOGADOR
+        const player = selectplay.value;
+        switch (player) {
             case "p2":
-                colorrigth.style.setProperty('--back','rgb(50,205,50)');
-                colorrigth.style.setProperty('--border','rgb(50,205,50)');
+                colorrigth.style.setProperty('--back', 'rgb(50,205,50)');
+                colorrigth.style.setProperty('--border', 'rgb(50,205,50)');
                 currentPlayer = 2;
-                AIPlayer = 2; 
-                HUMPlayer = 1;
+                AIPlayer = 1;
+                HUMPlayer = 2;
                 break;
             default:
-                colorleft.style.setProperty('--back','rgb(50,205,50)');
-                colorleft.style.setProperty('--border','rgb(50,205,50)');
+                colorleft.style.setProperty('--back', 'rgb(50,205,50)');
+                colorleft.style.setProperty('--border', 'rgb(50,205,50)');
                 currentPlayer = 1;
                 AIPlayer = 2;
                 HUMPlayer = 1;
         }
+        //-----DEFENIR OPONENTE
         const opponent = selectopponent.value;
-        switch(opponent){
+        switch (opponent) {
             case "ai":
                 typeopponent = 1;
                 break;
             default:
                 typeopponent = 0;
         }
+        //-----DEFENIR COR
+        const colorValue = color.value;
+        switch (colorValue) {
+            case "black":
+                
+        }
+        //-----DEFENIR DIFICULDADE
+        const difficultyValue = difficulty.value;
+        //FALTA AIIIIIIIIIIIIIIIIIIIIIIIIIIII
         start();
     }
-});
+        else 
+            alert(`Please select the following options: ${missingOptions.join(', ')}`);
+    }
+
 
 settings_icon.addEventListener('click', () => {
     settingsDiv.classList.remove('hidden');
     gameplayDiv.classList.add('hidden');
 });
 
-// reset.addEventListener('click', () => {
-//     currentPlayer = 1;
-//     player1PiecesLeft = player1Pieces;
-//     player2PiecesLeft = player2Pieces;
-//     totalMoves = 0;
+reset.addEventListener('click', () => {
+    settingsDiv.classList.remove('hidden');
+    gameplayDiv.classList.add('hidden');
+    board.innerHTML = '';
+    alert("O jogo foi reiniciado");
+    StartButton();
+});
 
-//     cells.forEach((cell) => {
-//         cell.classList.remove('player-1', 'player-2');
-//         cell.style.backgroundImage = 'url("./images_files/backgroundRelva.jpeg")'; // Reset background image
-//     });
-//     displayPlayerPieces();
-//     start();
-// });
-
-const aiRadio = document.getElementById("AII");  
+const aiRadio = document.getElementById("AII");
 const aiOptionsDiv = document.querySelector(".AI-settings");
 
-aiRadio.addEventListener("change", function () {
-    aiOptionsDiv.style.display = aiRadio.checked ? "flex" : "none";
-});
 
 
 

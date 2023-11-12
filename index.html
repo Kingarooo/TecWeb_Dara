@@ -8,16 +8,16 @@
     <title>Dara</title>
     <link rel="stylesheet" href="./style.css">
     <!--isto são sons-->
-    <audio id="rulesSound" src="./sound_files/rules.mp3" type="audio/mpeg"></audio>
-    <audio id="pieceSound" src="./sound_files/mexerPeça.mp3" type="audio/mpeg"></audio>
 
 </head>
 
 <body>
+    <audio id="rulesSound" src="./sound_files/rules.mp3" type="audio/mpeg"></audio>
+    <audio id="pieceSound" src="./sound_files/mexerPeça.mp3" type="audio/mpeg"></audio>
     <div class="header">
         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F30%2F3f%2Fc9%2F303fc993935532b1061d3aad57a228e4.png&f=1&nofb=1&ipt=d0a8b768777911d1cc8f6e26157f3517f77c029c6fef265e17c77bd26b132986&ipo=images"
             alt="Popup Button" class="popup-button" id="rules" onclick="togglePopup()">
-        <elem id="texto_rules">Rules</elem>
+        <p id="texto_rules">Rules</p>
         <div class="popup">
             <button onclick="togglePopup()">
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fx-mark-256.png&f=1&nofb=1&ipt=0e055833898a0a763280812be481f30b3f7d4156d5b347efc927f0959ddbeffd&ipo=images"
@@ -29,7 +29,8 @@
                 <li>
                     <ul>
                         <li>O Dara joga-se num tabuleiro com três possívveis dimensões (6x5 / 5x6 / 6x6)</li>
-                        <li>Cada um dos dois jogadores tem 12 peças, um jogador joga com peças pretas e o outro joga com as peças brancas</li>
+                        <li>Cada um dos dois jogadores tem 12 peças, um jogador joga com peças pretas e o outro joga com
+                            as peças brancas</li>
                         <li>Todas as peças 22 estão sempre visíveis, no tabuleiro ou fora</li>
                         <li>As peças que estão fira do tabuleiro são agrupadas por cor, de cada lado</li>
                     </ul>
@@ -58,14 +59,18 @@
                         <li>Cada jogador moe alternadamente uma das suas peças</li>
                         <li>Uma peça só pode ser movida para uma casa contígua</li>
                         <li>As peças só podem ser movidas na horizontal e na vertical</li>
-                        <li>Se o jogador fizer uma jogadada que resulte numa linha/coluna de três peças consecutivas, este pode capturar uma peça do adversário à sua escolha</li>
-                        <li>Só é possível remover uma peça por jogada, mesmo sendo formadas várias linhas/colunas de três peças consecutivas</li>
-                        <li>Uma peça não pode retornar à posição da jogada anterior, sendo que só pode retornar a essa posição nas jogadas futuras</li>
+                        <li>Se o jogador fizer uma jogadada que resulte numa linha/coluna de três peças consecutivas,
+                            este pode capturar uma peça do adversário à sua escolha</li>
+                        <li>Só é possível remover uma peça por jogada, mesmo sendo formadas várias linhas/colunas de
+                            três peças consecutivas</li>
+                        <li>Uma peça não pode retornar à posição da jogada anterior, sendo que só pode retornar a essa
+                            posição nas jogadas futuras</li>
                     </ul>
                 </li>
                 <li>Fim do jogo
                     <ul>
-                        <li>O jogo termina quando um  dos jogadores não conseguir ganhar (se tiver apenas duas peças no tabuleiro, por exemplo) ou se não puder realizar uma jogada válida</li>
+                        <li>O jogo termina quando um dos jogadores não conseguir ganhar (se tiver apenas duas peças no
+                            tabuleiro, por exemplo) ou se não puder realizar uma jogada válida</li>
                     </ul>
                 </li>
             </ul>
@@ -90,7 +95,7 @@
                 <button id="createAccountSubmit">Create Account</button>
             </div>
             <button class="barra" id="logOutButton">Log out</button>
-            <div class="login-form hidden" id="loginForm hidden">
+            <div class="login-form hidden" id="loginForm">
                 <input type="text" id="usernameInput" placeholder="Username">
                 <input type="password" id="passwordInput" placeholder="Password">
                 <button id="loginSubmit">Login</button>
@@ -164,7 +169,6 @@
                 <p id="starttext">Start Game</p>
             </button>
         </div>
-        <br>
         <div class="overlay" onclick="togglePopup()">
         </div>
         <div class="gameplay hidden" id="boardContainer">
@@ -174,8 +178,6 @@
                 </div>
             </div>
             <div class="game-coluna ">
-                <button id="settings_icon">
-                </button>
                 <button class="reset">Play again</button>
                 <p id="message"></p>
                 <div class="board" id="board"> </div>
@@ -186,42 +188,68 @@
                 </div>
             </div>
         </div>
-        <form class="settings2">
-            <div class="choosePiecesDiv">
-                <p class="otherSettingsText">Choose the piece you want to play with:</p>
-                <div class="optionPiecesDiv">
-                    <label for="chooseWhite" class="radio-label">
-                        <input type="radio" name="color" value="black" id="chooseWhite">
-                        <img src="images_files/player1.png" alt="Black">
-                    </label>
-                    <label for="chooseBlack" class="radio-label">
-                        <input type="radio" name="color" value="white" id="chooseBlack">
-                        <img src="images_files/player2.png" alt="White">
-                    </label>
+            <form class="settings2">
+                <div class="choosePiecesDiv">
+                    <p class="otherSettingsText">Choose the piece you want to play with:</p>
+                    <div class="optionPiecesDiv">
+                        <label for="chooseWhite" class="radio-label">
+                            <input type="radio" name="color" value="black" id="chooseWhite">
+                            <img src="images_files/player1.png" alt="Black">
+                        </label>
+                        <label for="chooseBlack" class="radio-label">
+                            <input type="radio" name="color" value="white" id="chooseBlack">
+                            <img src="images_files/player2.png" alt="White">
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="AI-settings">
-                <p class="otherSettingsText">Choose the AI difficulty:</p>
-                <div class="AI-options">
-                    <label for="begginer" class="radio-label">
-                        <input type="radio" name="difficulty" value="1" id="begginer">
+                <div class="AI-settings">
+                    <p class="otherSettingsText">Choose the AI difficulty:</p>
+                    <div class="AI-options">
+                        <label for="begginer" class="radio-label">
+                            <input type="radio" name="difficulty" value="1" id="begginer">
                             <img src="images_files/begginer.png" alt="Beginner">
-                    </label>
-                    <label for="decent" class="radio-label">
-                        <input type="radio" name="difficulty" value="2" id="decent">
-                        <img src="images_files/decente.png" alt="Decent">
-                    </label>
-                    <label for="pro" class="radio-label">
-                        <input type="radio" name="difficulty" value="3" id="pro">
-                        <img src="images_files/pro.png" alt="Pro">
-                    </label>
+                        </label>
+                        <label for="decent" class="radio-label">
+                            <input type="radio" name="difficulty" value="2" id="decent">
+                            <img src="images_files/decente.png" alt="Decent">
+                        </label>
+                        <label for="pro" class="radio-label">
+                            <input type="radio" name="difficulty" value="3" id="pro">
+                            <img src="images_files/pro.png" alt="Pro">
+                        </label>
+                    </div>
                 </div>
-            </div>
-        </form>
+                <p class="psettings" style="font-size: 30px;"> OR </p>
+                <div class="play-friends">
+                    <div class="left-side">
+                     <div class="smile">
+                      <div class="eyes"></div>
+                      <div class="mouth"></div>
+                     </div>
+                     <div class="talk">
+                      <div class="triangle"></div>
+                      <svg class="star" xmlns="http://www.w3.org/2000/svg" height="512" viewBox="0 -10 511.991 511" width="512">
+                       <path d="M510.652 185.883a27.177 27.177 0 00-23.402-18.688l-147.797-13.418-58.41-136.75C276.73 6.98 266.918.497 255.996.497s-20.738 6.483-25.023 16.53l-58.41 136.75-147.82 13.418c-10.837 1-20.013 8.34-23.403 18.688a27.25 27.25 0 007.937 28.926L121 312.773 88.059 457.86c-2.41 10.668 1.73 21.7 10.582 28.098a27.087 27.087 0 0015.957 5.184 27.14 27.14 0 0013.953-3.86l127.445-76.203 127.422 76.203a27.197 27.197 0 0029.934-1.324c8.851-6.398 12.992-17.43 10.582-28.098l-32.942-145.086 111.723-97.964a27.246 27.246 0 007.937-28.926zM258.45 409.605" data-original="#000000" class="active-path" data-old_color="#000000" fill="#D74E68" /></svg>
+                     </div>
+                     <div class="friend">
+                      <div class="shock"></div>
+                     </div>
+                    </div>
+                    <div class="right-side">
+                     <div class="psettings" style="font-size: 23px; margin-left: 20px; margin-top: 10px;" >
+                        Play with friends!</div>
+                     <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 451.846 451.847">
+                      <path d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#cfcfcf" /></svg>
+                    </div>
+                   </div>
+            </form>
 
         <div class="rankings">
             <p id="texto-rankings">Rankings</p>
-            <ol id="user-rankings"></ol>
+            <div id="rankings-slot">
+                <ol id="user-rankings"></ol>
+
+            </div>
         </div>
     </div>
     <script src="./java_script/createAccount.js"></script>

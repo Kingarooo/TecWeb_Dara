@@ -9,6 +9,12 @@ const users = [
     { name: 'User8', points: 10 },
     { name: 'User9', points: 90 },
     { name: 'User10', points: 0 },
+    { name: 'User11', points: 10},
+    { name: 'User12', points: 40 },
+    { name: 'User13', points: 60 },
+    { name: 'User14', points: 20 },
+    { name: 'User15', points: 80 }
+
 ];
 function createUserRankingsList() {
     const userList = document.getElementById('user-rankings');
