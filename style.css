@@ -180,7 +180,7 @@ body {
     top: 220px;
     right: 35px;
     position: absolute;
-    z-index: 3   ;
+    z-index: 3;
 }
 
 #profileOptions.visible {
@@ -244,37 +244,31 @@ body {
 /*-------------------------------------------------------------------------
 ------------------LOGIN - USERNAME E PASSWORD-----------------------------
 --------------------------------------------------------------------- */
-.login-form,
-.create-account-form {
+.register-form {
     display: none;
     flex-direction: column;
     gap: 10px;
     align-items: center;
     position: absolute;
-    top: 150px;
+    top: 120px;
 }
 
-#usernameInput,
-#passwordInput,
-#newUsernameInput,
-#newPasswordInput,
-#confirmPasswordInput {
+#UsernameInput,
+#PasswordInput {
     border: 2px solid var(--amarelo-bordas);
     background-color: var(--laranja);
     background-blend-mode: color;
     border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
     width: 170px;
     height: 20px;
     gap: 10px;
 }
 
-#loginButton {
-    cursor: pointer;
-}
-
 #logOutButton,
 #username-display,
-.login-form {
+.register-form {
     display: none;
 }
 
@@ -291,8 +285,7 @@ body {
     cursor: pointer;
 }
 
-#loginSubmit,
-#createAccountSubmit {
+#registerSubmit {
     cursor: pointer;
     width: 90px;
     font-size: 20px;
@@ -301,8 +294,7 @@ body {
     border-radius: 5px;
 }
 
-#loginSubmit:hover,
-#createAccountSubmit:hover {
+#registerSubmit:hover {
     transform: scale(1.1);
     transition: 0.3 ease-in-out;
 }
@@ -321,7 +313,7 @@ body {
     color: var(--castanho-texto)
 }
 
-#texto-rankings{
+#texto-rankings {
     position: relative;
     top: 20px;
 }
@@ -368,13 +360,14 @@ ol li::before {
 
 .settings,
 .settings2,
-.rankings {
+.rankings,
+.groupJoinDiv {
     background-color: var(--background-caixas);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     width: 17%;
-    height:39vw;
+    height: 39vw;
     margin: 0;
     padding: 0 100px 0 100px;
     margin-top: 10px;
@@ -388,10 +381,6 @@ ol li::before {
 /*---------------------------ESCOLHER QUADRO-----------------------------------------------------------------------
 ------------------------------ESCOLHER QUADRO----------------------------------------------------
 ------------------------------ESCOLHER QUADRO---------------------------------------------------*/
-input[type="radio"] {
-    position: absolute;
-    z-index: -2;
-}
 
 .board-size-option {
     padding: 20px;
@@ -406,7 +395,7 @@ input[type="radio"] {
     background-color: var(--laranja-escuro);
     border: 3px solid var(--amarelo-bordas);
     transform: scale(1.1);
-    transition: ease-in-out 0.25s; 
+    transition: ease-in-out 0.25s;
 }
 
 span {
@@ -414,8 +403,7 @@ span {
     font-weight: 500;
 }
 
-.board-size-label input[type="radio"]:checked~.board-size-option {
-    background-color: var(--laranja-escuro);
+.board-size-label input[type="radio"]:checked~.board-size-option {    background-color: var(--laranja-escuro);
     border: 3px solid var(--amarelo-bordas);
 }
 
@@ -451,7 +439,7 @@ label img {
     border-radius: 10px;
     cursor: pointer;
     transform: scale(1.1);
-    transition: ease-in-out 0.25s; 
+    transition: ease-in-out 0.25s;
 
 }
 
@@ -466,14 +454,14 @@ label img {
 /*----------------------------------------------------------------
 --------ESCOLHER PEÇAS-------------------------------------------
 ------------------------------------------------------------*/
-  .radio-label input[type="radio"] {
+.radio-label input[type="radio"] {
     position: absolute;
     opacity: 0;
-  }
-  
-  .AI-options,
-  .optionPiecesDiv{
-    gap:30px;
+}
+
+.AI-options,
+.optionPiecesDiv {
+    gap: 30px;
     padding: 10px;
     display: flex;
     flex-direction: row;
@@ -482,29 +470,29 @@ label img {
     width: 400px;
     overflow: hidden;
 }
- 
-  .AI-options .radio-label,
-  .optionPiecesDiv .radio-label {
+
+.AI-options .radio-label,
+.optionPiecesDiv .radio-label {
     display: inline-flex;
     cursor: pointer;
     width: 80px;
     height: 80px;
-    gap:10px;
+    gap: 10px;
     line-height: 80px;
-  }
-  
-  
-  .radio-label input[type="radio"]:checked + img ,
-  .radio-label:hover {
+}
+
+
+.radio-label input[type="radio"]:checked+img,
+.radio-label:hover {
     background-color: var(--laranja-escuro);
     border: 3px solid var(--amarelo-bordas);
     border-radius: 10px;
     transform: scale(1.1);
-    transition: ease-in-out 0.25s; 
+    transition: ease-in-out 0.25s;
 
-  }
-  
- 
+}
+
+
 
 .otherSettingsText {
     font-size: 20px;
@@ -517,265 +505,284 @@ label img {
 @import url('https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap');
 
 :root {
- --left-side: var(--laranja-escuro);
- --smile: #ffe073;
- --star: var(--amarelo-bordas);
- --arrow: var(--castanho-escuro);
+    --left-side: var(--laranja-escuro);
+    --smile: #ffe073;
+    --star: var(--amarelo-bordas);
+    --arrow: var(--castanho-escuro);
 }
 
 html {
- box-sizing: border-box;
- -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 
 .play-friends {
- background-color: var(--laranja);
- display: flex;
- width: 400px;
- height: 100px;
- position: relative;
- border-radius: 6px;
- transition: 0.3s ease-in-out;
- margin-bottom: 10px;
- border: 3px solid var(--amarelo-bordas);
- &:hover {
-  transform: scale(1.04);
+    z-index: 10;
+    background-color: var(--laranja);
+    display: flex;
+    width: 400px;
+    height: 100px;
+    position: relative;
+    border-radius: 6px;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 10px;
+    border: 3px solid var(--amarelo-bordas);
+
+    &:hover {
+        transform: scale(1.04);
+    }
 }
-}
- 
- .left-side {
- background-color: var(--left-side);
- width: 130px;
- height: 100px;
- border-radius: 6px;
- position: relative;
- display: flex;
- justify-content: center;
- align-items: center;
- cursor: pointer;
- transition: 0.3s;
- overflow: hidden;
+
+.left-side {
+    background-color: var(--left-side);
+    width: 130px;
+    height: 100px;
+    border-radius: 6px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    overflow: hidden;
 }
 
 .right-side {
- width: calc(100% - 130px);
- display: flex;
- align-items: center;
- overflow: hidden;
- cursor: pointer;
- justify-content: space-between;
- white-space: nowrap;
- transition: 0.3s;
- border-radius: 6px;
- &:hover {
-  background-color: var(--amarelo-bordas);
- }
+    width: calc(100% - 130px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    border-radius: 6px;
+
+    &:hover {
+        background-color: var(--amarelo-bordas);
+    }
 }
 
 .arrow {
- width: 20px;
- height: 20px;
- margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
 }
 
 .smile {
- width: 60px;
- height: 60px;
- border-radius: 50%;
- background-color: var(--smile);
- position: absolute;
- display: flex;
- align-items: center;
- -webkit-box-shadow: 2px 5px 10px -2px rgba(0,0,0, .2);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--smile);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    -webkit-box-shadow: 2px 5px 10px -2px rgba(0, 0, 0, .2);
 }
 
 .eyes {
-  width: 6px;
-  height: 10px;
-  position: absolute;
-  box-shadow: -15px 0 0 0 #000, 15px 0 0 0 #000;
-  border-radius: 50%;
-  left: 27px;
-  top: 20px;
+    width: 6px;
+    height: 10px;
+    position: absolute;
+    box-shadow: -15px 0 0 0 #000, 15px 0 0 0 #000;
+    border-radius: 50%;
+    left: 27px;
+    top: 20px;
 }
 
 .mouth {
- width: 36px;
- height: 18px;
- background-color: #000;
- position: absolute;
- border-radius: 0 0 60px 60px;
- top: 35px;
- left: 12px;
+    width: 36px;
+    height: 18px;
+    background-color: #000;
+    position: absolute;
+    border-radius: 0 0 60px 60px;
+    top: 35px;
+    left: 12px;
 }
 
 .play-friends:hover {
-  & .smile {
- animation: slide-cross .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
- }
- & .eyes, & .mouth {
-  animation: slide-bottom .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
- }
- & .talk {
-  animation: scale-up .4s cubic-bezier(0.390, 0.575, 0.565, 1.000) .3s both;
- }
- & .star {
-   animation: turning .5s ease-in-out .5s both;
- }
- & .friend {
-  animation: slide-in .7s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
- }
- & .shock {
-  animation: wow .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s both;
- }
+    & .smile {
+        animation: slide-cross .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    & .eyes,
+    & .mouth {
+        animation: slide-bottom .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    & .talk {
+        animation: scale-up .4s cubic-bezier(0.390, 0.575, 0.565, 1.000) .3s both;
+    }
+
+    & .star {
+        animation: turning .5s ease-in-out .5s both;
+    }
+
+    & .friend {
+        animation: slide-in .7s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    }
+
+    & .shock {
+        animation: wow .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s both;
+    }
 }
 
 @keyframes wow {
- 0% {
-  transform: scale(.9);
- }
-  100% {
-         transform: scale(1.2);
- }
+    0% {
+        transform: scale(.9);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
 }
 
 @keyframes slide-in {
 
-  100% {
-   right: -45px;
-   top: 35px;
-  }
+    100% {
+        right: -45px;
+        top: 35px;
+    }
 }
 
 
 @keyframes turning {
-  0% {
-       transform: rotate(-160deg) scale(0);
-       opacity: 0;   
-  }
-  85% {
+    0% {
+        transform: rotate(-160deg) scale(0);
+        opacity: 0;
+    }
+
+    85% {
         transform: rotate(0) scale(1.5);
         opacity: 1;
-  } 
-  100% {
+    }
+
+    100% {
         transform: rotate(0) scale(1);
         opacity: 1;
-  }
+    }
 }
 
 @keyframes scale-up {
-  0% {
-         transform: scale(0.6);
-         transform-origin: 100% 100%;       
-  }
-  100% {
-         transform: scale(1);
-         transform-origin: 100% 100%;
-         opacity: 1;
-  }
+    0% {
+        transform: scale(0.6);
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        transform: scale(1);
+        transform-origin: 100% 100%;
+        opacity: 1;
+    }
 }
 
 @keyframes slide-cross {
-  0% {
-       transform: translateY(0) translateX(0);
-  }
-  100% {
-       transform: translateY(-38px) translateX(-41px);
-  }
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+
+    100% {
+        transform: translateY(-38px) translateX(-41px);
+    }
 }
 
 @keyframes slide-bottom {
-  0% {
-         transform: translateY(0) translateX(0);
-  }
-  100% {
-         transform: translateY(1px) translateX(5px);
-  }
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+
+    100% {
+        transform: translateY(1px) translateX(5px);
+    }
 }
 
 .talk {
- width: 46px;
- height: 30px;
- border-radius: 10px;
- background-color: var(--background);
- position: absolute;
- z-index: 3;
- bottom: 34px;
- left: 33px;
- opacity: 0;
+    width: 46px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: var(--background);
+    position: absolute;
+    z-index: 3;
+    bottom: 34px;
+    left: 33px;
+    opacity: 0;
 }
 
 .triangle {
- position: relative;
-	background-color: var(--background);
- top: -9px;
- left: 8px;
+    position: relative;
+    background-color: var(--background);
+    top: -9px;
+    left: 8px;
 }
 
 .triangle,
 .triangle:before,
 .triangle:after {
-	width:  10px;
-	height: 10px;
-	border-top-right-radius: 35%;
+    width: 10px;
+    height: 10px;
+    border-top-right-radius: 35%;
 }
 
 .triangle {
-	transform: rotate(-85deg) skewX(-30deg) scale(1,.866);
-  &:before {
-	  transform: rotate(135deg) skewY(-45deg) scale(.707,1.414)   translate(50%);
- }
+    transform: rotate(-85deg) skewX(-30deg) scale(1, .866);
+
+    &:before {
+        transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translate(50%);
+    }
 }
 
 .star {
- width: 18px;
- height: 18px;
- position: absolute;
- left: 15px;
- top: 5px;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 15px;
+    top: 5px;
 }
 
 .friend {
- width: 60px;
- height: 60px;
- border-radius: 50%;
- background-color: var(--smile);
- position: relative;
- right: -85px;
- top: 85px;
- z-index: 4;
- box-shadow: 2px 5px 10px -2px rgba(0,0,0, .2);
- &:before {
-  content: '';
-  width: 6px;
-  height: 10px;
-  position: absolute;
-  box-shadow: -15px 0 0 0 #000, 15px 0 0 0 #000;
-  border-radius: 50%;
-  left: 24px;
-  top: 18px;
- }
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--smile);
+    position: relative;
+    right: -85px;
+    top: 85px;
+    z-index: 4;
+    box-shadow: 2px 5px 10px -2px rgba(0, 0, 0, .2);
+
+    &:before {
+        content: '';
+        width: 6px;
+        height: 10px;
+        position: absolute;
+        box-shadow: -15px 0 0 0 #000, 15px 0 0 0 #000;
+        border-radius: 50%;
+        left: 24px;
+        top: 18px;
+    }
 }
 
 .shock {
- width: 12px;
- height: 12px;
- background-color: #000;
- position: absolute;
- border-radius: 50%;
- top: 34px;
- right: 28px;
+    width: 12px;
+    height: 12px;
+    background-color: #000;
+    position: absolute;
+    border-radius: 50%;
+    top: 34px;
+    right: 28px;
 }
 
 @media only screen and (max-width: 480px) {
- .play-friends {
-  transform: scale(0.7);
-  &:hover {
-   transform: scale(0.74);
-  }
- }
+    .play-friends {
+        transform: scale(0.7);
+
+        &:hover {
+            transform: scale(0.74);
+        }
+    }
 }
+
 /*---------------------------START/COMEÇAR O JOGO-----------------------------------------------------------------------
 ------------------------------START/COMEÇAR O JOGO----------------------------------------------------
 ------------------------------START/COMEÇAR O JOGO---------------------------------------------------*/
@@ -794,16 +801,18 @@ html {
 }
 
 .start-button:hover {
-    background-color: /*amarelobordasrgba*/rgba(255, 252, 129, 0.5);
+    background-color:
+        /*amarelobordasrgba*/
+        rgba(255, 252, 129, 0.5);
     transform: scale(1.1);
-    transition: ease-in-out 0.25s; 
+    transition: ease-in-out 0.25s;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 #starttext {
     color: var(--castanho-escuro);
     border-radius: 5px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     font-family: Impact, 'Arial Narrow Bold', sans-serif;
 }
@@ -959,8 +968,8 @@ html {
     display: none;
 }
 
-#rankings-slot{
-    margin-top:20px ;
+#rankings-slot {
+    margin-top: 20px;
     position: sticky;
     padding: 0;
     width: 100%;
@@ -982,7 +991,7 @@ html {
     margin: 3px;
     background-color: rgba(3, 124, 174, 0.6);
     border-radius: 10px;
-    }
+}
 
 .user-rankings-item:nth-child(1) {
     background-color: rgba(184, 5, 207, 1);
@@ -1003,8 +1012,64 @@ html {
     border: 3px solid rgb(92, 58, 11);
 }
 
-.offheader{
+.offheader {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    }
+}
+
+
+.groupJoinDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -38.5%);
+    justify-content:flex-start;
+    gap:70px;
+    display: none;
+}
+
+.GoBack {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.GoBack img {
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.GoBack:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: ease-in-out 0.25s;
+}
+
+#groupCode {
+    border: 2px solid var(--amarelo-bordas);
+    background-color: var(--laranja);
+    background-blend-mode: color;
+    border-radius: 5px;
+    width: 170px;
+    height: 35px;
+    gap: 10px;
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+#leaveGamee{
+    display: none;
+    height: 70px;
+    width: 70px;
+}

@@ -83,21 +83,16 @@
         <div class="hidden" id="profileOptions">
             <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1999068/brown-triangle-clipart-md.png"
                 id="seta" alt="seta">
-            <button class="barra" id="loginButton">Login</button>
+            <!-- <button class="barra" id="loginButton">Login</button> -->
+            <button class="barra" id="registerButton">Register</button>
             <button class="barra">Match History</button>
-            <button class="barra" id="createAccountButton">Create acount</button>
-            <div class="create-account-form" id="createAccountForm">
-                <input type="text" id="newUsernameInput" placeholder="New Username">
-                <input type="password" id="newPasswordInput" placeholder="New Password">
-                <input type="password" id="confirmPasswordInput" placeholder="Confirm Password">
-                <button id="createAccountSubmit">Create Account</button>
+            <div class="register-form">
+                <input type="text" id="UsernameInput" placeholder="New Username">
+                <input type="password" id="PasswordInput" placeholder="New Password">
+                <!-- <input type="password" id="confirmPasswordInput" placeholder="Confirm Password"> -->
+                <button id="registerSubmit">Create Account</button>
             </div>
             <button class="barra" id="logOutButton">Log out</button>
-            <div class="login-form hidden" id="loginForm">
-                <input type="text" id="usernameInput" placeholder="Username">
-                <input type="password" id="passwordInput" placeholder="Password">
-                <button id="loginSubmit">Login</button>
-            </div>
         </div>
     </div>
     <div class="offheader">
@@ -105,7 +100,7 @@
             <p id="texto-settings">Settings</p>
             <p class="psettings">Board size (ROWSxCOLS):</p>
             <br>
-            <form>
+            <form class="boardChoosing">
                 <label class="board-size-label">
                     <input type="radio" name="board-size" value="6x6">
                     <span class="board-size-option">6x6</span>
@@ -124,7 +119,7 @@
             <form>
                 <p class="psettings">Choose your opponent:</p>
                 <label class="players-label">
-                    <input type="radio" name="opponent" value="human">
+                    <input type="radio" name="opponent" value="human" id="Human">
                     <span class="player-option">
                         <img src="https://icon-library.com/images/human-icon/human-icon-11.jpg" alt="human">
                     </span>
@@ -197,7 +192,7 @@
                     </label>
                 </div>
             </div>
-            <div class="AI-settings">
+            <div class="AI-settings hidden">
                 <p class="otherSettingsText">Choose the AI difficulty:</p>
                 <div class="AI-options">
                     <label for="begginer" class="radio-label">
@@ -215,7 +210,7 @@
                 </div>
             </div>
             <p class="psettings" style="font-size: 30px;"> OR </p>
-            <div class="play-friends">
+            <div class="play-friends" onclick="playOnline()">
                 <div class="left-side">
                     <div class="smile">
                         <div class="eyes"></div>
@@ -246,7 +241,15 @@
                 </div>
             </div>
         </form>
-
+        <div class="groupJoinDiv">
+            <button class="GoBack">
+                <img src="http://www.outpostatwardenrock.com/horseback/wp-content/uploads/2015/03/left-arrow-brown-md.png"
+                    alt="GoBack">
+            </button>
+            <p class="otherSettingsText">Choose the group you want to join:</p>
+            <input type="text" name="groupCodeInput" id="groupCode" placeholder="Group Code">
+        </div>
+        <button id="leaveGamee">SAIR DO JOGO TESTE</button>
         <div class="rankings">
             <p id="texto-rankings">Rankings</p>
             <div id="rankings-slot">
@@ -258,7 +261,6 @@
     <audio id="rulesSound" src="./sound_files/rules.mp3" type="audio/mpeg"></audio>
     <audio id="pieceSound" src="./sound_files/mexerPeça.mp3" type="audio/mpeg"></audio>
     <script src="./java_script/createAccount.js"></script>
-    <script src="./java_script/login.js"></script>
     <script src="./java_script/butoes&popups.js"></script>
     <script src="./java_script/soudEffects.js"></script>
     <script src="./java_script/fase1.js"></script>
@@ -266,4 +268,5 @@
     <script src="./java_script/creatingBoard.js"></script>
     <script src="./java_script/rankings.js"></script>
     <script src="./java_script/minimax.js"></script>
+    <script src="./java_script/HTTPedidos.js"></script>
 </body>

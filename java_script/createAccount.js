@@ -1,53 +1,65 @@
-const createAccountForm = document.querySelector('.create-account-form');
-const createAccountSubmit = document.querySelector('#createAccountSubmit');
-const createAccountButton = document.querySelector('#createAccountButton');
-const newUsernameInput = document.getElementById('newUsernameInput');
-const newPasswordInput = document.getElementById('newPasswordInput');
-const confirmPasswordInput = document.getElementById('confirmPasswordInput');
-
+const registerForm = document.querySelector('.register-form');
+const registerSubmit = document.getElementById('registerSubmit');
+const registerButton = document.getElementById('registerButton');
+var UsernameInput = document.getElementById('UsernameInput');
+var PasswordInput = document.getElementById('PasswordInput');
+const profileButton = document.querySelector('.profileOptions');
+const logOutButton = document.getElementById('logOutButton');
+const loggedInUsername = document.getElementById('loggedInUsername');
 /* CRIAR CONTA */
+function submitAccountForm() {
+    const nick = UsernameInput.value;
+    const password = PasswordInput.value;
+    const formData = {
+        nick,
+        password
+    };
 
-createAccountButton.addEventListener('click', () => {
-    if (createAccountForm.style.display === 'flex') {
-        createAccountForm.style.display = 'none';
+    //------- CONVERTER DADOS PARA JSON_------------------------------------------------
+    const jsonData = JSON.stringify(formData);
+    registerPlayerReq(jsonData);
+}
+
+registerSubmit.addEventListener('click', () => {
+    loggedInUsername.textContent = UsernameInput.value; //DEPOIS POR ISTO ${enteredUsername}
+    registerButton.style.display = 'none';
+    registerForm.style.display = 'none';
+    logOutButton.style.display = 'block';
+    submitAccountForm();
+});
+
+registerButton.addEventListener('click', () => {
+    if(window.getComputedStyle(groupJoinDiv).display === 'none'){
+        registerForm.style.display = 'flex';
+        UsernameInput.focus();
     } else {
-        createAccountForm.style.display = 'flex';
-        loginForm.style.display = 'none';
-        newUsernameInput.focus();
+        registerForm.style.display = 'none';
     }
 });
 
-/* SUBMIT BUTAO */
-
-createAccountSubmit.addEventListener('click', () => {
-    const username = newUsernameInput.value;
-    const password = newPasswordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
-
-    if (username === '' || password === '' || confirmPassword === '') {
-        alert('Please fill in all fields.');
-    } else if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-    } else {
-        createAccountForm.style.display = 'none';
-        alert('Account created successfully.');
-    }
+logOutButton.addEventListener('click', () => {
+    loggedInUsername.textContent = '';
+    UsernameInput.value = '';
+    PasswordInput.value = '';
+    registerButton.style.display = 'block';
+    logOutButton.style.display = 'none';
 });
 /* AUTOMATIZAR CENAS */
 
-newUsernameInput.addEventListener('keyup', (event) => {
+UsernameInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
-        newPasswordInput.focus();
-    }
-});
-newPasswordInput.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-        createAccountSubmit.click();
+        PasswordInput.focus();
     }
 });
 
-newUsernameInput.addEventListener('keyup', (event) => {
+PasswordInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
-        passwordInput.focus();
+        registerSubmit.click();
+    }
+});
+
+loggedInUsername.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        MyProfileButton.click();
     }
 });
