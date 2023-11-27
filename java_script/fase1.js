@@ -15,17 +15,42 @@ let fase = 1
 let adversario = 0;
 
 function handleCellClick(row, col, antrow, antcol) {
-    if (notremove && totalMoves < 24){
-        fase = 1;
-    }
-    else if (notremove && totalMoves >= 24){
-        fase = 2
-    }
-    else if (isGameOver(boardState,currentPlayer)){
-        fase = 4
+    if(currentPlayer === AIPlayer && typeoppnent === 1){
+        if(totalMoves <= 2){
+            let best_row = Math.floor(Math.random() * rows ) -1;
+            let best_col = Math.floor(Math.random() * cols ) -1;
+            boardState[best_row][best_col] = AIPlayer
+            totalMoves++;
+            updateBoard(cols);
+            removePlayerPiece(currentPlayer === 1 ? player1Pieces : player2Pieces);
+            currentPlayer = move_currentPlayer();
+            playPieceSound();
+        }
+        else{
+            let [_, move] = minimax_fase1(boardState,currentPlayer,max_depth,true);
+            let best_move = Math.floor(Math.random() * move.length);
+            let [row_1,col_1] = move[best_move];
+            boardState[row_1][col_1] = AIPlayer;
+            totalMoves++;
+            updateBoard(cols);
+            removePlayerPiece(currentPlayer === 1 ? player1Pieces : player2Pieces);
+            currentPlayer = move_currentPlayer();
+            playPieceSound();
+        }    
     }
     else{
-        fase = 3
+        if (notremove && totalMoves < 24){
+            fase = 1;
+        }
+        else if (notremove && totalMoves >= 24){
+            fase = 2
+        }
+        else if (isGameOver(boardState,currentPlayer)){
+            fase = 4
+        }
+        else{
+            fase = 3
+        }
     }
     
     switch(fase){
