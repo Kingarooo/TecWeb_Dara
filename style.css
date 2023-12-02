@@ -144,6 +144,35 @@ body {
     border-radius: 30px;
     z-index: 2;
 }
+/*-------------------------------------------------------------------------------------
+------BOTÃO RANKING----------------------------------------
+---------------------------------------------------------------*/
+.rankings_button {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 105px;
+    right: 40px;
+    background-color: var(--laranja);
+    border-radius: 10px;
+    padding: 5px;
+    border: 3px solid var(--amarelo-bordas);
+    height: 85px;
+}
+
+.rankings_button:hover {
+    background-color: var(--laranja-escuro);
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.rankings_button img{
+    background: transparent;
+    width: 58px;
+    height: 65px;
+}
 
 /*---------------------BOTAO DO PERFIL----------------------------
 ----------------------PROFILE PIC, no header----------------------------
@@ -156,7 +185,7 @@ body {
     flex-direction: column;
     position: absolute;
     top: 105px;
-    right: 70px;
+    right: 140px;
     background-color: var(--laranja);
     border-radius: 10px;
     padding: 5px;
@@ -168,17 +197,17 @@ body {
     cursor: pointer;
     transform: scale(1.1);
 }
-
 /*--------OPCOES AO CARREGAR BOTAO PERFIL.----------------------
 ------------------------------------------------------
 -------------------------------------------------------------*/
+
 #profileOptions {
     display: none;
     border-radius: 10px;
     align-items: center;
     flex-direction: column;
     top: 220px;
-    right: 35px;
+    right: 105px;
     position: absolute;
     z-index: 3;
 }
@@ -278,7 +307,7 @@ body {
     font-size: 30px;
     font-weight: bold;
     top: 105px;
-    right: 155px;
+    right: 225px;
 }
 
 #loggedInUsername:hover {
@@ -365,7 +394,7 @@ ol li::before {
     background-color: var(--background-caixas);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content:space-around;
     width: 17%;
     height: 39vw;
     margin: 0;
@@ -376,6 +405,10 @@ ol li::before {
     align-items: center;
     border: 3px solid var(--amarelo-bordas);
     border-radius: 20px;
+}
+
+.rankings{
+    display: none;
 }
 
 /*---------------------------ESCOLHER QUADRO-----------------------------------------------------------------------
@@ -1015,7 +1048,7 @@ html {
 .offheader {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 

@@ -1,3 +1,6 @@
+// ABRIR SOCKET PARA RECBER PEDIDOS?
+
+
 //------------------------------------------------------------------------------------------
 //---------CRIAR CONTA--------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------
@@ -14,8 +17,21 @@ function registerPlayerReq(jsonData) {
         .then(response => response.json())
         .then(data => {
             if (data.error) {
+                UsernameInput.value = '';
+                PasswordInput.value = '';
+                UsernameInput.focus();
                 alert(`Error: ${data.error}`);
             } else {
+                loggedInUsername.textContent = data.nick;
+                registerButton.style.display = 'none';
+                registerForm.style.display = 'none';
+                logOutButton.style.display = 'block';
+                userData={
+                    nick: data.nick,
+                    password: data.password,
+                    victorys: 0,
+                }
+                addUser(userData);                
                 alert('Registration successful, but not with professors link.');
             }
         })
@@ -40,7 +56,8 @@ function joinGroupReq(jsonData) {
             if (data.error) {
                 alert(`Error: ${data.error}`);
             } else {
-                game = data.game; // Extracting the value property
+                game = data.game; 
+                console.log("Entrada no grupo de jogo com ID" + game);
                 alert('Joined group successfuly, but not with professors link.');
             }
         })
@@ -60,6 +77,7 @@ function leaveGameReq(jsonData) {
             if (data.error) {
                 alert(`Error: ${data.error}`);
             } else {
+                console.log("Saida do grupo de jogo");
                 alert('Leaving the game, but not with professors link.');
             }
         })
@@ -79,6 +97,8 @@ function notifyReq(jsonData) {
             if (data.error) {
                 alert(`Error: ${data.error}`);
             } else {
+                console.log("Notificação de jogada" + data.nick);
+                
                 alert('Notifying player, but not with professors link.');
             }
         })

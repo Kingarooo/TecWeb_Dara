@@ -20,13 +20,9 @@ function submitAccountForm() {
     registerPlayerReq(jsonData);
 }
 
-registerSubmit.addEventListener('click', () => {
-    loggedInUsername.textContent = UsernameInput.value; //DEPOIS POR ISTO ${enteredUsername}
-    registerButton.style.display = 'none';
-    registerForm.style.display = 'none';
-    logOutButton.style.display = 'block';
-    submitAccountForm();
-});
+    registerSubmit.addEventListener('click', () => {
+        submitAccountForm();
+    });
 
 registerButton.addEventListener('click', () => {
     if(window.getComputedStyle(groupJoinDiv).display === 'none'){

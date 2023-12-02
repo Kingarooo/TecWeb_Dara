@@ -11,7 +11,7 @@ const settings2 = document.querySelector('.settings2');
 const playFriends = document.querySelector('.play-friends');
 let groupJoinDiv;
 groupJoinDiv = document.querySelector('.groupJoinDiv');
-const leaveGamee= document.getElementById('leaveGamee');
+const leaveGamee = document.getElementById('leaveGamee');
 let rows = 0
 let cols = 0
 let AIPlayer = 0
@@ -51,6 +51,7 @@ function playOnline() {
         };
         const jsonData = JSON.stringify(formData);
         joinGroupReq(jsonData);
+        StartButtonOnline();
         leaveGamee.style.display = 'inline';
     }
 }
@@ -80,8 +81,8 @@ GoBack.addEventListener('click', () => {
 const groupCodeInput = document.getElementById('groupCode');
 groupCodeInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
-        playOnline();
     }
+    playOnline();
 });
 
 function notify() {
@@ -99,7 +100,7 @@ function notify() {
 
 function update() {
     const nick = UsernameInput.value;
-    const formData = {
+    const formData = { 
         game,
         nick
     };
@@ -125,6 +126,7 @@ startButton.addEventListener('click', StartButton);
 
 function StartButton() {
     const missingOptions = [];
+    const selectsize = document.querySelector('input[name="board-size"]:checked');
     const selectopponent = document.querySelector('input[name="opponent"]:checked');
     const selectplay = document.querySelector('input[name="player"]:checked');
     const color = document.querySelector('input[name="color"]:checked');
@@ -199,6 +201,27 @@ function StartButton() {
         alert(`Please select the following options: ${missingOptions.join(', ')}`);
 }
 
+function StartButtonOnline() {
+    const selectsize = document.querySelector('input[name="board-size"]:checked');
+    settingsDiv.style.display = 'none';
+    settings2.style.display = 'none';
+    gameplayDiv.style.display = 'flex';
+    //-----DEFENIR TAMANHO DO TABULEIRO
+    const selectedValue = selectsize.value;
+    const [rowValue, colValue] = selectedValue.split("x");
+    rows = parseInt(rowValue, 10);
+    cols = parseInt(colValue, 10);
+    //-----DEFENIR JOGADOR
+    const player = selectplay.value;
+    colorleft.style.setProperty('--back', 'rgb(50,205,50)');
+    colorleft.style.setProperty('--border', 'rgb(50,205,50)');
+    currentPlayer = 1;
+    AIPlayer = 2;
+    HUMPlayer = 1;
+        typeopponent = 2;
+    start();
+}
+
 MyProfileButton.addEventListener('click', toggleDropdown);
 
 document.addEventListener('click', (event) => {
@@ -232,7 +255,7 @@ aiRadioButton.addEventListener('change', () => {
         aiOptionsDiv.classList.remove('hidden');
     } else {
         // if (humanRadioButton.checked)
-            aiOptionsDiv.classList.add('hidden');
+        aiOptionsDiv.classList.add('hidden');
     }
 });
 
@@ -242,6 +265,7 @@ reset.addEventListener('click', () => {
     gameplayDiv.classList.add('hidden');
     board.innerHTML = '';
     alert("O jogo foi reiniciado");
+
     StartButton();
 });
 
