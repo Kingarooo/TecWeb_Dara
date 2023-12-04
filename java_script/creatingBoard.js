@@ -2,6 +2,7 @@ const board = document.getElementById('board');
 const player1PiecesElement = document.getElementById('player1-pieces');
 const player2PiecesElement = document.getElementById('player2-pieces');
 let max_depth = 1
+let boardState;
 
 function start(){
     boardContainer.style.setProperty('--col', cols);

@@ -8,13 +8,10 @@ const logOutButton = document.getElementById('logOutButton');
 const loggedInUsername = document.getElementById('loggedInUsername');
 /* CRIAR CONTA */
 function submitAccountForm() {
-    const nick = UsernameInput.value;
-    const password = PasswordInput.value;
     const formData = {
-        nick,
-        password
+        nick: UsernameInput.value,
+        password: PasswordInput.value
     };
-
     //------- CONVERTER DADOS PARA JSON_------------------------------------------------
     const jsonData = JSON.stringify(formData);
     registerPlayerReq(jsonData);

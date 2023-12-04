@@ -13,13 +13,11 @@
 
 <body>
     <div class="header">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F30%2F3f%2Fc9%2F303fc993935532b1061d3aad57a228e4.png&f=1&nofb=1&ipt=d0a8b768777911d1cc8f6e26157f3517f77c029c6fef265e17c77bd26b132986&ipo=images"
+        <img src="images_files/pergaminho.png"
             alt="Popup Button" class="popup-button" id="rules" onclick="togglePopup()">
         <p id="texto_rules">Rules</p>
         <div class="popup">
-            <button onclick="togglePopup()">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fbrown%2Fx-mark-256.png&f=1&nofb=1&ipt=0e055833898a0a763280812be481f30b3f7d4156d5b347efc927f0959ddbeffd&ipo=images"
-                    alt="X">
+            <button onclick="togglePopup()" style="cursor: pointer;">
             </button>
             <h2>Instructions</h2>
             <ul>
@@ -172,6 +170,7 @@
             </div>
             <div class="game-coluna ">
                 <button class="reset">Play again</button>
+                <button id="leaveGamee">Leave group</button>
                 <p id="message"></p>
                 <div class="board" id="board"> </div>
             </div>
@@ -234,7 +233,7 @@
                 </div>
                 <div class="right-side">
                     <div class="psettings" style="font-size: 25px; margin-left: 10px; margin-top: 10px;">
-                        Play with friends!</div>
+                        <elem id="play-friends-text"> Play with friends!</elem></div>
                     <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="512" height="512"
                         viewBox="0 0 451.846 451.847">
                         <path
@@ -252,7 +251,6 @@
             <p class="otherSettingsText">Choose the group you want to join:</p>
             <input type="text" name="groupCodeInput" id="groupCode" placeholder="Group Code">
         </div>
-        <button id="leaveGamee">SAIR DO JOGO TESTE</button>
         <div class="rankings">
             <p id="texto-rankings">Top 10</p>
             <div id="rankings-slot">
@@ -263,7 +261,7 @@
     </div>
     <audio id="rulesSound" src="./sound_files/rules.mp3" type="audio/mpeg"></audio>
     <audio id="pieceSound" src="./sound_files/mexerPeça.mp3" type="audio/mpeg"></audio>
-    <script src="./java_script/createAccount.js"></script>
+    <script src="./java_script/register.js"></script>
     <script src="./java_script/butoes&popups.js"></script>
     <script src="./java_script/soudEffects.js"></script>
     <script src="./java_script/fase1.js"></script>

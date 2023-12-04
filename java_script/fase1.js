@@ -15,7 +15,7 @@ let fase = 1
 let adversario = 0;
 
 function handleCellClick(row, col, antrow, antcol) {
-    if(currentPlayer === AIPlayer && typeoppnent === 1){
+    if(currentPlayer === AIPlayer && typeopponent === 1){
         if(totalMoves <= 2){
             let best_row = Math.floor(Math.random() * rows ) -1;
             let best_col = Math.floor(Math.random() * cols ) -1;

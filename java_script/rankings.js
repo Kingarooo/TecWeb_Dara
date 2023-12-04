@@ -6,16 +6,21 @@ function addUser(userData) {
         password: userData.password,
         victorys: userData.victorys !== undefined ? userData.victorys : 0,
     };
-    createUserRankingsList();   
     users.push(user);
+    createUserRankingsList();   
 }
+
+//ADD 10 BOTS SÓ PARA TESTAR
 
 userData ={
     nick: 'Bot',
     password: '',
     victorys: -1,
 };
-addUser(userData);
+
+for (let i = 0; i < 10; i++) {
+    addUser(userData);
+}
 
 function createUserRankingsList() {
     const userList = document.getElementById('user-rankings');
@@ -31,7 +36,7 @@ function createUserRankingsList() {
         const listItem = document.createElement('li');
         const profilePic = document.createElement('img');
         profilePic.src = user.profilePicURL || './images_files/Caveman.png';
-        profilePic.alt = `${user.nick} Profile Pic`; // Use nick instead of name
+        profilePic.alt = `${user.nick}`
         listItem.className = 'user-rankings-item';
         listItem.textContent = `${user.nick} (${user.victorys})`; // Use nick instead of name
         listItem.insertBefore(profilePic, listItem.firstChild);

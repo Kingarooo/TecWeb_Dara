@@ -25,6 +25,7 @@ function toggleDropdown() {
 }
 
 function playOnline() {
+    const groupJoinDiv = document.querySelector('.groupJoinDiv');
     const groupCodeInput = document.getElementById('groupCode');
     if (window.getComputedStyle(groupJoinDiv).display === 'none') {
         groupJoinDiv.style.display = 'flex';
@@ -50,8 +51,11 @@ function playOnline() {
             size
         };
         const jsonData = JSON.stringify(formData);
-        joinGroupReq(jsonData);
         StartButtonOnline();
+        joinGroupReq(jsonData);
+        playOnline();
+        groupJoinDiv.style.display = 'none';    
+        reset.style.display = 'none';
         leaveGamee.style.display = 'inline';
     }
 }
@@ -59,6 +63,10 @@ function playOnline() {
 leaveGamee.addEventListener('click', leaveGame);
 
 function leaveGame() {
+    settings2.style.display = 'flex';
+    settingsDiv.style.display = 'flex';
+    gameplayDiv.style.display = 'none';
+    boardState = [];
     const nick = UsernameInput.value;
     const password = PasswordInput.value;
     const formData = {
@@ -77,12 +85,10 @@ GoBack.addEventListener('click', () => {
     groupJoinDiv.style.display = 'none';
 }
 );
-
+const playFriendsText = document.getElementById('play-friends-text');
 const groupCodeInput = document.getElementById('groupCode');
-groupCodeInput.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-    }
-    playOnline();
+groupCodeInput.addEventListener('input', (event) => {
+    playFriendsText.textContent = 'Start Online Game';
 });
 
 function notify() {
@@ -138,7 +144,7 @@ function StartButton() {
     if (!color) { missingOptions.push('Color'); }
     if (!difficulty) { missingOptions.push('Difficulty'); }
     ////////////////////////////////////////
-    if (missingOptions.length === 0) {
+    if (missingOptions.length === 0 || (missingOptions.length === 1 && selectopponent.value === "human")) {
         settingsDiv.style.display = 'none';
         settings2.style.display = 'none';
         gameplayDiv.style.display = 'flex';
@@ -212,13 +218,15 @@ function StartButtonOnline() {
     rows = parseInt(rowValue, 10);
     cols = parseInt(colValue, 10);
     //-----DEFENIR JOGADOR
-    const player = selectplay.value;
     colorleft.style.setProperty('--back', 'rgb(50,205,50)');
     colorleft.style.setProperty('--border', 'rgb(50,205,50)');
     currentPlayer = 1;
     AIPlayer = 2;
     HUMPlayer = 1;
         typeopponent = 2;
+    reset.style.display = 'none';
+    const groupJoinDiv = document.querySelector('.groupJoinDiv');
+    groupJoinDiv.style.display = 'none';
     start();
 }
 

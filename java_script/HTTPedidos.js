@@ -6,7 +6,6 @@
 //-----------------------------------------------------------------------------------------------
 
 function registerPlayerReq(jsonData) {
-    console.log(jsonData);
     fetch('http://twserver.alunos.dcc.fc.up.pt:8008/register', {
         method: 'POST',
         headers: {
@@ -14,24 +13,26 @@ function registerPlayerReq(jsonData) {
         },
         body: jsonData
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                UsernameInput.value = '';
-                PasswordInput.value = '';
-                UsernameInput.focus();
-                alert(`Error: ${data.error}`);
-            } else {
-                loggedInUsername.textContent = data.nick;
-                registerButton.style.display = 'none';
-                registerForm.style.display = 'none';
-                logOutButton.style.display = 'block';
-                userData={
-                    nick: data.nick,
-                    password: data.password,
-                    victorys: 0,
-                }
-                addUser(userData);                
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            UsernameInput.value = '';
+            PasswordInput.value = '';
+            UsernameInput.focus();
+            alert(`Error: ${data.error}`);
+        } else {
+            registerButton.style.display = 'none';
+            registerForm.style.display = 'none';
+            logOutButton.style.display = 'block';
+            parsedData = JSON.parse(jsonData);
+            loggedInUsername.textContent = parsedData.nick;
+            let userData = {
+                nick: parsedData.nick,
+                password: parsedData.password,
+                victorys: 0,
+            }
+            console.log('Adding user:', userData);
+                addUser(userData);
                 alert('Registration successful, but not with professors link.');
             }
         })
@@ -56,9 +57,11 @@ function joinGroupReq(jsonData) {
             if (data.error) {
                 alert(`Error: ${data.error}`);
             } else {
-                game = data.game; 
+                leaveGamee.style.display = 'inline';
+                game = data.game;
                 console.log("Entrada no grupo de jogo com ID" + game);
                 alert('Joined group successfuly, but not with professors link.');
+                playOnline();
             }
         })
         .catch(error => console.error('Error:', error));
@@ -98,7 +101,7 @@ function notifyReq(jsonData) {
                 alert(`Error: ${data.error}`);
             } else {
                 console.log("Notificação de jogada" + data.nick);
-                
+
                 alert('Notifying player, but not with professors link.');
             }
         })
