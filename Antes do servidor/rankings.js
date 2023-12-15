@@ -11,7 +11,7 @@ function addUser(userData) {
     createUserRankingsList();   
 }
 
-//ADD 3 BOTS SÓ PARA TESTAR
+//ADD 10 BOTS SÓ PARA TESTAR
 
 userData ={
     nick: 'Bot',
@@ -20,7 +20,7 @@ userData ={
     games: 0,
 };
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 10; i++) {
     addUser(userData);
 }
 

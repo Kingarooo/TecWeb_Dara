@@ -8,38 +8,6 @@ let logOutButton = document.getElementById('logOutButton');
 const loggedInUsername = document.getElementById('loggedInUsername');
 
 /* CRIAR CONTA */
-let registered = false;
-function registerPlayerReq(jsonData) {
-    fetch('http://localhost:8119/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: jsonData
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })    .then(data => {
-        if (data.error) {
-            UsernameInput.value = '';
-            PasswordInput.value = '';
-            UsernameInput.focus();
-            alert(`Error: ${data.error}`);
-        } else {            
-            registerButton.style.display = 'none';
-            registerForm.style.display = 'none';
-            logOutButton.style.display = 'block';
-            loggedInUsername.textContent = data.nick; 
-            showPopup('You just registered as ' + data.nick + '\nWelcome to the game!');
-            registered = true;
-            }
-        })
-        .catch(error => console.error('Error:', error));
-}
-
 function submitAccountForm() {
     const formData = {
         nick: UsernameInput.value,
@@ -47,7 +15,6 @@ function submitAccountForm() {
     };
     //------- CONVERTER DADOS PARA JSON_------------------------------------------------
     const jsonData = JSON.stringify(formData);
-    console.log(jsonData);
     registerPlayerReq(jsonData);
 }
 

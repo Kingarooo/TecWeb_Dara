@@ -19,17 +19,6 @@ let HUMPlayer = 0
 let currentPlayer = 1
 let typeopponent = 0
 
-function showPopup(message, duration = 3000) {
-    const popup = document.getElementById('UserPopup');
-    const popupMessage = document.getElementById('popupMessage');
-
-    popupMessage.textContent = message;
-    popup.style.display = 'block';
-
-    setTimeout(() => {
-        popup.style.display = 'none';
-    }, duration);
-}
 function toggleDropdown() {
     var profileOptions = document.getElementById("profileOptions");
     profileOptions.classList.toggle('visible');

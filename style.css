@@ -1110,3 +1110,19 @@ input[type="radio"] {
     height: 70px;
     width: 70px;
 }
+
+#UserPopup {
+    z-index: 3;
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-caixas);
+    border: 2px solid var(--amarelo-bordas);
+    padding: 20px;
+    border-radius: 10px;
+}
+
