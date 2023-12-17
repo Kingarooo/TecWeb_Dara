@@ -1,40 +1,60 @@
-var users = [];
+// function addUser(userData) {
+// var user = {
+// nick: userData.nick,
+// password: userData.password,
+// victories: userData.victories !== undefined ? userData.victories : 0,
+// games: userData.games !== undefined ? userData.games : 0,
+// };
+// users.push(user);
+// createUserRankingsList();   
+// }
+// 
+// ADD 3 BOTS SÓ PARA TESTAR
+// 
+// userData ={
+// nick: 'Bot',
+// password: '',
+// victories: -1,
+// games: 0,
+// };
+// 
+// for (let i = 0; i < 3; i++) {
+// addUser(userData);
+// }
 
-function addUser(userData) {
-    var user = {
-        nick: userData.nick,
-        password: userData.password,
-        victories: userData.victories !== undefined ? userData.victories : 0,
-        games: userData.games !== undefined ? userData.games : 0,
+
+const rankings_button = document.querySelector('.rankings_button');
+const rankings = document.querySelector('.rankings');
+rankings_button.addEventListener('click', () => {
+    const groupCodeInput = document.getElementById('groupCode');
+    const group = groupCodeInput.value;
+    const selectsize = document.querySelector('input[name="board-size"]:checked');
+    const selectedValue = selectsize.value;
+    const [rowValue, colValue] = selectedValue.split("x");
+    const rows = parseInt(rowValue, 10);
+    const columns = parseInt(colValue, 10);
+    const size = {
+        rows,
+        columns
+    }
+    const jsonData = {
+        group,
+        size
     };
-    users.push(user);
-    createUserRankingsList();   
-}
+    rankingReq(jsonData);
+});
 
-//ADD 3 BOTS SÓ PARA TESTAR
-
-userData ={
-    nick: 'Bot',
-    password: '',
-    victories: -1,
-    games: 0,
-};
-
-for (let i = 0; i < 3; i++) {
-    addUser(userData);
-}
-
-function createUserRankingsList() {
+function createUserRankingsList(groupId) {
     const userList = document.getElementById('user-rankings');
-
     // Limpar a lista
     userList.innerHTML = '';
-
+    const users = readUsersFromFile();
+    const groupUsers = users.filter((user) => user.group === groupId);
     // ORDENAR POR PONTOS
-    users.sort((a, b) => b.victories - a.victories);
+    groupUsersusers.sort((a, b) => b.victories - a.victories);
 
-    // Popular a lista de victories, só 10 users
-    users.slice(0, 10).forEach((user, index) => {
+    // Popular a lista de victories, só 10 groupUsersusers
+    groupUsersusers.slice(0, 10).forEach((user, index) => {
         const listItem = document.createElement('li');
         const profilePic = document.createElement('img');
         profilePic.src = user.profilePicURL || './images_files/Caveman.png';
@@ -46,11 +66,3 @@ function createUserRankingsList() {
     });
 }
 
-const rankings_button = document.querySelector('.rankings_button');
-const rankings = document.querySelector('.rankings');
-rankings_button.addEventListener('click', () => {
-    createUserRankingsList();
-    if (rankings.style.display === 'flex') {
-        rankings.style.display = 'none';
-    } else rankings.style.display = 'flex';
-});

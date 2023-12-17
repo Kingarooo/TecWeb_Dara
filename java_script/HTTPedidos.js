@@ -2,6 +2,18 @@
 //----------------------------------------------------------------------------------------------------------------------------
 //--------------ENTRAR NUMA SALA-----------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------//----------------------------------------------------------------------------------------------------------------------------
+const popup2 = document.getElementById('userPopup');
+var popupMessage = document.getElementById('popupMessage');
+
+function showPopup2(message, duration = 3000) {
+
+    popupMessage.textContent = message;
+    popup2.style.display = 'block';
+
+    setTimeout(() => {
+        popup2.style.display = 'none';
+    }, duration);
+}
 
 var game;
 function joinGroupReq(jsonData) {
@@ -34,7 +46,9 @@ function leaveGameReq(jsonData) {
             'Content-Type': 'application/json'
         },
         body: jsonData
-    })
+    })       //
+        //NAO POR NADA QUE NAO SEJA JSON QUANDO ESCREVO NO RESPONSE
+        //
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -88,7 +102,7 @@ function updateReq(urlenData) {
 }
 
 function rankingReq(jsonData) {
-    fetch('http://localhost:8119/leave', {
+    fetch('http://localhost:8119/ranking', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -100,8 +114,11 @@ function rankingReq(jsonData) {
             if (data.error) {
                 alert(`Error: ${data.error}`);
             } else {
-                data.ranking
-                alert('Showing rankings, but not with professors link.');
+                showPopup2("Showing rankings!");
+                createUserRankingsList(groupId);
+                if (rankings.style.display === 'flex') {
+                    rankings.style.display = 'none';
+                } else rankings.style.display = 'flex';
             }
         })
         .catch(error => console.error('Error:', error));

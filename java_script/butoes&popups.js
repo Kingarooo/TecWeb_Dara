@@ -19,17 +19,6 @@ let HUMPlayer = 0
 let currentPlayer = 1
 let typeopponent = 0
 
-function showPopup(message, duration = 3000) {
-    const popup = document.getElementById('UserPopup');
-    const popupMessage = document.getElementById('popupMessage');
-
-    popupMessage.textContent = message;
-    popup.style.display = 'block';
-
-    setTimeout(() => {
-        popup.style.display = 'none';
-    }, duration);
-}
 function toggleDropdown() {
     var profileOptions = document.getElementById("profileOptions");
     profileOptions.classList.toggle('visible');
@@ -38,41 +27,41 @@ function toggleDropdown() {
 function playOnline() {
     const groupJoinDiv = document.querySelector('.groupJoinDiv');
     const groupCodeInput = document.getElementById('groupCode');
-    if (registered === false){
-        alert("Please register first");        
-    } 
+    if (registered === false) {
+        alert("Please register first");
+    }
     else
-    if (window.getComputedStyle(groupJoinDiv).display === 'none') {
-        groupJoinDiv.style.display = 'flex';
-        groupCodeInput.focus();
-    }
-    else {
-        const selectsize = document.querySelector('input[name="board-size"]:checked');
-        const selectedValue = selectsize.value;
-        const group = groupCodeInput.value;
-        const [rowValue, colValue] = selectedValue.split("x");
-        const rows = parseInt(rowValue, 10);
-        const columns = parseInt(colValue, 10);
-        const nick = UsernameInput.value;
-        const password = PasswordInput.value;
-        const size = {
-            rows,
-            columns
+        if (window.getComputedStyle(groupJoinDiv).display === 'none') {
+            groupJoinDiv.style.display = 'flex';
+            groupCodeInput.focus();
         }
-        const formData = {
-            group,
-            nick,
-            password,
-            size
-        };
-        const jsonData = JSON.stringify(formData);
-        StartButtonOnline();
-        joinGroupReq(jsonData);
-        playOnline();
-        groupJoinDiv.style.display = 'none';    
-        reset.style.display = 'none';
-        leaveGamee.style.display = 'inline';
-    }
+        else {
+            const selectsize = document.querySelector('input[name="board-size"]:checked');
+            const selectedValue = selectsize.value;
+            const group = groupCodeInput.value;
+            const [rowValue, colValue] = selectedValue.split("x");
+            const rows = parseInt(rowValue, 10);
+            const columns = parseInt(colValue, 10);
+            const nick = UsernameInput.value;
+            const password = PasswordInput.value;
+            const size = {
+                rows,
+                columns
+            }
+            const formData = {
+                group,
+                nick,
+                password,
+                size
+            };
+            const jsonData = JSON.stringify(formData);
+            StartButtonOnline();
+            joinGroupReq(jsonData);
+            playOnline();
+            groupJoinDiv.style.display = 'none';
+            reset.style.display = 'none';
+            leaveGamee.style.display = 'inline';
+        }
 }
 
 leaveGamee.addEventListener('click', leaveGame);
@@ -121,26 +110,12 @@ function notify() {
 
 function update() {
     const nick = UsernameInput.value;
-    const formData = { 
+    const formData = {
         game,
         nick
     };
     const urlenData = encodeURI(formData);
     updateReq(urlenData);
-}
-
-function showRanking() {
-    const groupCodeInput = document.getElementById('groupCode');
-    const group = groupCodeInput.value;
-    const size = {
-        rows,
-        columns
-    }
-    const jsonData = {
-        group,
-        size
-    };
-    rankingReq(jsonData);
 }
 
 startButton.addEventListener('click', StartButton);
@@ -238,7 +213,7 @@ function StartButtonOnline() {
     currentPlayer = 1;
     AIPlayer = 2;
     HUMPlayer = 1;
-        typeopponent = 2;
+    typeopponent = 2;
     reset.style.display = 'none';
     const groupJoinDiv = document.querySelector('.groupJoinDiv');
     groupJoinDiv.style.display = 'none';

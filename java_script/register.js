@@ -8,7 +8,6 @@ let logOutButton = document.getElementById('logOutButton');
 const loggedInUsername = document.getElementById('loggedInUsername');
 
 /* CRIAR CONTA */
-let registered = false;
 function registerPlayerReq(jsonData) {
     fetch('http://localhost:8119/register', {
         method: 'POST',
@@ -17,24 +16,24 @@ function registerPlayerReq(jsonData) {
         },
         body: jsonData
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })    .then(data => {
-        if (data.error) {
-            UsernameInput.value = '';
-            PasswordInput.value = '';
-            UsernameInput.focus();
-            alert(`Error: ${data.error}`);
-        } else {            
-            registerButton.style.display = 'none';
-            registerForm.style.display = 'none';
-            logOutButton.style.display = 'block';
-            loggedInUsername.textContent = data.nick; 
-            showPopup('You just registered as ' + data.nick + '\nWelcome to the game!');
-            registered = true;
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        }).then(data => {
+            if (data.error) {
+                UsernameInput.value = '';
+                PasswordInput.value = '';
+                UsernameInput.focus();
+                showPopup2(popupMessage);
+            } else {
+                registerButton.style.display = 'none';
+                registerForm.style.display = 'none';
+                logOutButton.style.display = 'block';
+                loggedInUsername.textContent = data.nick;
+                showPopup2(popupMessage);
+                registered = true;
             }
         })
         .catch(error => console.error('Error:', error));
@@ -51,12 +50,12 @@ function submitAccountForm() {
     registerPlayerReq(jsonData);
 }
 
-    registerSubmit.addEventListener('click', () => {
-        submitAccountForm();
-    });
+registerSubmit.addEventListener('click', () => {
+    submitAccountForm();
+});
 
 registerButton.addEventListener('click', () => {
-    if(window.getComputedStyle(groupJoinDiv).display === 'none'){
+    if (window.getComputedStyle(groupJoinDiv).display === 'none') {
         registerForm.style.display = 'flex';
         UsernameInput.focus();
     } else {
