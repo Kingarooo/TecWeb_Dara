@@ -105,10 +105,13 @@ function updatelastmove(antcol, antrow , row, col){
     cells.forEach((cell, index) => {
         const row1 = Math.floor(index / cols);
         const col1 = index % cols;
-
         if (row === row1 && col1 ===col) {
             cell.dataset.antrow = antrow;
             cell.dataset.antcol = antcol;
+        }
+        else if(boardState[row1][col1] == currentPlayer){
+                cell.dataset.antrow = -1
+                cell.dataset.antcol = -1
         }
     });
 }
