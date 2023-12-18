@@ -550,7 +550,7 @@ html {
 }
 
 
-.play-friends {
+#play-friends {
     z-index: 3;
     background-color: var(--laranja);
     display: none;

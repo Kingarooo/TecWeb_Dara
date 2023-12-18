@@ -7,7 +7,7 @@ const profileButton = document.querySelector('.profileOptions');
 let logOutButton = document.getElementById('logOutButton');
 const loggedInUsername = document.getElementById('loggedInUsername');
 popup2 = document.getElementById('userPopup');
-const play_friends = document.querySelector('play-friends');
+var play_friends = document.getElementById('play-friends');
 function showPopup(message, duration = 3000) {
 
 
@@ -37,7 +37,6 @@ function registerPlayerReq(jsonData) {
                 UsernameInput.value = '';
                 PasswordInput.value = '';
                 UsernameInput.focus();
-                console.log(data.error);
                 showPopup(data.error);
             } else {
                 registerButton.style.display = 'none';
@@ -49,6 +48,7 @@ function registerPlayerReq(jsonData) {
             }
         })
         .catch(error => console.error('Error:', error));
+        
 }
 
 function submitAccountForm() {

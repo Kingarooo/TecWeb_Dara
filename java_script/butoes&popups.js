@@ -11,7 +11,7 @@ const settings2 = document.querySelector('.settings2');
 const playFriends = document.querySelector('.play-friends');
 let groupJoinDiv;
 groupJoinDiv = document.querySelector('.groupJoinDiv');
-const leaveGamee = document.getElementById('leaveGamee');
+var leaveGamee = document.getElementById('leaveGamee');
 let rows = 0
 let cols = 0
 let AIPlayer = 0
@@ -27,41 +27,37 @@ function toggleDropdown() {
 function playOnline() {
     const groupJoinDiv = document.querySelector('.groupJoinDiv');
     const groupCodeInput = document.getElementById('groupCode');
-    if (registered === false) {
-        alert("Please register first");
+    if (window.getComputedStyle(groupJoinDiv).display === 'none') {
+        groupJoinDiv.style.display = 'flex';
+        groupCodeInput.focus();
     }
-    else
-        if (window.getComputedStyle(groupJoinDiv).display === 'none') {
-            groupJoinDiv.style.display = 'flex';
-            groupCodeInput.focus();
+    else {
+        const selectsize = document.querySelector('input[name="board-size"]:checked');
+        const selectedValue = selectsize.value;
+        const group = groupCodeInput.value;
+        const [rowValue, colValue] = selectedValue.split("x");
+        const rows = parseInt(rowValue, 10);
+        const columns = parseInt(colValue, 10);
+        const nick = UsernameInput.value;
+        const password = PasswordInput.value;
+        const size = {
+            rows,
+            columns
         }
-        else {
-            const selectsize = document.querySelector('input[name="board-size"]:checked');
-            const selectedValue = selectsize.value;
-            const group = groupCodeInput.value;
-            const [rowValue, colValue] = selectedValue.split("x");
-            const rows = parseInt(rowValue, 10);
-            const columns = parseInt(colValue, 10);
-            const nick = UsernameInput.value;
-            const password = PasswordInput.value;
-            const size = {
-                rows,
-                columns
-            }
-            const formData = {
-                group,
-                nick,
-                password,
-                size
-            };
-            const jsonData = JSON.stringify(formData);
-            StartButtonOnline();
-            joinGroupReq(jsonData);
-            playOnline();
-            groupJoinDiv.style.display = 'none';
-            reset.style.display = 'none';
-            leaveGamee.style.display = 'inline';
-        }
+        const formData = {
+            group,
+            nick,
+            password,
+            size
+        };
+        const jsonData = JSON.stringify(formData);
+        StartButtonOnline();
+        joinGroupReq(jsonData);
+        playOnline();
+        groupJoinDiv.style.display = 'none';
+        reset.style.display = 'none';
+        leaveGamee.style.display = 'inline';
+    }
 }
 
 leaveGamee.addEventListener('click', leaveGame);

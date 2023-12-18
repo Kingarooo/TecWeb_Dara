@@ -71,12 +71,11 @@ function handleRegistration(request, response) {
         data += chunk;
     });
 
-    request.on('end', async () => {
-        const users = await readUsersFromFile();
+    request.on('end', () => {
+        const users = readUsersFromFile();
         jsonData = JSON.parse(data);
         const expectedFields = ['nick', 'password'];
         const name = jsonData.nick;
-        console.log(name);
         if (Object.keys(jsonData).every(field => expectedFields.includes(field))) {
             if (nickUsed(users, name)) {
                 if (accountExists(users, name, jsonData.password)) {
@@ -98,10 +97,18 @@ function handleRegistration(request, response) {
             }
             else {
                 jsonData.games = 0;
-                jsonData.victories = 0;
+                jsonData.victories = {
+                    "6x6": 0,
+                    "5x6": 0,
+                    "6x5": 0
+                };
+
                 jsonData.group = '';
                 users.push(jsonData);
                 writeUsersToFile(users);
+                body = {
+                    message: "Welcome " + name + "!"
+                };
                 response.writeHead(200, { 'Content-Type': 'application/json' });
                 response.end(JSON.stringify(body));
             }
@@ -122,7 +129,7 @@ function nickUsed(users, nick) {
     return users.some((user) => user.nick === nick);
 }
 
-async function readUsersFromFile() {
+function readUsersFromFile() {
     try {
         const data = fs.readFileSync('java_script/server/zUsersData.json', 'utf8');
         return JSON.parse(data) || [];
@@ -149,10 +156,14 @@ function handleRanking(request, response) {
         rankingData = JSON.parse(data);
         const expectedFields = ['group', 'size'];
         if (Object.keys(rankingData).every(field => expectedFields.includes(field))) {
-
-            const users = readUsersFromFile();
-            response.writeHead(200, { 'Content-Type': 'application/json' });
-            response.end(JSON.stringify(rankingData));
+            if (Number.isInteger(group) && group > 0) {
+                response.writeHead(200, { 'Content-Type': 'application/json' });
+                response.end(JSON.stringify(rankingData));
+            }
+            else {
+                response.writeHead(400, { 'Content-Type': 'application/json' });
+                response.end(JSON.stringify({ error: 'Invalid data format' }));
+            }
         }
         else {
             response.writeHead(400, { 'Content-Type': 'application/json' });

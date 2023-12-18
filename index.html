@@ -157,7 +157,7 @@
             <br>
             <br>
             <button class="start-button">
-                <text id="starttext">Start Game</text>
+                <span id="starttext">Start Game</span>
             </button>
         </div>
         <div class="overlay" onclick="togglePopup()">
@@ -169,7 +169,7 @@
                 </div>
             </div>
             <div class="game-coluna ">
-                <button class="reset">Play again</button>
+                <button class="reset">Sair  </button>
                 <button id="leaveGamee">Sair</button>
                 <p id="message"></p>
                 <div class="board" id="board"> </div>
@@ -212,7 +212,7 @@
                 </div>
             </div>
             <p class="psettings" style="font-size: 30px;"> OR </p>
-            <div class="play-friends" onclick="playOnline()">
+            <div id="play-friends" onclick="playOnline()">
                 <div class="left-side">
                     <div class="smile">
                         <div class="eyes"></div>
@@ -233,7 +233,7 @@
                 </div>
                 <div class="right-side">
                     <div class="psettings" style="font-size: 25px; margin-left: 10px; margin-top: 10px;">
-                        <elem id="play-friends-text"> Play with friends!</elem></div>
+                        <p id="play-friends-text"> Play with friends!</p></div>
                     <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="512" height="512"
                         viewBox="0 0 451.846 451.847">
                         <path
@@ -262,8 +262,6 @@
     <div id="userPopup" >
         <p id="popupMessage"></p>
     </div>
-    <audio id="rulesSound" src="./sound_files/rules.mp3" type="audio/mpeg"></audio>
-    <audio id="pieceSound" src="./sound_files/mexerPeça.mp3" type="audio/mpeg"></audio>
     <script src="./java_script/register.js"></script>
     <script src="./java_script/butoes&popups.js"></script>
     <script src="./java_script/soudEffects.js"></script>
@@ -273,4 +271,6 @@
     <script src="./java_script/rankings.js"></script>
     <script src="./java_script/minimax.js"></script>
     <script src="./java_script/HTTPedidos.js"></script>
+    <audio id="rulesSound" src="./sound_files/rules.mp3"></audio>
+    <audio id="pieceSound" src="./sound_files/mexerPeça.mp3"></audio>
 </body>

@@ -1,20 +1,19 @@
-// ABRIR SOCKET PARA RECBER PEDIDOS?
-//----------------------------------------------------------------------------------------------------------------------------
-//--------------ENTRAR NUMA SALA-----------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------------------//----------------------------------------------------------------------------------------------------------------------------
 const popup2 = document.getElementById('userPopup');
 var popupMessage = document.getElementById('popupMessage');
-const leaveGamee = document.getElementById('leaveGamee');
+leaveGamee = document.getElementById('leaveGamee');
 function showPopup2(message, duration = 3000) {
-
+    
     popupMessage.textContent = message;
     popup2.style.display = 'block';
-
+    
     setTimeout(() => {
         popup2.style.display = 'none';
     }, duration);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------
+//--------------ENTRAR NUMA SALA-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------//----------------------------------------------------------------------------------------------------------------------------
 var game;
 function joinGroupReq(jsonData) {
     fetch('http://localhost:8119/join', {
@@ -31,7 +30,7 @@ function joinGroupReq(jsonData) {
             } else {
                 leaveGamee.style.display = 'inline';
                 game = data.game;
-                console.log("Entrada no grupo de jogo com ID" + game);
+                console.log("Entrada no grupo de jogo com ID" + data.game);
                 playOnline();
             }
         })
