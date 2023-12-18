@@ -148,29 +148,38 @@ function writeUsersToFile(users) {
 
 function handleRanking(request, response) {
     let data = '';
+
     request.on('data', (chunk) => {
         data += chunk;
     });
 
     request.on('end', () => {
-        rankingData = JSON.parse(data);
-        const expectedFields = ['group', 'size'];
-        if (Object.keys(rankingData).every(field => expectedFields.includes(field))) {
-            if (Number.isInteger(group) && group > 0) {
-                response.writeHead(200, { 'Content-Type': 'application/json' });
-                response.end(JSON.stringify(rankingData));
-            }
-            else {
+        try {
+            const rankingData = JSON.parse(data);
+            const expectedFields = ['group', 'size'];
+
+            if (Object.keys(rankingData).every(field => expectedFields.includes(field))) {
+                const { group, size } = rankingData;
+
+                if (Number.isInteger(group) && group > 0) {
+                    response.writeHead(200, { 'Content-Type': 'application/json' });
+                    response.end(JSON.stringify({ ranking: [] }));
+                }
+                else {
+                    response.writeHead(400, { 'Content-Type': 'application/json' });
+                    response.end(JSON.stringify({ error: `Invalid group '${group}'` }));
+                }
+            } else {
                 response.writeHead(400, { 'Content-Type': 'application/json' });
-                response.end(JSON.stringify({ error: 'Invalid data format' }));
+                response.end(JSON.stringify({ error: 'Invalid data format (group or size missing)!' }));
             }
-        }
-        else {
+        } catch (error) {
             response.writeHead(400, { 'Content-Type': 'application/json' });
-            response.end(JSON.stringify({ error: 'Invalid data format' }));
+            response.end(JSON.stringify({ error: 'Invalid JSON data' }));
         }
     });
 }
+
 
 //------------------------------------------------
 //JOIN JOIN JOIN JOIN JOIN JOIN JOIN JOIN JOIN JOIN

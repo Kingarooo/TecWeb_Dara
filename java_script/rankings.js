@@ -21,15 +21,23 @@
 // for (let i = 0; i < 3; i++) {
 // addUser(userData);
 // }
+var rankingButton = document.getElementById('rankings_button');
 
+rankingButton.addEventListener('click', function () {
 
+    const groupJoinDiv = document.querySelector('.groupJoinDiv');
+    const groupCodeInput = document.getElementById('groupCode');
+    if (window.getComputedStyle(rankings).display === 'none') {
+        rankingReq();
+    }
+});
 function createUserRankingsList(groupId, boardSize) {
     const userList = document.getElementById('user-rankings');
     // Limpar a lista
     userList.innerHTML = '';
     const users = readUsersFromFile();
     const groupUsers = users.filter((user) => user.group === groupId);
-    
+
     // ORDENAR POR PONTOS no tamanho selecionado
     const sortedUsers = groupUsers.sort((a, b) => b.victories[boardSize] - a.victories[boardSize]);
 
