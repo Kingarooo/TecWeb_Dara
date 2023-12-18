@@ -6,7 +6,18 @@ var PasswordInput = document.getElementById('PasswordInput');
 const profileButton = document.querySelector('.profileOptions');
 let logOutButton = document.getElementById('logOutButton');
 const loggedInUsername = document.getElementById('loggedInUsername');
+popup2 = document.getElementById('userPopup');
+const play_friends = document.querySelector('play-friends');
+function showPopup(message, duration = 3000) {
 
+
+    popupMessage.textContent = message;
+    popup2.style.display = 'block';
+
+    setTimeout(() => {
+        popup2.style.display = 'none';
+    }, duration);
+}
 /* CRIAR CONTA */
 function registerPlayerReq(jsonData) {
     fetch('http://localhost:8119/register', {
@@ -26,14 +37,15 @@ function registerPlayerReq(jsonData) {
                 UsernameInput.value = '';
                 PasswordInput.value = '';
                 UsernameInput.focus();
-                showPopup2(popupMessage);
+                console.log(data.error);
+                showPopup(data.error);
             } else {
                 registerButton.style.display = 'none';
                 registerForm.style.display = 'none';
                 logOutButton.style.display = 'block';
                 loggedInUsername.textContent = data.nick;
-                showPopup2(popupMessage);
-                registered = true;
+                play_friends.style.display = 'flex';
+                showPopup(data.message);
             }
         })
         .catch(error => console.error('Error:', error));
@@ -67,7 +79,6 @@ logOutButton.addEventListener('click', () => {
     loggedInUsername.textContent = '';
     UsernameInput.value = '';
     PasswordInput.value = '';
-    registered = false;
     registerButton.style.display = 'block';
     logOutButton.style.display = 'none';
 });

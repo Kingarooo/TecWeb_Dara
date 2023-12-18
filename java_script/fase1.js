@@ -15,6 +15,7 @@ let fase = 1
 let adversario = 0;
 
 function handleCellClick(row, col, antrow, antcol) {
+    let move = null
     if(currentPlayer === AIPlayer && typeopponent === 1){
         if(totalMoves <= 2){
             let best_row = Math.floor(Math.random() * rows ) -1;
@@ -68,6 +69,11 @@ function handleCellClick(row, col, antrow, antcol) {
                     }
                 }
                 if (nextmove){
+                    move = {
+                        phase: 'drop',
+                        row: row,
+                        col: col
+                    };
                     totalMoves++;
                     updateBoard();
                     removePlayerPiece(currentPlayer === 1 ? player1Pieces : player2Pieces);
@@ -85,6 +91,12 @@ function handleCellClick(row, col, antrow, antcol) {
                 eliminar()
                 possivel_moves(row,col,antcol, antrow)
                 updateBoard();
+                move = {
+                    phase: 'move',
+                    step: 'from',
+                    row: row,
+                    col: col
+                };
             }
             else if (boardState[row][col] === 3){
                 eliminar()
@@ -94,8 +106,20 @@ function handleCellClick(row, col, antrow, antcol) {
                 updateBoard();
                 if(move_col(row, col) || move_row(row, col)){
                     notremove = false
+                    move = {
+                        phase: 'move',
+                        step: 'to',
+                        row: row_antiga,
+                        col: col_antiga
+                    };
                 }
                 else{
+                    move = {
+                        phase: 'move',
+                        step: 'to',
+                        row: row,
+                        col: col
+                    };
                     currentPlayer = move_currentPlayer();
                 }
             }
@@ -103,6 +127,12 @@ function handleCellClick(row, col, antrow, antcol) {
         case 3:
             adversario = currentPlayer === 1 ? 2 : 1
             if(boardState[row][col] === adversario){
+                move = {
+                    phase: 'move',
+                    step: 'capture',
+                    row: row,
+                    col: col
+                };
                 boardState[row][col] = 0
                 currentPlayer = move_currentPlayer();
                 `player${adversario}PiecesLeft--;`
@@ -115,6 +145,7 @@ function handleCellClick(row, col, antrow, antcol) {
             alert("acabou o jogo");
             break;
     }
+    notify(move);
 }
 
 function eliminar(){

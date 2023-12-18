@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------------------------------------------------------------//----------------------------------------------------------------------------------------------------------------------------
 const popup2 = document.getElementById('userPopup');
 var popupMessage = document.getElementById('popupMessage');
-
+const leaveGamee = document.getElementById('leaveGamee');
 function showPopup2(message, duration = 3000) {
 
     popupMessage.textContent = message;
@@ -32,7 +32,6 @@ function joinGroupReq(jsonData) {
                 leaveGamee.style.display = 'inline';
                 game = data.game;
                 console.log("Entrada no grupo de jogo com ID" + game);
-                alert('Joined group successfuly, but not with professors link.');
                 playOnline();
             }
         })

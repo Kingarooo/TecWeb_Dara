@@ -1,7 +1,7 @@
 var http = require('http');
 const url = require('url');
 const fs = require('fs');
-var popupMessage;
+var body;
 var pathname;
 const server = http.createServer((request, response) => {
     const parsedUrl = url.parse(request.url, true);
@@ -71,22 +71,29 @@ function handleRegistration(request, response) {
         data += chunk;
     });
 
-    request.on('end', () => {
-        const users = readUsersFromFile();
+    request.on('end', async () => {
+        const users = await readUsersFromFile();
         jsonData = JSON.parse(data);
         const expectedFields = ['nick', 'password'];
         const name = jsonData.nick;
+        console.log(name);
         if (Object.keys(jsonData).every(field => expectedFields.includes(field))) {
             if (nickUsed(users, name)) {
                 if (accountExists(users, name, jsonData.password)) {
                     response.writeHead(200, { 'Content-Type': 'application/json' });
                     popupMessage = "Welcome back " + name + "!";
-                    response.end(JSON.stringify(jsonData));
+                    body = {
+                        message: popupMessage
+                    };
+                    return response.end(JSON.stringify(body));
                 }
                 else {
-                    response.writeHead(400, { 'Content-Type': 'application/json' });
-                    popupMessage = 'Username already in use...';
-                    response.end(JSON.stringify(jsonData));
+                    response.writeHead(401, { 'Content-Type': 'application/json' });
+                    popupMessage = 'User registered with different password';
+                    body = {
+                        error: popupMessage
+                    };
+                    return response.end(JSON.stringify(body));
                 }
             }
             else {
@@ -96,8 +103,7 @@ function handleRegistration(request, response) {
                 users.push(jsonData);
                 writeUsersToFile(users);
                 response.writeHead(200, { 'Content-Type': 'application/json' });
-                popupMessage = "You just registered as " + name + "\nWelcome to the game!";
-                response.end(JSON.stringify(jsonData));
+                response.end(JSON.stringify(body));
             }
         }
         else {
@@ -116,7 +122,7 @@ function nickUsed(users, nick) {
     return users.some((user) => user.nick === nick);
 }
 
-function readUsersFromFile() {
+async function readUsersFromFile() {
     try {
         const data = fs.readFileSync('java_script/server/zUsersData.json', 'utf8');
         return JSON.parse(data) || [];
@@ -161,7 +167,6 @@ function handleRanking(request, response) {
 let groupsData = '';
 let groups = [];
 
-var registered = false;
 
 function joinGroup(request, response) {
     let data = '';
@@ -175,12 +180,7 @@ function joinGroup(request, response) {
         const expectedFields = ['group', 'nick', 'password', 'size'];
         if (Object.keys(joinData).every(field => expectedFields.includes(field))) {
             groups = readGroupsFromFile();
-            if (registered === false) {
-                response.writeHead(401, { 'Content-Type': 'application/json' });
-                popupMessage = 'Please register first!';
-                response.end(JSON.stringify(joinData));
-            }
-            else if (roomIsFull(joinData.group)) {
+            if (roomIsFull(joinData.group)) {
                 response.writeHead(400, { 'Content-Type': 'application/json' });
                 popupMessage = 'Room is full!';
                 response.end(JSON.stringify(joinData));
@@ -206,59 +206,59 @@ function joinGroup(request, response) {
     });
 }
 
-    function roomIsFull(group) {
-        for (let i = 0; i < groups.length; i++) {
-            if (groups[i].group === group) {
-                if (groups[i].players.length === 2) {
-                    return true;
-                }
-            }
-        }
-    }
-
-    function roomExists(group) {
-        groups.forEach(group => {
-            if (group.group === group) {
+function roomIsFull(group) {
+    for (let i = 0; i < groups.length; i++) {
+        if (groups[i].group === group) {
+            if (groups[i].players.length === 2) {
                 return true;
             }
-        });
-    }
-
-    function getRoomDetails(group) {
-        groups.forEach(group => {
-            if (group.group === group) {
-                return group.players;
-            }
-        });
-    }
-
-    function createRoom(group, nick, password, size) {
-        const newGroup = {
-            group,
-            nick,
-            password,
-            size
-        };
-        fs.writeFileSync('java_script/server/zUsersData.json', JSON.stringify(newGroup), 'utf8');
-    }
-
-    function readGroupsFromFile() {
-        try {
-            const data = fs.readFile('java_script/server/zGroupsData.json', 'utf8');
-            return JSON.parse(data) || [];
-        } catch (error) {
-            return [];
         }
     }
+}
 
-    function leaveGroup(request, response) {
-        // Implement logic for leaving a game/group (POST)
-    }
-
-    function notifyServer(request, response) {
-        // Implement logic for handling game notifications (POST)
-    }
-
-    server.listen(8119, () => {
-        console.log('Server is running on port 8119');
+function roomExists(group) {
+    groups.forEach(group => {
+        if (group.group === group) {
+            return true;
+        }
     });
+}
+
+function getRoomDetails(group) {
+    groups.forEach(group => {
+        if (group.group === group) {
+            return group.players;
+        }
+    });
+}
+
+function createRoom(group, nick, password, size) {
+    const newGroup = {
+        group,
+        nick,
+        password,
+        size
+    };
+    fs.writeFileSync('java_script/server/zGroupsData.json', JSON.stringify(newGroup), 'utf8');
+}
+
+function readGroupsFromFile() {
+    try {
+        const data = fs.readFile('java_script/server/zGroupsData.json', 'utf8');
+        return JSON.parse(data) || [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function leaveGroup(request, response) {
+    // Implement logic for leaving a game/group (POST)
+}
+
+function notifyServer(request, response) {
+    // Implement logic for handling game notifications (POST)
+}
+
+server.listen(8119, () => {
+    console.log('Server is running on port 8119');
+});

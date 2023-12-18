@@ -95,7 +95,7 @@ groupCodeInput.addEventListener('input', (event) => {
     playFriendsText.textContent = 'Start Online Game';
 });
 
-function notify() {
+function notify(move) {
     const nick = UsernameInput.value;
     const password = PasswordInput.value;
     // const move =
@@ -105,6 +105,7 @@ function notify() {
         password,
         move
     };
+    const jsonData = JSON.stringify(formData);
     notifyReq(jsonData);
 }
 
